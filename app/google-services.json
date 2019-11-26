@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "131051214844",
+    "firebase_url": "https://ta-ir-b6630.firebaseio.com",
+    "project_id": "ta-ir-b6630",
+    "storage_bucket": "ta-ir-b6630.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131051214844:android:404d53d7777e5481258479",
+        "android_client_info": {
+          "package_name": "com.example.takeaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131051214844-kr5hs1u8avoj72r8s1l66j0rurr0bm7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0r09XmE976fOCF65OSSC3SehJivDhsrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131051214844-kr5hs1u8avoj72r8s1l66j0rurr0bm7q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
