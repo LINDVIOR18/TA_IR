@@ -3,6 +3,7 @@ package com.example.takeaction;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,24 +56,42 @@ public class RegisterActivity extends AppCompatActivity {
         return matcher.matches();
     }
 
+
+    private static boolean validateConfirmPassword(String password , String confirmPassword) {
+        boolean temp=true;
+        String pass=password;
+        String cpass=confirmPassword;
+
+         if(!pass.equals(cpass)){
+            temp=false;
+        }
+        return temp;
+    }
+
+
+
     void checkDataEntered() {
         if (isEmpty(password)) {
             Toast t = Toast.makeText(this, "You must enter password to register!", Toast.LENGTH_SHORT);
             t.show();
         }
         if (isEmpty(confirmPassword)) {
-            confirmPassword.setError("Enter your confirmation password");
-
-            if (!password.equals(confirmPassword)) {
-                Toast.makeText(RegisterActivity.this, "Password do not match", Toast.LENGTH_SHORT).show();
-            }
+            Toast t = Toast.makeText(this, "You must confirm password to register!", Toast.LENGTH_SHORT);
+            t.show();
         }
 
         if (isEmail(email) == false) {
             email.setError("Enter valid email!");
         } else if (isValidPassword(password.getText().toString()) == false) {
             password.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(6-20)");
+        }else if (validateConfirmPassword(password.getText().toString(),confirmPassword.getText().toString()) == false) {
+            confirmPassword.setError("Password do not match");
         }
+        else{
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+        }
+
 
     }
 }
