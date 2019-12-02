@@ -7,11 +7,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.takeaction.firebase.DataCallback;
 import com.example.takeaction.validation.RegistrationValidation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -20,6 +24,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText userEmail;
 
     private FirebaseAuth firebaseAuth;
+    //    private DatabaseReference firebaseDatabase;
+    private DataCallback dataCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         firebaseAuth = FirebaseAuth.getInstance();
+//        firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
         userPassword = findViewById(R.id.input_password);
         confirmPassword = findViewById(R.id.input_confirm_password);
@@ -65,10 +72,13 @@ public class RegisterActivity extends AppCompatActivity {
         if (!email.isEmpty() && !password.isEmpty()) {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                dataCallback.onAuthSuccess(task.getResult().getUser());
                             } else
                                 Toast.makeText(RegisterActivity.this, "Registered Failed Try Again!", Toast.LENGTH_SHORT).show();
                         }
