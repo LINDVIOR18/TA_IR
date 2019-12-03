@@ -1,7 +1,5 @@
 package com.example.takeaction.Data;
 
-import android.graphics.Bitmap;
-
 public class Category {
     private long id;
     private String name;
