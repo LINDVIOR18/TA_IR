@@ -9,8 +9,6 @@ import java.util.Objects;
 
 public class AuthRepository implements DataCallback {
 
-    private DatabaseReference firebaseDatabase;
-
     @Override
     public void onAuthSuccess(FirebaseUser user) {
 
@@ -31,7 +29,7 @@ public class AuthRepository implements DataCallback {
 
     private void writeNewUser(String userId, String name, String email) {
         User user = new User(name, email);
-        firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
         firebaseDatabase.child("users").child(userId).setValue(user);
     }
