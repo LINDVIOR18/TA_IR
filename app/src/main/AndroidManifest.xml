@@ -30,6 +30,7 @@
         <activity android:name=".Slider" android:noHistory="true">
         </activity>
         <activity android:name=".LoginActivity"/>
+        <activity android:name=".ReportIncidentAvtivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
