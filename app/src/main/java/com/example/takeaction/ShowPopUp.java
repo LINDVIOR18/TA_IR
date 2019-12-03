@@ -1,5 +1,6 @@
 package com.example.takeaction;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -20,6 +21,7 @@ public class ShowPopUp extends Activity {
     Button but;
     boolean click = true;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

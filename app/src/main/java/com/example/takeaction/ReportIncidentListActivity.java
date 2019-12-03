@@ -1,10 +1,9 @@
 package com.example.takeaction;
 
+import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import java.util.ArrayList;
 
@@ -26,10 +25,9 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(myAdapter);
 
 
-
     }
 
-    private ArrayList<Incident> getMyList(){
+    private ArrayList<Incident> getMyList() {
 
         ArrayList<Incident> models = new ArrayList<>();
 

@@ -7,7 +7,7 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegistrationValidation {
+public class AuthValidation {
 
     public static boolean isEmail(EditText text) {
         CharSequence email = text.getText().toString();
