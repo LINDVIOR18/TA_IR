@@ -1,10 +1,10 @@
 package com.example.takeaction;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,9 +13,7 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     Context context;
-    ArrayList<Incident> models;  //this array is create a list of array which parametres define in our incident class
-
-
+    ArrayList<Incident> models;
 
     public MyAdapter(Context context, ArrayList<Incident> models) {
         this.context = context;
@@ -26,10 +24,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        //this line inflate our row
+        @SuppressLint("InflateParams")
         View view = LayoutInflater.from(context).inflate(R.layout.row, null);
-
-        return new MyHolder(view); // this will return our view to holder class
+        return new MyHolder(view);
     }
 
     @Override
@@ -42,6 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     }
 
     @Override
-    public int getItemCount() { return models.size();
+    public int getItemCount() {
+        return models.size();
     }
 }

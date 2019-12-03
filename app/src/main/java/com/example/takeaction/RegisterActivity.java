@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.takeaction.firebase.DataCallback;
 import com.example.takeaction.model.User;
-import com.example.takeaction.validation.RegistrationValidation;
+import com.example.takeaction.validation.AuthValidation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -55,19 +55,19 @@ public class RegisterActivity extends AppCompatActivity {
         String email = userEmail.getText().toString().trim();
         String password = userPassword.getText().toString().trim();
 
-        if (RegistrationValidation.isEmpty(userPassword)) {
+        if (AuthValidation.isEmpty(userPassword)) {
             Toast.makeText(RegisterActivity.this, "You must enter password to register!", Toast.LENGTH_SHORT).show();
         }
-        if (RegistrationValidation.isEmpty(confirmPassword)) {
+        if (AuthValidation.isEmpty(confirmPassword)) {
             confirmPassword.setError("Enter your confirmation password");
         }
         if (!userPassword.equals(confirmPassword)) {
             Toast.makeText(RegisterActivity.this, "Password do not match", Toast.LENGTH_SHORT).show();
         }
-        if (!RegistrationValidation.isEmail(userEmail)) {
+        if (!AuthValidation.isEmail(userEmail)) {
             userEmail.setError("Enter valid email!");
         }
-        if (!RegistrationValidation.isValidPassword(userPassword.getText().toString())) {
+        if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special character(6-20)");
         }
         if (!email.isEmpty() && !password.isEmpty()) {
