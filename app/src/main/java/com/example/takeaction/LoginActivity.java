@@ -65,18 +65,28 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     void checkDataEntered() {
-        if (isEmpty(password)) {
-            Toast t = Toast.makeText(this, "You must enter password to register!", Toast.LENGTH_SHORT);
-            t.show();
+        if ((isEmpty(e_mail)) & (isEmpty(password))) {
+            Toast mail = Toast.makeText(this, "You must complete the spaces!", Toast.LENGTH_SHORT);
+            mail.show();
+        } else if (isEmpty(e_mail)) {
+            Toast mail = Toast.makeText(this, "You must enter email to register!", Toast.LENGTH_SHORT);
+            mail.show();
+        } else if (isEmpty(password)) {
+            Toast pas = Toast.makeText(this, "You must enter password to register!", Toast.LENGTH_SHORT);
+            pas.show();
         }
 
-        if (isEmail(e_mail) == false) {
+        if (!isEmail(e_mail)) {
             e_mail.setError("Enter valid email!");
-        } else if (isValidPassword(password.getText().toString()) == false) {
+        }
+
+        if (!isValidPassword(password.getText().toString())) {
             password.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(4-20)");
-        } else {
+        }
+        if ((isEmail(e_mail)) & (isValidPassword(password.getText().toString()))) {
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
         }
+
     }
 }
