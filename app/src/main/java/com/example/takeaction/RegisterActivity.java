@@ -49,13 +49,15 @@ public class RegisterActivity extends AppCompatActivity {
         String password = userPassword.getText().toString().trim();
 
         if (!RegistrationValidation.isEmail(userEmail)) {
-            userEmail.setError("You must enter email!");
+            Toast temail = Toast.makeText(this, "You must enter email!", Toast.LENGTH_SHORT);
+            temail.show();
+
         } else if (RegistrationValidation.isEmpty(userPassword)) {
-            Toast t = Toast.makeText(this, "You must enter password to register!", Toast.LENGTH_SHORT);
-            t.show();
+            Toast tpass = Toast.makeText(this, "You must enter password to register!", Toast.LENGTH_SHORT);
+            tpass.show();
         } else if (RegistrationValidation.isEmpty(confirmPassword)) {
-            Toast t = Toast.makeText(this, "You must confirm password to register!", Toast.LENGTH_SHORT);
-            t.show();
+            Toast tconfpass = Toast.makeText(this, "You must confirm password to register!", Toast.LENGTH_SHORT);
+            tconfpass.show();
         }
 
         if (!RegistrationValidation.isEmail(userEmail)) {
