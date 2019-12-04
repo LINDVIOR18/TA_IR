@@ -1,4 +1,4 @@
-package com.example.takeaction;
+package com.example.takeaction.intro;
 
 
 import android.content.Context;

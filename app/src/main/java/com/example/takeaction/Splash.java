@@ -7,6 +7,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.takeaction.intro.Slider;
+
 public class Splash extends AppCompatActivity {
     LauncherManager launcherManager;
 

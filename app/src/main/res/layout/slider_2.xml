@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998"
-        app:srcCompat="@drawable/slider_3" />
+        app:srcCompat="@drawable/slider_3img" />
 
     <TextView
         android:id="@+id/textView2"
