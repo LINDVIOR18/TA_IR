@@ -25,12 +25,12 @@ public class AuthValidation {
     }
 
 
-    public static boolean validateConfirmPassword(String password , String confirmPassword) {
-        boolean temp=true;
-
-        if(!password.equals(confirmPassword)){
-            temp=false;
-        }
-        return temp;
-    }
+//    public static boolean validateConfirmPassword(String password , String confirmPassword) {
+//        boolean temp=true;
+//
+//        if(!password.equals(confirmPassword)){
+//            temp=false;
+//        }
+//        return temp;
+//    }
 }
