@@ -40,8 +40,8 @@ public class Slider extends AppCompatActivity {
 
         setContentView(R.layout.activity_slider);
 
-        viewPager = findViewById(R.id.view_pager);
-        layoutDot = findViewById(R.id.dotLayout);
+        viewPager = findViewById(R.id.vp_pager);
+        layoutDot = findViewById(R.id.ll_line);
         btnNext = findViewById(R.id.btn_next);
         btnSkip = findViewById(R.id.btn_skip);
 
@@ -120,12 +120,12 @@ public class Slider extends AppCompatActivity {
             dotstv[i] = new TextView(this);
             dotstv[i].setText(Html.fromHtml("&#8226;"));
             dotstv[i].setTextSize(30);
-            dotstv[i].setTextColor(Color.parseColor("#a9b4bb"));
+            dotstv[i].setTextColor(Color.parseColor("#ffffff"));
             layoutDot.addView(dotstv[i]);
         }
         //Set current dot active
         if (dotstv.length > 0) {
-            dotstv[page].setTextColor(Color.parseColor("#ffffff"));
+            dotstv[page].setTextColor(Color.parseColor("#00aee9"));
         }
     }
 
