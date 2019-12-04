@@ -1,4 +1,4 @@
-package com.example.takeaction;
+package com.example.takeaction.intro;
 
 
 import android.content.Context;
@@ -9,8 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 public class Adapter extends PagerAdapter {
-    int[] layouts;
-    LayoutInflater layoutInflater;
+
+    private int[] layouts;
+    private LayoutInflater layoutInflater;
 
     public Adapter(Context context, int[] layouts) {
         this.layouts = layouts;

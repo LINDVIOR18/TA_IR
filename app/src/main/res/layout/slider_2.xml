@@ -5,6 +5,18 @@
     android:layout_height="match_parent"
     android:background="#fff">
 
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/background"
+        android:alpha="0.7"/>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="300dp"
@@ -14,21 +26,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998"
-        app:srcCompat="@drawable/slider_1" />
+        app:srcCompat="@drawable/slider_3img" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/slider_3"
+        android:padding="10dp"
+        android:text="@string/slider_2"
         android:textColor="#000"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.100000024"
-        android:padding="10dp"/>
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <TextView
         android:id="@+id/textView3"

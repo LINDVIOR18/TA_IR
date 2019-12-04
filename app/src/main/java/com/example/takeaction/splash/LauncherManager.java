@@ -1,11 +1,11 @@
-package com.example.takeaction;
+package com.example.takeaction.splash;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 class LauncherManager {
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     private static String PREF_NAME = "LunchManger";
     private static String IS_FIRST_TIME = "isFirst";

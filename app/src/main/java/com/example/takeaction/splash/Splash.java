@@ -1,4 +1,4 @@
-package com.example.takeaction;
+package com.example.takeaction.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,10 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.takeaction.MainActivity;
+import com.example.takeaction.R;
+import com.example.takeaction.intro.Slider;
 
 public class Splash extends AppCompatActivity {
     LauncherManager launcherManager;

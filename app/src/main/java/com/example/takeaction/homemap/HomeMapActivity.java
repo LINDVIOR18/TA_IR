@@ -4,9 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.fragment.app.FragmentActivity;
-
 import com.example.takeaction.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -16,8 +14,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class HomeMapActivity extends FragmentActivity implements
         GoogleMap.OnMarkerClickListener,
