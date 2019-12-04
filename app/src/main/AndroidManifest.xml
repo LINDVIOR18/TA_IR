@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".RegisterActivity"/>
 
-        <activity android:name=".Splash" android:noHistory="true">
+        <activity android:name=".splash.Splash" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

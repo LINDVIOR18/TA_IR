@@ -9,8 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 public class Adapter extends PagerAdapter {
-    int[] layouts;
-    LayoutInflater layoutInflater;
+
+    private int[] layouts;
+    private LayoutInflater layoutInflater;
 
     public Adapter(Context context, int[] layouts) {
         this.layouts = layouts;
