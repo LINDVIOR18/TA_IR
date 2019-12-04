@@ -7,7 +7,7 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegistrationValidation {
+public class AuthValidation {
 
     public static boolean isEmail(EditText text) {
         CharSequence email = text.getText().toString();
@@ -24,8 +24,7 @@ public class RegistrationValidation {
         return matcher.matches();
     }
 
-
-    public static boolean validateConfirmPassword(String password , String confirmPassword) {
+    public static boolean isValidConfirmPassword(String password , String confirmPassword) {
         boolean temp=true;
 
         if(!password.equals(confirmPassword)){
