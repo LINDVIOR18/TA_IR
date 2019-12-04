@@ -12,10 +12,10 @@ import com.example.takeaction.validation.AuthValidation;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText password;
-    EditText e_mail;
-    Button login;
-    TextView signup;
+   private EditText password;
+   private EditText e_mail;
+   private Button login;
+   private TextView signup;
 
 
     @Override
@@ -23,10 +23,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        password = findViewById(R.id.password);
-        e_mail = findViewById(R.id.e_mail);
-        login = findViewById(R.id.login);
-        signup = findViewById(R.id.signup);
+        password = findViewById(R.id.et_password);
+        e_mail = findViewById(R.id.et_email);
+        login = findViewById(R.id.btn_login);
+        signup = findViewById(R.id.tv_signup);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

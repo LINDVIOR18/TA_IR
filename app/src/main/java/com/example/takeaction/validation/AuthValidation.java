@@ -24,8 +24,7 @@ public class AuthValidation {
         return matcher.matches();
     }
 
-
-    public static boolean validateConfirmPassword(String password , String confirmPassword) {
+    public static boolean isValidConfirmPassword(String password , String confirmPassword) {
         boolean temp=true;
 
         if(!password.equals(confirmPassword)){
