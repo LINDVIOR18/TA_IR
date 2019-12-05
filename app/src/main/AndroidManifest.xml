@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.example.takeaction">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.takeaction">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.location.gps"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-            android:allowBackup="false"
-            android:label="@string/app_name"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".RegisterActivity"/>
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:orientation="vertical"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".Splash" android:noHistory="true">
+        <activity android:name=".RegisterActivity" />
+
+        <activity
+            android:name=".splash.Splash"
+            android:noHistory="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".Slider" android:noHistory="true"/>
-
-        <activity android:name=".MainActivity"/>
-
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".ReportIncidentListActivity"/>
-        <activity android:name=".ReportIncidentActivity"/>
-        <activity android:name=".homemap.HomeMapActivity"
-                  android:exported="true"/>
-        <activity android:name=".ProfileActivity"/>
-        <activity android:name=".ShowPopUp"/>
-        <activity android:name=".OpenCamera"/>
+        <activity
+            android:name=".intro.Slider"
+            android:noHistory="true" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ReportIncidentListActivity" />
+        <activity android:name=".ReportIncidentActivity" />
+        <activity
+            android:name=".homemap.HomeMapActivity"
+            android:exported="true" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ShowPopUp" />
+        <activity android:name=".OpenCamera" />
 
         <meta-data
-                android:name="preloaded_fonts"
-                android:resource="@array/preloaded_fonts"/>
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
         <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="@string/google_maps_key"/>
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>
