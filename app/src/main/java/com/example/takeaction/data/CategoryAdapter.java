@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.takeaction.R;
+import com.example.takeaction.model.Category;
 
 import java.util.List;
 
@@ -19,6 +19,17 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
     private final List<Category> items;
     private final int mResource;
 
+    @Override
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        return createItemView(position, parent);
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        return createItemView(position, parent);
+    }
+
     public CategoryAdapter(@NonNull Context context, int resource, @NonNull List<Category> objects) {
         super(context, resource, objects);
         mInflater = LayoutInflater.from(context);
@@ -26,18 +37,7 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         items = objects;
     }
 
-    @Override
-    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return createItemView(position, convertView, parent);
-    }
-
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return createItemView(position, convertView, parent);
-    }
-
-    private View createItemView(int position, View convertView, ViewGroup parent) {
+    private View createItemView(int position, ViewGroup parent) {
         final View view = mInflater.inflate(mResource, parent, false);
         ImageView listIcon = view.findViewById(R.id.category_icon);
         TextView listItem = view.findViewById(R.id.category_name);
@@ -50,5 +50,4 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
 
         return view;
     }
-
 }

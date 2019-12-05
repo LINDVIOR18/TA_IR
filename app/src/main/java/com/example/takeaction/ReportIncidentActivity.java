@@ -6,13 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-
-import com.example.takeaction.data.Category;
 import com.example.takeaction.data.CategoryAdapter;
 import com.example.takeaction.data.DatePickerFragment;
+import com.example.takeaction.model.Category;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -45,7 +43,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements DatePic
     }
 
     private List<Category> getCategoryListMock() {
-        List<Category> category = new ArrayList<Category>();
+        List<Category> category = new ArrayList<>();
         category.add(new Category(1, "Fire", R.drawable.ic_fire));
         category.add(new Category(2, "Flood", R.drawable.ic_home_flood));
         category.add(new Category(3, "Earthquake", R.drawable.ic_earthquake));
