@@ -55,11 +55,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 LatLng latLng = mMap.getCameraPosition().target;
                 Geocoder geocoder = new Geocoder(MapsActivity.this);
-
-                public static void main(){
-                    
-                }
-
             }
         };
     }
