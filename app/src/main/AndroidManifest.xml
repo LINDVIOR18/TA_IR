@@ -42,11 +42,11 @@
         <activity
             android:name=".Splash"
             android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".Slider"
@@ -55,7 +55,13 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".ReportIncidentListActivity" />
         <activity android:name=".ReportIncidentActivity" />
-        <activity android:name=".MapsActivity" />
+        <activity android:name=".MapsActivity" >
+                        <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
+
+                            <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
+        </activity>
         <activity
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />
