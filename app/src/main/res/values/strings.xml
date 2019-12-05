@@ -11,4 +11,5 @@
     <string name="slider_description">This is Sample Descriptions for the Slider</string>
     <string name="slider_next">NEXT</string>
     <string name="slider_skip">SKIP</string>
+    <string name="incident_title">Title</string>
 </resources>
