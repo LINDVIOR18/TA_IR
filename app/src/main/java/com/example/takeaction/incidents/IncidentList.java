@@ -4,6 +4,7 @@ public class IncidentList {
     private String title, description;
     private int img;
 
+
     public String getTitle() {
         return title;
     }
@@ -27,4 +28,7 @@ public class IncidentList {
     public void setImg(int img) {
         this.img = img;
     }
+
+
+
 }

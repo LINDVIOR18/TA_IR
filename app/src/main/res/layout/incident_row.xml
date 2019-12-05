@@ -14,10 +14,16 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         >
+        <View
+            android:id="@+id/imageIc"
+            android:src="@drawable/ic_action_name"
+            android:background="#6DAAE9"
+            android:layout_width="10dip"
+            android:layout_height="fill_parent" />
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:id="@+id/imageIv"
             android:src="@drawable/ic_action_name"
             />
@@ -47,6 +53,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/titleTv"/>
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

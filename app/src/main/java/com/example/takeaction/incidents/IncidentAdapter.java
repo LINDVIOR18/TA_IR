@@ -34,6 +34,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull IncidentHolder myHolder, final int position) {
+
         myHolder.mTitle.setText(models.get(position).getTitle());
         myHolder.mDes.setText(models.get(position).getDescription());
         myHolder.mImaeView.setImageResource(models.get(position).getImg());
