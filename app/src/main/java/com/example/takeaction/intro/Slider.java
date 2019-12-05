@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
 import androidx.viewpager.widget.ViewPager;
 import com.example.takeaction.MainActivity;
 import com.example.takeaction.R;
@@ -45,7 +44,6 @@ public class Slider extends AppCompatActivity {
         btnNext = findViewById(R.id.btn_next);
         btnSkip = findViewById(R.id.btn_skip);
 
-        //When user press skip, start Main Activity
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,11 +64,13 @@ public class Slider extends AppCompatActivity {
                 }
             }
         });
+
         layouts = new int[]{
                 R.layout.slider_1,
                 R.layout.slider_2,
                 R.layout.slider_3
         };
+
         pagerAdapter = new Adapter(this, layouts);
         viewPager.setAdapter(pagerAdapter);
 
@@ -83,7 +83,6 @@ public class Slider extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 if (position == layouts.length - 1) {
-                    //LAST PAGE
                     btnNext.setText("START");
                     btnSkip.setVisibility(View.GONE);
                 } else {
@@ -118,14 +117,14 @@ public class Slider extends AppCompatActivity {
         dotstv = new TextView[layouts.length];
         for (int i = 0; i < dotstv.length; i++) {
             dotstv[i] = new TextView(this);
-            dotstv[i].setText(Html.fromHtml("&#8226;"));
+            dotstv[i].setText(HtmlCompat.fromHtml("&#8226;", HtmlCompat.FROM_HTML_MODE_LEGACY));
             dotstv[i].setTextSize(30);
             dotstv[i].setTextColor(Color.parseColor("#ffffff"));
             layoutDot.addView(dotstv[i]);
         }
-        //Set current dot active
+
         if (dotstv.length > 0) {
-            dotstv[page].setTextColor(Color.parseColor("#00aee9"));
+            dotstv[page].setTextColor(Color.parseColor("#153c9a"));
         }
     }
 

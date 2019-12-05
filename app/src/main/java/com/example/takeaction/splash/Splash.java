@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.takeaction.MainActivity;
 import com.example.takeaction.R;
 import com.example.takeaction.intro.Slider;

@@ -13,6 +13,8 @@ class LauncherManager {
     LauncherManager(Context context){
         sharedPreferences = context.getSharedPreferences(PREF_NAME,0);
         editor = sharedPreferences.edit();
+        editor.apply();
+
     }
 
     void setFirstLunch(boolean isFirst){
@@ -24,4 +26,3 @@ class LauncherManager {
         return sharedPreferences.getBoolean(IS_FIRST_TIME,true);
     }
 }
-

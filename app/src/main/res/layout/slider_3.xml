@@ -17,20 +17,20 @@
         android:background="@drawable/background"
         android:alpha="0.9"/>
 
-
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
+        android:id="@+id/iv_image"
+        android:layout_width="400dp"
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998"
-        app:srcCompat="@drawable/slider_1img" />
+        app:srcCompat="@drawable/slider3"
+        android:contentDescription="@null" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/slider_3"
@@ -39,21 +39,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image"
         app:layout_constraintVertical_bias="0.100000024"
         android:padding="10dp"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/slider_description"
         android:textAlignment="center"
-        android:textColor="#000"
+        android:textColor="@color/colorBlack"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_text1"
         app:layout_constraintVertical_bias="0.060000002" />
 </androidx.constraintlayout.widget.ConstraintLayout>
