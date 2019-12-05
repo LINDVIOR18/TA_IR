@@ -1,7 +1,6 @@
-package com.example.takeaction;
+package com.example.takeaction.incidents;
 
-public class Incident {
-
+public class IncidentList {
     private String title, description;
     private int img;
 

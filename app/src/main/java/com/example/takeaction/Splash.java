@@ -1,15 +1,14 @@
 package com.example.takeaction;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Splash extends AppCompatActivity {
-    LuncherManager luncherManager;
+    LauncherManager launcherManager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,20 +16,19 @@ public class Splash extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        luncherManager = new LuncherManager(this);
+        launcherManager = new LauncherManager(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(luncherManager.isFirstTime()){
-                    luncherManager.setFirstLunch(false);
-                    startActivity(new Intent(getApplicationContext(),Slider.class));
-                }else {
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                if (launcherManager.isFirstTime()) {
+                    launcherManager.setFirstLunch(false);
+                    startActivity(new Intent(getApplicationContext(), Slider.class));
+                } else {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                 }
-
             }
-        },2000);
+        }, 2000);
     }
 }

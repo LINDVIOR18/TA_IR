@@ -1,4 +1,4 @@
-package com.example.takeaction.Data;
+package com.example.takeaction.data;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,20 +11,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-
 import com.example.takeaction.R;
 
 import java.util.List;
 
 public class CategoryAdapter extends ArrayAdapter<Category> {
     private final LayoutInflater mInflater;
-    private final Context mContext;
     private final List<Category> items;
     private final int mResource;
 
     public CategoryAdapter(@NonNull Context context, int resource, @NonNull List<Category> objects) {
         super(context, resource, objects);
-        mContext = context;
         mInflater = LayoutInflater.from(context);
         mResource = resource;
         items = objects;
@@ -43,14 +40,14 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
 
     private View createItemView(int position, View convertView, ViewGroup parent) {
         final View view = mInflater.inflate(mResource, parent, false);
-        ImageView listIcon = (ImageView) view.findViewById(R.id.category_icon);
-        TextView listItem = (TextView) view.findViewById(R.id.category_name);
+        ImageView listIcon = view.findViewById(R.id.category_icon);
+        TextView listItem = view.findViewById(R.id.category_name);
 
         Category categoryData = items.get(position);
 
         listIcon.setId(categoryData.getIcon());
         listItem.setText(categoryData.getName());
-                listIcon.setImageDrawable(listIcon.getResources().getDrawable(categoryData.getIcon()));
+        listIcon.setImageDrawable(listIcon.getResources().getDrawable(categoryData.getIcon()));
 
         return view;
     }

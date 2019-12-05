@@ -3,14 +3,14 @@ package com.example.takeaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-class LuncherManager {
+class LauncherManager {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
     private static String PREF_NAME = "LunchManger";
     private static String IS_FIRST_TIME = "isFirst";
 
-    LuncherManager(Context context){
+    LauncherManager(Context context){
         sharedPreferences = context.getSharedPreferences(PREF_NAME,0);
         editor = sharedPreferences.edit();
     }
