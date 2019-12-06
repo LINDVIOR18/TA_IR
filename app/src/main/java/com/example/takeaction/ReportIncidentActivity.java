@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.takeaction.data.Category;
@@ -20,12 +19,11 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class ReportIncidentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class ReportIncidentActivity extends NavigationDrawer implements DatePickerDialog.OnDateSetListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_incident);
         Spinner categoriesSpinner = findViewById(R.id.spCategories);
 
 
@@ -42,6 +40,11 @@ public class ReportIncidentActivity extends AppCompatActivity implements DatePic
             }
         });
 
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_report_incident;
     }
 
     private List<Category> getCategoryListMock() {

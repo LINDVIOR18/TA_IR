@@ -11,14 +11,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import androidx.appcompat.app.AppCompatActivity;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends NavigationDrawer {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_profile;
     }
 
     public void onClickShowPopUp(View view) {
