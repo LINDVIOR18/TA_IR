@@ -3,10 +3,14 @@ import  androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
+import com.example.takeaction.LoginActivity;
 import com.example.takeaction.R;
+import com.example.takeaction.RegisterActivity;
 
 import java.util.ArrayList;
 
@@ -27,9 +31,11 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         myAdapter = new IncidentAdapter(this, getMyList(), new IncidentAdapter.Callback() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(ReportIncidentListActivity.this, "position: " + position, Toast.LENGTH_SHORT).show();
+                Intent appInfo = new Intent(ReportIncidentListActivity.this, IncidentDetails.class);
+                startActivity(appInfo);
             }
         });
+
         mRecyclerView.setAdapter(myAdapter);
     }
 
@@ -55,9 +61,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         m.setImg(R.drawable.flash);
         models.add(m);
 
-
         return models;
-
 
     }
 }

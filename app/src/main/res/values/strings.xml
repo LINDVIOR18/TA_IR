@@ -12,4 +12,5 @@
     <string name="slider_next">NEXT</string>
     <string name="slider_skip">SKIP</string>
     <string name="incident_title">Title</string>
+    <string name="incident_description">Description</string>
 </resources>

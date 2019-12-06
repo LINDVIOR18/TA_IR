@@ -4,6 +4,7 @@
     package="com.example.takeaction">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.location.gps" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,9 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".incidents.IncidentDetails"/>
         <activity android:name=".RegisterActivity" />
-
         <activity
             android:name=".splash.Splash"
             android:noHistory="true">
@@ -35,8 +35,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity
-            android:name=".incidents.ReportIncidentListActivity"
-            android:exported="true" />
+            android:name=".incidents.ReportIncidentListActivity" android:exported="true" />
         <activity android:name=".ReportIncidentActivity" />
         <activity
             android:name=".homemap.HomeMapActivity"
