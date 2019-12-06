@@ -1,4 +1,4 @@
-package com.example.takeaction;
+package com.example.takeaction.authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,18 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.takeaction.firebase.DataCallback;
-import com.example.takeaction.model.User;
+import com.example.takeaction.MainActivity;
+import com.example.takeaction.R;
+import com.example.takeaction.firebase.AuthDataCallback;
+import com.example.takeaction.firebase.AuthRepository;
 import com.example.takeaction.validation.AuthValidation;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -27,15 +24,14 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText confirmPassword;
     private EditText userEmail;
 
-    private FirebaseAuth firebaseAuth;
-    private DataCallback dataCallback;
+    private AuthRepository authRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        authRepository = new AuthRepository(FirebaseAuth.getInstance());
 
         userPassword = findViewById(R.id.input_password);
         confirmPassword = findViewById(R.id.input_confirm_password);
@@ -71,43 +67,22 @@ public class RegisterActivity extends AppCompatActivity {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special character(6-20)");
         }
         if (!email.isEmpty() && !password.isEmpty()) {
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(RegisterActivity.this, "Sign Up Successfully", Toast.LENGTH_SHORT).show();
-                                onAuthSuccess(Objects.requireNonNull(Objects.requireNonNull(task.getResult()).getUser()));
-                            } else
-                                Toast.makeText(RegisterActivity.this, "Sign Up Failed, Try Again!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+
+            authRepository.signUp(this, email, password, new AuthDataCallback<Task<AuthResult>>() {
+                @Override
+                public void onSuccess(Task<AuthResult> response) {
+                    Toast.makeText(RegisterActivity.this, "Sign Up Successfully", Toast.LENGTH_SHORT).show();
+                    authRepository.onAuthSuccess(Objects.requireNonNull(Objects.requireNonNull(response.getResult()).getUser()));
+                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                    finish();
+                }
+
+                @Override
+                public void onError() {
+                    Toast.makeText(RegisterActivity.this, "Sign Up Failed, Try Again!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-    }
-
-    public void onAuthSuccess(FirebaseUser user) {
-
-        String username = usernameFromEmail(Objects.requireNonNull(user.getEmail()));
-
-        // Write new user
-        writeNewUser(user.getUid(), username, user.getEmail());
-        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-        finish();
-
-    }
-
-    private String usernameFromEmail(String email) {
-        if (email.contains("@")) {
-            return email.split("@")[0];
-        } else {
-            return email;
-        }
-    }
-
-    private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
-        DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
-
-        firebaseDatabase.child("users").child(userId).setValue(user);
     }
 }
+

@@ -37,4 +37,8 @@ android {
         androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
     }
 }
+
+dependencies {
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+}
 apply plugin: 'com.google.gms.google-services'

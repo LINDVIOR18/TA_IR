@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".authentication.RegisterActivity" />
 
         <activity
             android:name=".splash.Splash"
@@ -33,7 +33,7 @@
             android:name=".intro.Slider"
             android:noHistory="true" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".ReportIncidentListActivity" />
         <activity android:name=".ReportIncidentActivity" />
         <activity
