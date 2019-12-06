@@ -34,8 +34,8 @@
             android:noHistory="true" />
         <activity android:name=".MainActivity" />
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".ReportIncidentListActivity" />
-        <activity android:name=".ReportIncidentActivity" />
+        <activity android:name=".incident.ReportIncidentListActivity" />
+        <activity android:name=".incident.ReportIncidentActivity" />
         <activity
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />
