@@ -9,6 +9,11 @@
     <string name="slider_2">Prevent</string>
     <string name="slider_3">Take action!</string>
     <string name="slider_description">This is Sample Descriptions for the Slider</string>
-    <string name="slider_next">NEXT</string>
-    <string name="slider_skip">SKIP</string>
+    <string name="slider_next">Next</string>
+    <string name="slider_skip">Skip</string>
+    <string name="btn_adress">Adress</string>
+    <string name="incident_label_title">Title</string>
+    <string name="incident_label_description">Description</string>
+    <string name="btn_date">Select a date</string>
+    <string name="btn_send">Send</string>
 </resources>
