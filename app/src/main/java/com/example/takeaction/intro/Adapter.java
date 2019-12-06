@@ -1,18 +1,19 @@
-package com.example.takeaction;
-
+package com.example.takeaction.intro;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 public class Adapter extends PagerAdapter {
-    int[] layouts;
-    LayoutInflater layoutInflater;
 
-    public Adapter(Context context, int[] layouts) {
+    private int[] layouts;
+    private LayoutInflater layoutInflater;
+
+    Adapter(Context context, int[] layouts) {
         this.layouts = layouts;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

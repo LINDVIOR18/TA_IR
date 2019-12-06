@@ -10,7 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.takeaction.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
 
@@ -18,7 +22,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
     private ArrayList<IncidentList> models;
     private Callback callback;
 
-    public IncidentAdapter(Context c, ArrayList<IncidentList> models, Callback callback) {
+    IncidentAdapter(Context c, ArrayList<IncidentList> models, Callback callback) {
         this.context = c;
         this.models = models;
         this.callback = callback;
@@ -35,9 +39,10 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
     @Override
     public void onBindViewHolder(@NonNull IncidentHolder myHolder, final int position) {
 
-        myHolder.mTitle.setText(models.get(position).getTitle());
-        myHolder.mDes.setText(models.get(position).getDescription());
-        myHolder.mImaeView.setImageResource(models.get(position).getImg());
+        myHolder.tvTitle.setText(models.get(position).getTitle());
+        myHolder.tvDescription.setText(models.get(position).getDescription());
+        myHolder.ivCategory.setImageResource(models.get(position).getImg());
+        myHolder.tvDate.setText(getFormatedDate(Calendar.getInstance().getTimeInMillis()));
         myHolder.setClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +52,11 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
             }
         });
 
+    }
+
+    private String getFormatedDate(long date) {
+        DateFormat df = new SimpleDateFormat("d MMM yyyy, HH:mm");
+        return df.format(new Date(date));
     }
 
     @Override
