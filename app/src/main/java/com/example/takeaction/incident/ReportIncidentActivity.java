@@ -6,10 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
+
 import androidx.fragment.app.DialogFragment;
+
+import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
-import com.example.takeaction.incident.CategoryAdapter;
-import com.example.takeaction.incident.DatePickerFragment;
 import com.example.takeaction.model.Category;
 
 import java.text.DateFormat;

@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.takeaction.incident.ReportIncidentActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public abstract class NavigationDrawer extends AppCompatActivity {
@@ -26,7 +27,7 @@ public abstract class NavigationDrawer extends AppCompatActivity {
         setContentView(R.layout.activity_navigation_drawer);
 
         dl = findViewById(R.id.activity_navigation_drawer);
-        t = new ActionBarDrawerToggle(this, dl,R.string.open, R.string.close);
+        t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
 
         dl.addDrawerListener(t);
         t.syncState();
@@ -38,18 +39,19 @@ public abstract class NavigationDrawer extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                switch(id)
-                {
+                switch (id) {
                     case R.id.home:
 //                        Intent home = new Intent(getApplicationContext(), HomeMapActivity.class);
 //                        startActivity(home);
                         break;
                     case R.id.account:
                         Intent account = new Intent(getApplicationContext(), ProfileActivity.class);
-                        startActivity(account);break;
+                        startActivity(account);
+                        break;
                     case R.id.incident:
                         Intent incident = new Intent(getApplicationContext(), ReportIncidentActivity.class);
-                        startActivity(incident);break;
+                        startActivity(incident);
+                        break;
                     case R.id.logout:
 //                        Intent logout = new Intent(getApplicationContext(), LgoutActivity.class);
 //                        startActivity(logout);
@@ -79,7 +81,7 @@ public abstract class NavigationDrawer extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(t.onOptionsItemSelected(item))
+        if (t.onOptionsItemSelected(item))
             return true;
 
         return super.onOptionsItemSelected(item);
