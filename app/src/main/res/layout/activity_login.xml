@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGrey"
-    tools:context=".LoginActivity">
+    tools:context=".authentication.LoginActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -53,8 +53,8 @@
             style="@style/TextTheme"
             android:layout_marginStart="130dp"
             android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:text="Welcome" />
+            android:text="Welcome"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView2"
@@ -91,8 +91,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="102dp"
         android:layout_height="91dp"
