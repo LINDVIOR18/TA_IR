@@ -70,11 +70,11 @@ public class LoginActivity extends AppCompatActivity {
             pas.show();
         }
 
-        if (!AuthValidation.isEmail(userEmail)) {
+        if (AuthValidation.isEmail(userEmail)) {
             userEmail.setError("Enter valid email!");
         }
 
-        if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
+        if (AuthValidation.isValidPassword(userPassword.getText().toString())) {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(4-20)");
         }
         if (!password.isEmpty() && !email.isEmpty()) {

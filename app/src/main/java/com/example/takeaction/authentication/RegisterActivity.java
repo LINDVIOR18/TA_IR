@@ -51,20 +51,23 @@ public class RegisterActivity extends AppCompatActivity {
         String email = userEmail.getText().toString().trim();
         String password = userPassword.getText().toString().trim();
 
-        if (AuthValidation.isEmpty(userPassword)) {
+        if ((AuthValidation.isEmpty(userEmail)) & (AuthValidation.isEmpty(userPassword))) {
+            Toast em_pass = Toast.makeText(this, "You must complete the spaces!", Toast.LENGTH_SHORT);
+            em_pass.show();
+        } else if (AuthValidation.isEmpty(userPassword)) {
             Toast.makeText(RegisterActivity.this, "You must enter password to register!", Toast.LENGTH_SHORT).show();
-        }
-        if (AuthValidation.isEmpty(confirmPassword)) {
-            confirmPassword.setError("Enter your confirmation password");
-        }
-        if (!userPassword.equals(confirmPassword)) {
-            Toast.makeText(RegisterActivity.this, "Password do not match", Toast.LENGTH_SHORT).show();
+        } else if (AuthValidation.isEmpty(confirmPassword)) {
+            Toast.makeText(RegisterActivity.this, "Enter your confirmation password!", Toast.LENGTH_SHORT).show();
         }
         if (!AuthValidation.isEmail(userEmail)) {
-            userEmail.setError("Enter valid email!");
+            userEmail.setError("Enter valid email");
         }
         if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special character(6-20)");
+        }
+        if (!AuthValidation.isValidConfirmPassword(userPassword.getText().toString(), confirmPassword.getText().toString())) {
+            confirmPassword.setError("Password do not match");
+            return;
         }
         if (!email.isEmpty() && !password.isEmpty()) {
             authRepository.signUp(this, email, password, new AuthDataCallback<Task<AuthResult>>() {
