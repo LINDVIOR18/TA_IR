@@ -7,8 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.takeaction.MainActivity;
+
+import com.example.takeaction.ProfileActivity;
 import com.example.takeaction.R;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.AuthRepository;
@@ -77,10 +79,6 @@ public class LoginActivity extends AppCompatActivity {
         if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(4-20)");
         }
-        if ((AuthValidation.isEmail(userEmail)) & (AuthValidation.isValidPassword(userPassword.getText().toString()))) {
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
-        }
 
         if (!password.isEmpty() && !email.isEmpty()) {
 
@@ -89,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onSuccess(Task<AuthResult> response) {
                     Toast.makeText(LoginActivity.this, "Sign In Successfully!", Toast.LENGTH_SHORT).show();
                     authRepository.onAuthSuccess(Objects.requireNonNull(Objects.requireNonNull(response.getResult()).getUser()));
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
                     finish();
                 }
 
