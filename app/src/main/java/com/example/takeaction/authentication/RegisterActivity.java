@@ -67,7 +67,6 @@ public class RegisterActivity extends AppCompatActivity {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special character(6-20)");
         }
         if (!email.isEmpty() && !password.isEmpty()) {
-
             authRepository.signUp(this, email, password, new AuthDataCallback<Task<AuthResult>>() {
                 @Override
                 public void onSuccess(Task<AuthResult> response) {

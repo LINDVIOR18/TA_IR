@@ -1,4 +1,4 @@
-package com.example.takeaction.data;
+package com.example.takeaction.incident;
 
 import android.content.Context;
 import android.view.LayoutInflater;

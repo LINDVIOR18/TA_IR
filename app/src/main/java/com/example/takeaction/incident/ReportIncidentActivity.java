@@ -1,4 +1,4 @@
-package com.example.takeaction;
+package com.example.takeaction.incident;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -7,8 +7,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import androidx.fragment.app.DialogFragment;
-import com.example.takeaction.data.CategoryAdapter;
-import com.example.takeaction.data.DatePickerFragment;
+import com.example.takeaction.R;
+import com.example.takeaction.incident.CategoryAdapter;
+import com.example.takeaction.incident.DatePickerFragment;
 import com.example.takeaction.model.Category;
 
 import java.text.DateFormat;

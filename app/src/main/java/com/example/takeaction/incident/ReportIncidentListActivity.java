@@ -1,9 +1,12 @@
-package com.example.takeaction;
+package com.example.takeaction.incident;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.takeaction.Incident;
+import com.example.takeaction.MyAdapter;
+import com.example.takeaction.R;
 
 import java.util.ArrayList;
 

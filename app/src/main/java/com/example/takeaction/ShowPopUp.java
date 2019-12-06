@@ -52,7 +52,6 @@ public class ShowPopUp extends Activity {
         tv.setText("Hi this is a sample text for popup window");
         layout.addView(tv, params);
         popUp.setContentView(layout);
-        // popUp.showAtLocation(layout, Gravity.BOTTOM, 10, 10);
         mainLayout.addView(but, params);
         setContentView(mainLayout);
     }
