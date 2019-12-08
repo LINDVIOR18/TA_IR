@@ -29,7 +29,7 @@
                 android:hint="Email"
                 android:inputType="textPostalAddress"
                 tools:ignore="HardcodedText"
-                android:autofillHints="no"/>
+                android:importantForAutofill="no"/>
 
         <EditText
                 android:id="@+id/input_password"

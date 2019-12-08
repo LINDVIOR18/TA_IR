@@ -1,4 +1,4 @@
-package com.example.takeaction;
+package com.example.takeaction.incident;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -22,8 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
-import com.example.takeaction.data.CategoryAdapter;
-import com.example.takeaction.data.DatePickerFragment;
+import com.example.takeaction.R;
+import com.example.takeaction.incident.CategoryAdapter;
+import com.example.takeaction.incident.DatePickerFragment;
 import com.example.takeaction.model.Category;
 
 import java.text.DateFormat;
