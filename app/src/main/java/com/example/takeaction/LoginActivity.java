@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (!AuthValidation.isValidPassword(password.getText().toString())) {
-            password.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(4-20)");
+            password.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(6-20)");
         }
         if ((AuthValidation.isEmail(e_mail)) & (AuthValidation.isValidPassword(password.getText().toString()))) {
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
