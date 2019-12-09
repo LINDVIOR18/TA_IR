@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-
 public class ShowPopUp extends Activity {
 
     PopupWindow popUp;
