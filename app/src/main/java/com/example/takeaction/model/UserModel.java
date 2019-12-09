@@ -8,6 +8,9 @@ public class UserModel {
     private String username;
     private String email;
 
+    public UserModel() {
+    }
+
     public UserModel(String username, String email) {
         this.username = username;
         this.email = email;

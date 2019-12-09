@@ -20,13 +20,11 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_report_incident);
 
-
         mRecyclerView = findViewById(R.id.Incident);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         myAdapter = new MyAdapter(this, getMyList());
         mRecyclerView.setAdapter(myAdapter);
-
 
     }
 
@@ -40,13 +38,11 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         m.setImg(R.drawable.ic_launcher_background);
         models.add(m);
 
-
         m = new Incident();
         m.setTitle("Img");
         m.setDescription("This is newsfeed description ..");
         m.setImg(R.drawable.atention);
         models.add(m);
-
 
         m = new Incident();
         m.setTitle("Risc");

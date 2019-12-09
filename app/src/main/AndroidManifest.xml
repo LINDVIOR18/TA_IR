@@ -26,7 +26,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <categoryModel android:name="android.intent.categoryModel.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -35,7 +35,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".incident.ReportIncidentListActivity" />
-        <activity android:name=".incident.ReportIncidentActivity" />
+        <activity android:name=".incident.ReportIncidentActivity"
+        android:exported="true"/>
         <activity
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />

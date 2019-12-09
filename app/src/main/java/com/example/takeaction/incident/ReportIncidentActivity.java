@@ -18,8 +18,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import com.example.takeaction.R;
+import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.IncidentRepository;
 import com.example.takeaction.model.CategoryModel;
+import com.example.takeaction.model.IncidentModel;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
@@ -153,6 +155,19 @@ public class ReportIncidentActivity extends AppCompatActivity implements DatePic
 
     private void createIncident(){
 
-        incidentRepository.createIncident(this, );
+        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), "user", "Title","desc",
+                new CategoryModel(1, "name",1),"dasda", 15);
+
+        incidentRepository.createIncident(incidentModel, new AuthDataCallback<IncidentModel>() {
+            @Override
+            public void onSuccess(IncidentModel response) {
+                Toast.makeText(ReportIncidentActivity.this, "incidentRepository success", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError() {
+                Toast.makeText(ReportIncidentActivity.this, "incidentRepository error", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

@@ -15,9 +15,9 @@ public class IncidentModel {
     private String description;
     private CategoryModel categoryModel;
     private String address;
-    private String date;
+    private long date;
 
-    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, String address, String date) {
+    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, String address, long date) {
         this.uid = uid;
         this.author = author;
         this.title = title;
