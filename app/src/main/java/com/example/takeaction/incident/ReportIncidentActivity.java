@@ -18,13 +18,13 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import androidx.fragment.app.DialogFragment;
+
+import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
-import com.example.takeaction.incident.CategoryAdapter;
-import com.example.takeaction.incident.DatePickerFragment;
 import com.example.takeaction.model.Category;
 
 import java.text.DateFormat;
@@ -33,14 +33,13 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class ReportIncidentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class ReportIncidentActivity extends NavigationDrawer implements DatePickerDialog.OnDateSetListener {
 
     static final  int PERMISSION_REQUEST_CAMERA = 100;
     static final int PERMISSION_REQUEST_GALLERY = 101;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_incident);
         Spinner categoriesSpinner = findViewById(R.id.spCategories);
 
 
@@ -57,6 +56,11 @@ public class ReportIncidentActivity extends AppCompatActivity implements DatePic
             }
         });
 
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_report_incident;
     }
 
     private List<Category> getCategoryListMock() {
