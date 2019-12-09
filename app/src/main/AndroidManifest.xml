@@ -55,7 +55,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".ReportIncidentListActivity" />
         <activity android:name=".ReportIncidentActivity" />
-        <activity android:name=".MapsActivity" >
+        <activity android:name=".SetIncidentCoordinatesActivity" >
                         <intent-filter>
                             <action android:name="android.intent.action.MAIN" />
 

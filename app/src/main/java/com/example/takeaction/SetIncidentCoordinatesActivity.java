@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class SetIncidentCoordinatesActivity extends FragmentActivity implements OnMapReadyCallback {
 
     TextView txtLocationAddress;
     private GoogleMap mMap;
@@ -59,7 +59,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onCameraIdle() {
                 LatLng latLng = mMap.getCameraPosition().target;
-                Log.v("Camera", "lat: " + latLng.latitude + " , long: " + latLng.longitude);
                 getAddressFromLocation(latLng.latitude, latLng.longitude);
             }
         };
@@ -77,11 +76,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (addresses.size() > 0) {
                 Address fetchedAddress = addresses.get(0);
                 StringBuilder strAddress = new StringBuilder();
-                for (int i = 0; i < fetchedAddress.getMaxAddressLineIndex(); i++) {
-                    strAddress.append(fetchedAddress.getAddressLine(i)).append(" ");
+                for (int i = 0; i <= fetchedAddress.getMaxAddressLineIndex(); i++) {
+                   strAddress.append(fetchedAddress.getAddressLine(0)).append(" ");
                 }
-
-                txtLocationAddress.setText(strAddress.toString());
+                String IncidentAddres = strAddress.toString();
+                txtLocationAddress.setText(IncidentAddres);
 
             } else {
                 txtLocationAddress.setText("Searching Current Address");
