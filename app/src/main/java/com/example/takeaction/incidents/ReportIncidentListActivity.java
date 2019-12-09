@@ -2,15 +2,9 @@ package com.example.takeaction.incidents;
 import  androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import com.example.takeaction.LoginActivity;
 import com.example.takeaction.R;
-import com.example.takeaction.RegisterActivity;
 
 import java.util.ArrayList;
 
@@ -31,7 +25,10 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         myAdapter = new IncidentAdapter(this, getMyList(), new IncidentAdapter.Callback() {
             @Override
             public void onItemClick(int position) {
+                IncidentList incident = getMyList().get(position);
+
                 Intent appInfo = new Intent(ReportIncidentListActivity.this, IncidentDetails.class);
+                appInfo.putExtra(IncidentDetails.INCIDENT_KEY, incident);
                 startActivity(appInfo);
             }
         });
@@ -41,7 +38,6 @@ public class ReportIncidentListActivity extends AppCompatActivity {
 
     private ArrayList<IncidentList> getMyList() {
         ArrayList<IncidentList> models = new ArrayList<>();
-
         IncidentList m = new IncidentList();
         m.setTitle("Incident1");
         m.setDescription("Adresa");

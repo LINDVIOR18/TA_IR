@@ -1,6 +1,8 @@
 package com.example.takeaction.incidents;
 
-class IncidentList {
+import java.io.Serializable;
+
+class IncidentList implements Serializable {
     private String title, description;
     private int img;
 
