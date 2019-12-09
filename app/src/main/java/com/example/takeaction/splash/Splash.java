@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.takeaction.MainActivity;
 import com.example.takeaction.R;
 import com.example.takeaction.intro.Slider;
@@ -26,7 +25,7 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
                 if (launcherManager.isFirstTime()) {
-                    launcherManager.setFirstLunch(false);
+                    launcherManager.setFirstLunch();
                     startActivity(new Intent(getApplicationContext(), Slider.class));
                 } else {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorLightGrey"
-    tools:context=".LoginActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightGrey"
+        tools:context=".authentication.LoginActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="315dp"
@@ -31,7 +32,9 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textPostalAddress"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            tools:ignore="RtlSymmetry"
+            android:importantForAutofill="no"/>
 
         <EditText
             android:id="@+id/et_password"
@@ -46,7 +49,9 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
-            android:text="" />
+            android:text=""
+            tools:ignore="RtlSymmetry"
+            android:importantForAutofill="no"/>
 
         <TextView
             style="@style/TextTheme"
@@ -81,14 +86,14 @@
             android:id="@+id/tv_signup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="285dp"
+            android:layout_marginTop="280dp"
             android:layout_marginBottom="11dp"
             android:layout_marginLeft="120dp"
             android:layout_marginRight="120dp"
             android:gravity="center"
             android:text="@string/login_signup_label"
             android:textColor="@drawable/textview_color"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
     </androidx.cardview.widget.CardView>
 

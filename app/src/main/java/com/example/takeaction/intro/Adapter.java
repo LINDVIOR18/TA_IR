@@ -1,10 +1,10 @@
 package com.example.takeaction.intro;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -13,7 +13,7 @@ public class Adapter extends PagerAdapter {
     private int[] layouts;
     private LayoutInflater layoutInflater;
 
-    public Adapter(Context context, int[] layouts) {
+    Adapter(Context context, int[] layouts) {
         this.layouts = layouts;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
