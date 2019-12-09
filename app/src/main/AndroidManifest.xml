@@ -4,6 +4,7 @@
     package="com.example.takeaction">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.location.gps" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -33,11 +34,11 @@
         <activity android:name=".ReportIncidentListActivity"></activity>
         <activity android:name=".ReportIncidentActivity"></activity>
 
-        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".profile.ProfileActivity"
+            android:exported="true"/>
 
-        <activity android:name=".ShowPopUp"/>
+        <activity android:name=".PermissionManager"/>
 
-        <activity android:name=".OpenCamera"/>
 
         <meta-data
             android:name="preloaded_fonts"
