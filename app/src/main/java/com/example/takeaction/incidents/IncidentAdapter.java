@@ -1,5 +1,6 @@
 package com.example.takeaction.incidents;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,10 @@ import java.util.ArrayList;
 
 public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
 
-    private Context context;
     private ArrayList<IncidentList> models;
     private Callback callback;
 
     IncidentAdapter(Context c, ArrayList<IncidentList> models, Callback callback) {
-        this.context = c;
         this.models = models;
         this.callback = callback;
     }
@@ -27,7 +26,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
     @NonNull
     @Override
     public IncidentHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.incident_row, null);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.incident_row, null);
 
         return new IncidentHolder(view);
     }
@@ -37,7 +36,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
 
         myHolder.mTitle.setText(models.get(position).getTitle());
         myHolder.mDes.setText(models.get(position).getDescription());
-        myHolder.mImaeView.setImageResource(models.get(position).getImg());
+        myHolder.mImageView.setImageResource(models.get(position).getImg());
         myHolder.setClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -11,13 +11,13 @@ import com.example.takeaction.R;
 
 class IncidentHolder extends RecyclerView.ViewHolder {
 
-    ImageView mImaeView;
+    ImageView mImageView;
     TextView mTitle, mDes;
 
     IncidentHolder(@NonNull View itemView) {
         super(itemView);
 
-        this.mImaeView = itemView.findViewById(R.id.imageIv);
+        this.mImageView = itemView.findViewById(R.id.imageIv);
         this.mTitle = itemView.findViewById(R.id.titleTv);
         this.mDes = itemView.findViewById(R.id.descriptionTv);
     }

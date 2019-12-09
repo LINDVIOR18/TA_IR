@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.location.gps" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,16 +16,17 @@
         android:orientation="vertical"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning,
+        MissingApplicationIcon">
 
-        <activity android:name=".authentication.RegisterActivity"
-            android:theme="@style/AppThemeNoBar"
-            />
+        <activity
+            android:name=".authentication.RegisterActivity"
+            android:theme="@style/AppThemeNoBar" />
 
         <activity
             android:name=".splash.Splash"
-            android:theme="@style/AppThemeNoBar"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:theme="@style/AppThemeNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,23 +35,30 @@
         </activity>
         <activity
             android:name=".intro.Slider"
-            android:theme="@style/AppThemeNoBar"
-            android:noHistory="true" />
+            android:noHistory="true"
+            android:theme="@style/AppThemeNoBar" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".authentication.LoginActivity"
-            android:theme="@style/AppThemeNoBar"
+        <activity
+            android:name=".authentication.LoginActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeNoBar" />
+        <activity
+            android:name=".incidents.ReportIncidentListActivity"
             android:exported="true" />
-        <activity android:name=".incidents.ReportIncidentListActivity" />
-        <activity android:name=".incident.ReportIncidentActivity"
-        android:exported="true"/>
+        <activity
+            android:name=".incident.ReportIncidentActivity"
+            android:exported="true" />
         <activity
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />
-        <activity android:name=".ProfileActivity"
+        <activity
+            android:name=".ProfileActivity"
             android:exported="true" />
         <activity android:name=".ShowPopUp" />
         <activity android:name=".OpenCamera" />
-        <activity android:name=".incidents.IncidentDetails" android:exported="true"/>
+        <activity
+            android:name=".incidents.IncidentDetails"
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
