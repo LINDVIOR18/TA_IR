@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.location.gps" />
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -18,10 +17,13 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".authentication.RegisterActivity" />
+        <activity android:name=".authentication.RegisterActivity"
+            android:theme="@style/AppThemeNoBar"
+            />
 
         <activity
             android:name=".splash.Splash"
+            android:theme="@style/AppThemeNoBar"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,16 +33,20 @@
         </activity>
         <activity
             android:name=".intro.Slider"
+            android:theme="@style/AppThemeNoBar"
             android:noHistory="true" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".authentication.LoginActivity" />
+        <activity android:name=".authentication.LoginActivity"
+            android:theme="@style/AppThemeNoBar"
+            android:exported="true" />
         <activity android:name=".incident.ReportIncidentListActivity" />
         <activity android:name=".incident.ReportIncidentActivity"
         android:exported="true"/>
         <activity
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileActivity"
+            android:exported="true" />
         <activity android:name=".ShowPopUp" />
         <activity android:name=".OpenCamera" />
 

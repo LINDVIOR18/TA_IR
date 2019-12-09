@@ -31,7 +31,7 @@ import java.util.List;
 
 public class ReportIncidentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    static final int PERMISSION_REQUEST_CAMERA = 100;
+    static final  int PERMISSION_REQUEST_CAMERA = 100;
     static final int PERMISSION_REQUEST_GALLERY = 101;
     private IncidentRepository incidentRepository;
 
