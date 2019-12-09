@@ -19,6 +19,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".MapsActivity" />
 
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/IncidentAddressDeclaration" />
     <ImageView
         android:id="@+id/marker_id"
         android:layout_width="50dp"
