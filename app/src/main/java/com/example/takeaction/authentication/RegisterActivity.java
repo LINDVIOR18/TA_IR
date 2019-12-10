@@ -12,7 +12,7 @@ import com.example.takeaction.MainActivity;
 import com.example.takeaction.R;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.AuthRepository;
-import com.example.takeaction.model.User;
+//import com.example.takeaction.model.User;
 import com.example.takeaction.validation.AuthValidation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -108,32 +108,32 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    public void onAuthSuccess(FirebaseUser user) {
-
-        String username = usernameFromEmail(Objects.requireNonNull(user.getEmail()));
-
-        // Write new user
-        writeNewUser(user.getUid(), username, user.getEmail());
-        startActivity(new Intent(com.example.takeaction.authentication.RegisterActivity.this, MainActivity.class));
-        finish();
-
-    }
-
-
-    private String usernameFromEmail(String email) {
-        if (email.contains("@")) {
-            return email.split("@")[0];
-        } else {
-            return email;
-        }
-    }
-
-    private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
-        DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
-
-        firebaseDatabase.child("users").child(userId).setValue(user);
-    }
+//    public void onAuthSuccess(FirebaseUser user) {
+//
+//        String username = usernameFromEmail(Objects.requireNonNull(user.getEmail()));
+//
+//        // Write new user
+//        writeNewUser(user.getUid(), username, user.getEmail());
+//        startActivity(new Intent(com.example.takeaction.authentication.RegisterActivity.this, MainActivity.class));
+//        finish();
+//
+//    }
+//
+//
+//    private String usernameFromEmail(String email) {
+//        if (email.contains("@")) {
+//            return email.split("@")[0];
+//        } else {
+//            return email;
+//        }
+//    }
+//
+//    private void writeNewUser(String userId, String name, String email) {
+//        User user = new User(name, email);
+//        DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+//
+//        firebaseDatabase.child("users").child(userId).setValue(user);
+//    }
 }
 
 

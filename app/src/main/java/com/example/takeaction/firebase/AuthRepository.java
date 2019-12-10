@@ -2,7 +2,7 @@ package com.example.takeaction.firebase;
 
 import android.app.Activity;
 import androidx.annotation.NonNull;
-import com.example.takeaction.model.User;
+import com.example.takeaction.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -39,10 +39,10 @@ public class AuthRepository {
     }
 
     private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
+        UserModel userModel = new UserModel(name, email);
         DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
-        firebaseDatabase.child("users").child(userId).setValue(user);
+        firebaseDatabase.child("users").child(userId).setValue(userModel);
     }
 
     public void signUp(Activity activity, String email, String password, final AuthDataCallback<Task<AuthResult>> callback) {

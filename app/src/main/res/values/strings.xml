@@ -34,4 +34,8 @@
     <string name="gallery">Gallery</string>
     <string name="canada">Canada</string>
     <string name="fire">Fire</string>
+    <string name="open">Nav</string>
+    <string name="close">Bar</string>
+    <string name="incident_title">Title</string>
+    <string name="incident_description">Description</string>
 </resources>

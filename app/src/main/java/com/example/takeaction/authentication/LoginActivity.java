@@ -91,6 +91,8 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onError() {
                     Toast.makeText(LoginActivity.this, "Sign In Failed! Try Again!", Toast.LENGTH_SHORT).show();
+                    userPassword.setError("Invalid Email or Password");
+                    userEmail.setError("Invalid Email or Password");
                 }
             });
         }
