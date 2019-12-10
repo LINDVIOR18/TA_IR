@@ -28,6 +28,7 @@
             android:id="@+id/imageIv"
             android:src="@drawable/ic_action_name" />
 
+
         <TextView
             android:id="@+id/titleTv"
             android:layout_width="match_parent"
@@ -50,6 +51,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/titleTv"/>
+
 
         <ImageView
             android:layout_width="wrap_content"

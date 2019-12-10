@@ -3,15 +3,7 @@ package com.example.takeaction.incidents;
 public class IncidentList {
     private String title, description;
     private int img;
-    private String time;
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     String getTitle() {
         return title;
