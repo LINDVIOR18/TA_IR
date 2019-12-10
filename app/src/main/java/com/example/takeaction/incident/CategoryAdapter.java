@@ -30,7 +30,7 @@ public class CategoryAdapter extends ArrayAdapter<CategoryModel> {
         return createItemView(position, parent);
     }
 
-    public CategoryAdapter(@NonNull Context context, int resource, @NonNull List<CategoryModel> objects) {
+    CategoryAdapter(@NonNull Context context, int resource, @NonNull List<CategoryModel> objects) {
         super(context, resource, objects);
         mInflater = LayoutInflater.from(context);
         mResource = resource;
