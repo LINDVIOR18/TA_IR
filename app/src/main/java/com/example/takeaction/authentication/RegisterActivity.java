@@ -12,14 +12,10 @@ import com.example.takeaction.MainActivity;
 import com.example.takeaction.R;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.AuthRepository;
-//import com.example.takeaction.model.User;
 import com.example.takeaction.validation.AuthValidation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -28,7 +24,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText userPassword;
     private EditText confirmPassword;
     private EditText userEmail;
-    private TextView signin;
 
     private AuthRepository authRepository;
 
@@ -43,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.et_confirm_password);
         userEmail = findViewById(R.id.et_email);
         final Button buttonRegistration = findViewById(R.id.btn_register);
-        signin = findViewById(R.id.tv_signin);
+        TextView signIn = findViewById(R.id.tv_signin);
 
         buttonRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        signin.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent m = new Intent(getApplicationContext(), LoginActivity.class);

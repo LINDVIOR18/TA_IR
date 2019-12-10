@@ -10,14 +10,12 @@ public class IncidentDetails extends AppCompatActivity {
 
     public static final String INCIDENT_KEY = "INCIDENT_KEY";
 
-    private IncidentList incident;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incident_details);
 
-        incident = (IncidentList)getIntent().getSerializableExtra(INCIDENT_KEY);
+        IncidentList incident = (IncidentList) getIntent().getSerializableExtra(INCIDENT_KEY);
         Toast.makeText(this, incident.getTitle(), Toast.LENGTH_LONG).show();
     }
 }

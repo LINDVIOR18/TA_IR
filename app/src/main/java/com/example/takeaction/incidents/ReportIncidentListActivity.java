@@ -22,7 +22,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        myAdapter = new IncidentAdapter(this, getMyList(), new IncidentAdapter.Callback() {
+        myAdapter = new IncidentAdapter(getMyList(), new IncidentAdapter.Callback() {
             @Override
             public void onItemClick(int position) {
                 IncidentList incident = getMyList().get(position);
