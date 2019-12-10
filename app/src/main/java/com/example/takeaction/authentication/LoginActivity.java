@@ -70,18 +70,13 @@ public class LoginActivity extends AppCompatActivity {
             pas.show();
         }
 
-        if (!AuthValidation.isEmail(userEmail)) {
+        if (AuthValidation.isEmail(userEmail)) {
             userEmail.setError("Enter valid email!");
         }
 
-        if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
-            userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(4-20)");
+        if (AuthValidation.isValidPassword(userPassword.getText().toString())) {
+            userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special character(4-20)");
         }
-        if ((AuthValidation.isEmail(userEmail)) & (AuthValidation.isValidPassword(userPassword.getText().toString()))) {
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
-        }
-
         if (!password.isEmpty() && !email.isEmpty()) {
 
             authRepository.signIn(this, email, password, new AuthDataCallback<Task<AuthResult>>() {
@@ -96,11 +91,11 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onError() {
                     Toast.makeText(LoginActivity.this, "Sign In Failed! Try Again!", Toast.LENGTH_SHORT).show();
-
+                    userPassword.setError("Invalid Email or Password");
+                    userEmail.setError("Invalid Email or Password");
                 }
             });
         }
-
     }
 }
 

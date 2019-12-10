@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">TA-IR</string>
     <string name="logo">Logo</string>
-    <string name="login_signup_label"><u>or Sign Up</u></string>
+    <string name="login_signup_label">
+        <u>or Sign Up</u>
+    </string>
     <string name="main_activity">Your Main App</string>
     <string name="splash_logo">Your App Logo</string>
     <string name="splash_description">Take Action!</string>
@@ -9,11 +11,34 @@
     <string name="slider_2">Prevent</string>
     <string name="slider_3">Take action!</string>
     <string name="slider_description">This is Sample Descriptions for the Slider</string>
-    <string name="slider_next">Next</string>
-    <string name="slider_skip">Skip</string>
-    <string name="btn_adress">Adress</string>
+    <string name="slider_next">NEXT</string>
+    <string name="slider_skip">SKIP</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_into_your_account">Sign into your account</string>
+    <string name="welcome">Welcome</string>
+    <string name="password">Password</string>
+    <string name="select_a_date">Select a date</string>
+    <string name="adress">Address</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="send">Send</string>
+    <string name="email">Email</string>
+    <string name="prenume">Prenume</string>
+    <string name="nume">Nume</string>
+    <string name="take_a_photo">Take a Photo</string>
+    <string name="select_image_source">Select image source</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="canada">Canada</string>
+    <string name="fire">Fire</string>
+    <string name="open">Nav</string>
+    <string name="close">Bar</string>
     <string name="incident_label_title">Title</string>
     <string name="incident_label_description">Description</string>
-    <string name="btn_date">Select a date</string>
+    <string name="incident_min">2 min Ago</string>
+    <string name="btn_adress">Adress</string>
+    <string name="btn_date">Select a Date</string>
     <string name="btn_send">Send</string>
+    <string name="incident_title">Title</string>
+    <string name="incident_description">Description</string>
 </resources>
