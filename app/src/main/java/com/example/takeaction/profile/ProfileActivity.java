@@ -1,8 +1,6 @@
 package com.example.takeaction.profile;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -13,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.PermissionManager;
 import com.example.takeaction.R;
 import com.example.takeaction.cameradialog.CameraDialog;
@@ -23,7 +22,7 @@ import static com.example.takeaction.PermissionManager.CAMERA_PERMISSION_CODE;
 import static com.example.takeaction.PermissionManager.STORAGE_PERMISSION_CODE;
 
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends NavigationDrawer {
 
     ImageView imageView;
     private static final int pic_id = 123;
@@ -36,9 +35,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    // This function is called when the user accepts or decline the permission.
-    // Request Code is used to check which permission called this function.
-    // This request code is provided when the user is prompt for permission.
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_profile;
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -103,7 +103,6 @@ public class ProfileActivity extends AppCompatActivity {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                // Log.d(TAG, String.valueOf(bitmap));
 
                 ImageView imageView = findViewById(R.id.imgV_avatar);
                 imageView.setImageBitmap(bitmap);

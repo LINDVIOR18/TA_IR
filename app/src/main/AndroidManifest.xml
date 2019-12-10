@@ -4,7 +4,6 @@
     package="com.example.takeaction">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.location.gps" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -35,20 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"/>
-
-        <activity android:name=".Slider" android:noHistory="true"/>
-
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".ReportIncidentListActivity"></activity>
-        <activity android:name=".ReportIncidentActivity"></activity>
-
-        <activity android:name=".profile.ProfileActivity"
-            android:exported="true"/>
-
-        <activity android:name=".PermissionManager"/>
-
         <activity
             android:name=".intro.Slider"
             android:noHistory="true"
@@ -69,10 +54,9 @@
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".profile.ProfileActivity"
             android:exported="true" />
-        <activity android:name=".ShowPopUp" />
-        <activity android:name=".OpenCamera" />
+
         <activity
             android:name=".incidents.IncidentDetails"
             android:exported="true" />
