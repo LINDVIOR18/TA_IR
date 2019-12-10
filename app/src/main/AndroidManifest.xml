@@ -22,7 +22,8 @@
 
         <activity
             android:name=".authentication.RegisterActivity"
-            android:theme="@style/AppThemeNoBar" />
+            android:theme="@style/AppThemeNoBar"
+            android:exported="true" />
 
         <activity
             android:name=".splash.Splash"
@@ -59,7 +60,8 @@
             android:theme="@style/AppThemeNoBar" />
         <activity
             android:name=".incidents.ReportIncidentListActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppThemeNoBar" />
         <activity
             android:name=".incident.ReportIncidentActivity"
             android:exported="true" />
