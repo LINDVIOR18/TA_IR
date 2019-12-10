@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.takeaction.homemap.HomeMapActivity;
 import com.example.takeaction.incident.ReportIncidentActivity;
+import com.example.takeaction.profile.ProfileActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public abstract class NavigationDrawer extends AppCompatActivity {
