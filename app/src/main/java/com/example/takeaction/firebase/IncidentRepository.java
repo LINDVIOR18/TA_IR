@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -66,5 +67,22 @@ public class IncidentRepository {
                                 Log.w("Activity", "getUser:onCancelled", databaseError.toException());
                             }
                         });
+    }
+
+    public List<IncidentModel> getIncidents() {
+
+        databaseReference.child("incidents")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        IncidentModel incident = dataSnapshot.getValue(IncidentModel.class);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.w("This Activity", "loadPost:onCancelled", databaseError.toException());
+                    }
+                });
+        return null;
     }
 }

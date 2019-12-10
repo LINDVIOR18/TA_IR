@@ -7,19 +7,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.takeaction.R;
+import com.example.takeaction.model.IncidentModel;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
 
-    private ArrayList<IncidentList> models;
+    private List<IncidentModel> models;
     private Callback callback;
 
-    IncidentAdapter(ArrayList<IncidentList> models, Callback callback) {
+    IncidentAdapter(List<IncidentModel> models, Callback callback) {
         this.models = models;
         this.callback = callback;
     }

@@ -156,7 +156,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements DatePic
     private void createIncident(){
 
         IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), "user", "Title","desc",
-                new CategoryModel(1, "name",1),"dasda", 15);
+                new CategoryModel(1, "name",1),"dasda", 15,  null);
 
         incidentRepository.createIncident(incidentModel, new AuthDataCallback<IncidentModel>() {
             @Override

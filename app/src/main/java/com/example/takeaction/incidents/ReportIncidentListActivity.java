@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import com.example.takeaction.R;
+import com.example.takeaction.model.IncidentModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReportIncidentListActivity extends AppCompatActivity {
 
@@ -22,10 +24,11 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        myAdapter = new IncidentAdapter(getMyList(), new IncidentAdapter.Callback() {
+        myAdapter = new IncidentAdapter(getIncidents(), new IncidentAdapter.Callback() {
             @Override
             public void onItemClick(int position) {
-                IncidentList incident = getMyList().get(position);
+                assert getIncidents() != null;
+                IncidentModel incident = getIncidents().get(position);
 
                 Intent appInfo = new Intent(ReportIncidentListActivity.this, IncidentDetails.class);
                 appInfo.putExtra(IncidentDetails.INCIDENT_KEY, incident);
@@ -36,28 +39,23 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(myAdapter);
     }
 
-    private ArrayList<IncidentList> getMyList() {
-        ArrayList<IncidentList> models = new ArrayList<>();
-        IncidentList m = new IncidentList();
-        m.setTitle("Incident1");
-        m.setDescription("Adresa");
-        m.setImg(R.drawable.fire);
-        models.add(m);
+    private List<IncidentModel> getIncidents() {
 
-        m = new IncidentList();
-        m.setTitle("Incident2");
-        m.setDescription("Adresa");
-        m.setImg(R.drawable.ambulance);
-        models.add(m);
-
-
-        m = new IncidentList();
-        m.setTitle("Incident3");
-        m.setDescription("Adresa");
-        m.setImg(R.drawable.flash);
-        models.add(m);
-
-        return models;
-
+        return null;
     }
 }
+
+//    private ArrayList<IncidentModel> getMyList() {
+//        ArrayList<IncidentModel> models = new ArrayList<>();
+//
+////        IncidentModel model = new IncidentModel();
+//
+////        model.setTitle("Incident1");
+////        m.setDescription("Adresa");
+////        m.setImg(R.drawable.fire);
+////        models.add(m);
+//
+//        return models;
+//
+//    }
+//}
