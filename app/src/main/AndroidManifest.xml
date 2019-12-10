@@ -4,6 +4,7 @@
     package="com.example.takeaction">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.location.gps" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -21,7 +22,8 @@
 
         <activity
             android:name=".authentication.RegisterActivity"
-            android:theme="@style/AppThemeNoBar" />
+            android:theme="@style/AppThemeNoBar"
+            android:exported="true" />
 
         <activity
             android:name=".splash.Splash"
@@ -33,6 +35,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity"/>
+
+        <activity android:name=".Slider" android:noHistory="true"/>
+
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".ReportIncidentListActivity"></activity>
+        <activity android:name=".ReportIncidentActivity"></activity>
+
+        <activity android:name=".profile.ProfileActivity"
+            android:exported="true"/>
+
+        <activity android:name=".PermissionManager"/>
+
         <activity
             android:name=".intro.Slider"
             android:noHistory="true"
@@ -44,7 +60,8 @@
             android:theme="@style/AppThemeNoBar" />
         <activity
             android:name=".incidents.ReportIncidentListActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppThemeNoBar" />
         <activity
             android:name=".incident.ReportIncidentActivity"
             android:exported="true" />

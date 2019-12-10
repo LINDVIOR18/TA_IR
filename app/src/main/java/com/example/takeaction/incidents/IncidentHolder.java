@@ -1,5 +1,6 @@
 package com.example.takeaction.incidents;
 
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,20 +10,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.takeaction.R;
 
+
+
 class IncidentHolder extends RecyclerView.ViewHolder {
 
-    ImageView mImageView;
-    TextView mTitle, mDes;
+    ImageView ivCategory;
+    TextView tvTitle;
+    TextView tvDescription;
+    TextView tvDate;
 
     IncidentHolder(@NonNull View itemView) {
         super(itemView);
 
-        this.mImageView = itemView.findViewById(R.id.imageIv);
-        this.mTitle = itemView.findViewById(R.id.titleTv);
-        this.mDes = itemView.findViewById(R.id.descriptionTv);
+        this.ivCategory = itemView.findViewById(R.id.imageIv);
+        this.tvTitle = itemView.findViewById(R.id.titleTv);
+        this.tvDescription = itemView.findViewById(R.id.descriptionTv);
+        this.tvDate = itemView.findViewById(R.id.tv_date);
     }
+
+
 
     void setClickListener(View.OnClickListener onClickListener) {
         this.itemView.setOnClickListener(onClickListener);
     }
+
+
+
 }

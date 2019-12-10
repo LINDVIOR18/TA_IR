@@ -1,102 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/bg_color"
+    android:scaleType = "centerCrop">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ReportIncidentActivity"
+    android:paddingBottom="20dp"
+    >
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".incident.ReportIncidentActivity">
 
 
-        <ImageButton
-                android:id="@+id/avatar"
+            <ImageButton
+                android:id="@+id/cameraButton"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:focusable="true"
                 android:clickable="true"
+                android:background="@drawable/bg_photo"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:focusable="true"
-                tools:ignore="ContentDescription"/>
+                android:onClick="onClickShowPopUp"
+                />
 
-        <EditText
-                android:id="@+id/title"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:hint="@string/title"
-                android:background="@drawable/txt_edit"
-                android:gravity="center"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/avatar"
-                android:importantForAutofill="no"
-                tools:ignore="TextFields"/>
 
-        <EditText
-                android:id="@+id/description"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:hint="@string/description"
-                android:background="@drawable/txt_edit"
-                android:gravity="center"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                tools:ignore="TextFields"
-                android:importantForAutofill="no"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/title"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:hint="@string/incident_label_title"
+                    android:gravity="center"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cameraButton"
+               >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"  />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/description"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="@string/incident_label_description"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
                 android:id="@+id/spCategories"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/txt_edit"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description"/>
+                app:layout_constraintTop_toBottomOf="@+id/description"
+                />
 
-        <Button
+            <Button
                 android:id="@+id/adress"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="@string/adress"
-                android:background="@drawable/btn_adress"
+                android:textColor="@drawable/button_text_color"
+                android:text="@string/btn_adress"
+                android:background="@drawable/btn_report_incident_activity"
+                android:drawableStart="@drawable/ic_map_marker"
+                android:drawableTint="@drawable/button_text_color"
+                android:paddingStart="9dp"
+                android:paddingEnd="31dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spCategories"/>
+                app:layout_constraintTop_toBottomOf="@+id/spCategories" />
 
-
-        <Button
+            <Button
                 android:id="@+id/btnDate"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:padding="10dp"
-                android:text="@string/select_a_date"
-                android:textColor="@android:color/holo_blue_dark"
-                android:background="@drawable/btn_date"
+                android:text="@string/btn_date"
+                android:textColor="@drawable/button_text_color"
+                android:background="@drawable/btn_report_incident_activity"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawableTint="@drawable/button_text_color"
+                android:paddingStart="30dp"
+                android:paddingEnd="50dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/adress"/>
-        <Button
-                android:id="@+id/send"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
-                android:text="@string/send"
-                android:background="@drawable/btn_adress"
-                android:drawableStart="@drawable/ic_send"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnDate"/>
+                app:layout_constraintTop_toBottomOf="@+id/adress" />
+    <Button
+        android:id="@+id/send"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/btn_send"
+        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/btn_report_incident_activity"
+        android:drawableStart="@drawable/ic_send"
+        android:drawableTint="@drawable/button_text_color"
+        android:paddingStart="14dp"
+        android:paddingEnd="33dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDate" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
