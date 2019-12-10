@@ -4,6 +4,9 @@
     <string name="login_signup_label">
         <u>or Sign Up</u>
     </string>
+    <string name="register_signin_label">
+        <u>Already have an account</u>
+    </string>
     <string name="main_activity">Your Main App</string>
     <string name="splash_logo">Your App Logo</string>
     <string name="splash_description">Take Action!</string>
