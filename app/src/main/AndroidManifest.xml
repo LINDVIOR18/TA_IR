@@ -18,8 +18,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".authentication.RegisterActivity" android:exported="true"/>
-
         <activity
             android:name=".splash.Splash"
             android:noHistory="true">
@@ -33,13 +31,14 @@
             android:name=".intro.Slider"
             android:noHistory="true" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".authentication.RegisterActivity" android:exported="true"/>
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".incident.ReportIncidentListActivity" />
+        <activity android:name=".incident.ReportIncidentListActivity" android:exported="true" />
         <activity android:name=".incident.ReportIncidentActivity" />
         <activity
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileActivity" android:exported="true"/>
         <activity android:name=".ShowPopUp" />
         <activity android:name=".OpenCamera" />
 
