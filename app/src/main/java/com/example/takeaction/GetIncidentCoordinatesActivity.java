@@ -2,13 +2,17 @@ package com.example.takeaction;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.takeaction.address.IncidentAddress;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -20,11 +24,15 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class SetIncidentCoordinatesActivity extends FragmentActivity implements OnMapReadyCallback {
+public class GetIncidentCoordinatesActivity extends FragmentActivity implements OnMapReadyCallback {
+    public static final String ADDRESS_KEY = "ADDRESS_KEY";
+    public static final int REQUEST_CODE = 1000;
 
-    TextView txtLocationAddress;
+    private TextView IncidentAddressDeclaration;
     private GoogleMap mMap;
     private GoogleMap.OnCameraIdleListener onCameraIdleListener;
+    private IncidentAddress address;
+    private Button btnDone;
 
 
     @Override
@@ -32,15 +40,42 @@ public class SetIncidentCoordinatesActivity extends FragmentActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_report_incident);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
+        btnDone = findViewById(R.id.btn_done);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapReportIncident);
-        txtLocationAddress = findViewById(R.id.IncidentAddressDeclaration);
-        txtLocationAddress.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-        txtLocationAddress.setSingleLine(true);
-        txtLocationAddress.setMarqueeRepeatLimit(-1);
-        txtLocationAddress.setSelected(true);
+        IncidentAddressDeclaration = findViewById(R.id.IncidentAddressDeclaration);
+        IncidentAddressDeclaration.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        IncidentAddressDeclaration.setSingleLine(true);
+        IncidentAddressDeclaration.setMarqueeRepeatLimit(-1);
+        IncidentAddressDeclaration.setSelected(true);
         mapFragment.getMapAsync(this);
         configureCameraIdle();
+
+        setDoneButtonListener();
+    }
+
+    private void setDoneButtonListener() {
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (address != null) {
+                    sendAddress();
+                } else {
+                    Toast.makeText(GetIncidentCoordinatesActivity.this, "Selecteaza adresa", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private void sendAddress() {
+        if (address != null) {
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra(ADDRESS_KEY, address);
+            setResult(RESULT_OK, resultIntent);
+            finish();
+        }
     }
 
     @Override
@@ -79,11 +114,12 @@ public class SetIncidentCoordinatesActivity extends FragmentActivity implements 
                 for (int i = 0; i <= fetchedAddress.getMaxAddressLineIndex(); i++) {
                    strAddress.append(fetchedAddress.getAddressLine(0)).append(" ");
                 }
-                String IncidentAddres = strAddress.toString();
-                txtLocationAddress.setText(IncidentAddres);
+                String incidentAddres = strAddress.toString();
+                IncidentAddressDeclaration.setText(incidentAddres);
+                address = new IncidentAddress(new LatLng(latitude, longitude), incidentAddres);
 
             } else {
-                txtLocationAddress.setText("Searching Current Address");
+                IncidentAddressDeclaration.setText("Searching Current Address");
             }
 
         } catch (IOException e) {

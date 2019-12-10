@@ -35,9 +35,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsActivityReport_incident"
-            android:label="@string/title_activity_maps_report_incident"></activity>
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".Splash"
@@ -55,7 +52,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".ReportIncidentListActivity" />
         <activity android:name=".ReportIncidentActivity" />
-        <activity android:name=".SetIncidentCoordinatesActivity" >
+        <activity android:name=".GetIncidentCoordinatesActivity" >
                         <intent-filter>
                             <action android:name="android.intent.action.MAIN" />
 

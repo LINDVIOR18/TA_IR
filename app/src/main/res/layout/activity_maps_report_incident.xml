@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorLightGrey"
     tools:context=".LoginActivity">
-
     <fragment
 
         android:id="@+id/mapReportIncident"
@@ -17,16 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".SetIncidentCoordinatesActivity" />
+        tools:context=".GetIncidentCoordinatesActivity" />
 
-    <TextView
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        app:layout_constraintBottom_toTopOf="@id/marker_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/IncidentAddressDeclaration"
-        android:background="#ffece6"/>
     <ImageView
         android:id="@+id/marker_id"
         android:layout_width="50dp"
@@ -37,4 +28,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.415"
         android:src="@drawable/logo" />
+    <TextView
+        android:id="@+id/IncidentAddressDeclaration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:gravity="center"
+        android:padding="16dp"
+        android:scrollHorizontally="true"
+        android:text="Current Marker Address"
+        android:background="@color/colorLightGrey"/>
+
+    <Button
+        android:id="@+id/btn_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="Done"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
