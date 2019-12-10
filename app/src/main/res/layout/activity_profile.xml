@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".profile.ProfileActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cardV_profile"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,38 +17,42 @@
         app:layout_constraintVertical_bias="0.452">
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="102dp"
-            android:layout_height="91dp"
-            android:layout_marginStart="155dp"
-            android:layout_marginTop="74dp"
+            android:id="@+id/imgV_avatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="131dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="155dp"
-            android:layout_marginBottom="40dp"/>
+            android:layout_marginBottom="40dp"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription"/>
 
         <ImageButton
-            android:id="@+id/backButton"
+            android:id="@+id/imgBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:srcCompat="?attr/actionModeCloseDrawable"
             android:background="@android:color/transparent"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"/>
+            android:layout_marginBottom="6dp"
+            android:onClick="onClick"
+            tools:ignore="ContentDescription"/>
 
         <ImageButton
-            android:id="@+id/addButton"
+            android:id="@+id/imgBtn_add"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginStart="222dp"
-            android:layout_marginTop="140dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginStart="252dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/rounded_corners"
             android:onClick="onClickShowPopUp"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            app:srcCompat="@android:drawable/ic_input_add"
+            tools:ignore="ContentDescription"/>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tV_name"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:text="Nume"
@@ -57,7 +61,7 @@
             android:layout_marginTop="200dp"
             android:layout_marginBottom="50dp"/>
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tV_prename"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:text="Prenume"
@@ -66,7 +70,7 @@
             android:layout_marginTop="260dp"
             android:layout_marginBottom="50dp"/>
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tV_email"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:text="Email"
@@ -76,7 +80,7 @@
             android:layout_marginBottom="50dp"/>
 
         <ImageButton
-            android:id="@+id/saveButton"
+            android:id="@+id/imgBtn_save"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:srcCompat="@drawable/ic_action_name"
@@ -84,7 +88,8 @@
             android:layout_gravity="end"
             android:layout_marginStart="355dp"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="50dp" />
+            android:layout_marginBottom="50dp"
+            tools:ignore="ContentDescription"/>
 
 
     </androidx.cardview.widget.CardView>

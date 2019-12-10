@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGrey"
-    tools:context=".LoginActivity">
+    tools:context=".address.GetIncidentCoordinatesActivity">
     <fragment
 
         android:id="@+id/mapReportIncident"
@@ -16,17 +16,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".GetIncidentCoordinatesActivity" />
+        tools:context=".address.GetIncidentCoordinatesActivity" />
 
     <ImageView
         android:id="@+id/marker_id"
-        android:layout_width="50dp"
-        android:layout_height="110dp"
+        android:layout_width="30dp"
+        android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415"
+        app:layout_constraintVertical_bias="0.450"
         android:src="@drawable/logo" />
     <TextView
         android:id="@+id/IncidentAddressDeclaration"
