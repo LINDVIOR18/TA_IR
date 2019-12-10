@@ -3,16 +3,18 @@ package com.example.takeaction.incidents;
 import java.io.Serializable;
 
 class IncidentList implements Serializable {
-    private String title, description;
+    private String title, address,  description;
     private int img;
 
-    String getTitle() {
-        return title;
-    }
+    String getTitle() { return title; }
 
     void setTitle(String title) {
         this.title = title;
     }
+
+    String getAddress() { return address; }
+
+    void setAddress(String address) { this.address = address; }
 
     String getDescription() {
         return description;

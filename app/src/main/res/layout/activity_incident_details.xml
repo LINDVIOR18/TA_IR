@@ -40,12 +40,11 @@
             app:layout_constraintVertical_bias="0.049" />
 
         <TextView
-            android:id="@+id/tv_adress"
+            android:id="@+id/tv_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="328dp"
-            android:text="Stefan cel Mare si Sfant Boulevard 202/2, Chisinau"
             android:textColor="@color/colorGrey"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_adress"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address"
             app:layout_constraintVertical_bias="0.049" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

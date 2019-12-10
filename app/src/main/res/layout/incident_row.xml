@@ -19,14 +19,13 @@
             android:layout_marginTop="5dp"
             android:text="@string/incident_min"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/descriptionTv"/>
+            android:layout_below="@+id/addressTv"/>
 
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/imageIv"
             android:src="@drawable/ic_action_name" />
-
 
         <TextView
             android:id="@+id/titleTv"
@@ -40,17 +39,15 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/incident_description"
-            android:id="@+id/descriptionTv"
-            android:textSize="18sp"
+            android:text="@string/adress"
+            android:id="@+id/addressTv"
+            android:textSize="15sp"
             android:textColor="#a9a9a9"
             android:layout_toEndOf="@+id/imageIv"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/titleTv"/>
-
 
         <ImageView
             android:layout_width="wrap_content"

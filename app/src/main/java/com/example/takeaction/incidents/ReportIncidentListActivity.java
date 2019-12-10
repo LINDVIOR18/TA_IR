@@ -40,6 +40,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         ArrayList<IncidentList> models = new ArrayList<>();
         IncidentList m = new IncidentList();
         m.setTitle("Forest To Study Fire And Smoke");
+        m.setAddress("Stefan cel Mare si Sfant Boulevard 202/2, Chisinau");
         m.setDescription("In the next few weeks, the U.S. Forest Service plans to conduct a massive controlled burn on a remote mountain in Utah, part of the agency’s efforts to better understand the behavior of giant fires that are becoming more common in the West.\n" +
                 "The plan is to light hundreds of forested acres on fire when weather conditions are just right. Dozens of scientists will then monitor the blaze with planes, drones, and laser technology. It’s all part of the Forest Service-led Fire and Smoke Model Evaluation Experiment, or FASMEE, on the Fishlake National Forest in Utah.\n" +
                 "\n" +
@@ -51,6 +52,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
 
         m = new IncidentList();
         m.setTitle("Incident2");
+        m.setAddress("Stefan cel Mare si Sfant Boulevard 202/2, Chisinau");
         m.setDescription("Some bla bla bla for incident2");
         m.setImg(R.drawable.ambulance);
         models.add(m);
@@ -58,6 +60,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
 
         m = new IncidentList();
         m.setTitle("Incident3");
+        m.setAddress("Stefan cel Mare si Sfant Boulevard 202/2, Chisinau");
         m.setDescription("Some bla bla bla for incident3");
         m.setImg(R.drawable.flash);
         models.add(m);
