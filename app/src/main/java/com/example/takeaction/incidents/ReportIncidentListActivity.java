@@ -39,21 +39,26 @@ public class ReportIncidentListActivity extends AppCompatActivity {
     private ArrayList<IncidentList> getMyList() {
         ArrayList<IncidentList> models = new ArrayList<>();
         IncidentList m = new IncidentList();
-        m.setTitle("Incident1");
-        m.setDescription("Adresa");
-        m.setImg(R.drawable.fire);
+        m.setTitle("Forest To Study Fire And Smoke");
+        m.setDescription("In the next few weeks, the U.S. Forest Service plans to conduct a massive controlled burn on a remote mountain in Utah, part of the agency’s efforts to better understand the behavior of giant fires that are becoming more common in the West.\n" +
+                "The plan is to light hundreds of forested acres on fire when weather conditions are just right. Dozens of scientists will then monitor the blaze with planes, drones, and laser technology. It’s all part of the Forest Service-led Fire and Smoke Model Evaluation Experiment, or FASMEE, on the Fishlake National Forest in Utah.\n" +
+                "\n" +
+                "“The goal is so that they can collect data on the fuels and fuel consumption, the heat release,” said Mike Battaglia, a research forester based in Colorado. “They’re looking at the plume dynamics of the smoke going into the air, they’re sampling the smoke for microorganisms.”\n" +
+                "\n" +
+                "Battaglia says the more we understand how fire works, the better we’ll be at fighting wildfires, as well as implementing prescribed burns to benefit ecosystems. Battaglia himself will be studying the impact of the burn on aspens and other trees in the area.");
+        m.setImg(R.drawable.fire_tree);
         models.add(m);
 
         m = new IncidentList();
         m.setTitle("Incident2");
-        m.setDescription("Adresa");
+        m.setDescription("Some bla bla bla for incident2");
         m.setImg(R.drawable.ambulance);
         models.add(m);
 
 
         m = new IncidentList();
         m.setTitle("Incident3");
-        m.setDescription("Adresa");
+        m.setDescription("Some bla bla bla for incident3");
         m.setImg(R.drawable.flash);
         models.add(m);
 
