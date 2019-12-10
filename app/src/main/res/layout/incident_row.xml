@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="2 min Ago "
+            android:text="@string/incident_min"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/descriptionTv"/>
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_toEndOf="@+id/imageIv"
-            android:text="Title"
+            android:text="@string/incident_title"
             android:textColor="#000"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:text="@string/incident_description"
             android:id="@+id/descriptionTv"
             android:textSize="18sp"
             android:textColor="#a9a9a9"

@@ -1,9 +1,10 @@
 package com.example.takeaction.incidents;
 
-public class IncidentList {
+import java.io.Serializable;
+
+class IncidentList implements Serializable {
     private String title, description;
     private int img;
-
 
     String getTitle() {
         return title;
@@ -28,7 +29,4 @@ public class IncidentList {
     void setImg(int img) {
         this.img = img;
     }
-
-
-
 }

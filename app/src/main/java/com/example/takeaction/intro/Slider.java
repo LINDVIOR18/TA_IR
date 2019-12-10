@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.takeaction.LoginActivity;
+import com.example.takeaction.authentication.LoginActivity;
 import com.example.takeaction.R;
 
 public class Slider extends AppCompatActivity {
