@@ -87,8 +87,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements DatePic
     }
     public void onClickShowPopUp(View view) {
 
-
-
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
         assert inflater != null;

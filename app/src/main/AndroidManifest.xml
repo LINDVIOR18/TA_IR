@@ -35,7 +35,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".ReportIncidentListActivity" />
-        <activity android:name=".ReportIncidentActivity" />
+        <activity android:name=".ReportIncidentActivity"
+            android:exported="true"/>
         <activity
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />
