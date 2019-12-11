@@ -16,8 +16,7 @@
         android:orientation="vertical"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning,
-        MissingApplicationIcon">
+        tools:ignore="GoogleAppIndexingWarning, MissingApplicationIcon">
 
         <activity
             android:name=".authentication.RegisterActivity"
@@ -58,7 +57,7 @@
         <activity
             android:name=".incidents.IncidentDetails"
             android:exported="true"
-            android:theme="@style/AppThemeNoBar"/>
+            android:parentActivityName=".incidents.ReportIncidentListActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"
