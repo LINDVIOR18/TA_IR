@@ -1,5 +1,6 @@
 package com.example.takeaction.incidents;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,16 +32,17 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
     @NonNull
     @Override
     public IncidentHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.incident_row, null);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.incident_row, null);
 
         return new IncidentHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull IncidentHolder myHolder, final int position) {
 
         myHolder.tvTitle.setText(models.get(position).getTitle());
-        myHolder.tvDescription.setText(models.get(position).getDescription());
+        myHolder.tvAddress.setText(models.get(position).getAddress());
         myHolder.ivCategory.setImageResource(models.get(position).getImg());
         myHolder.tvDate.setText(getFormatedDate(Calendar.getInstance().getTimeInMillis()));
         myHolder.setClickListener(new View.OnClickListener() {
@@ -55,7 +57,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
     }
 
     private String getFormatedDate(long date) {
-        DateFormat df = new SimpleDateFormat("d MMM yyyy, HH:mm");
+        @SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("d MMM yyyy, HH:mm");
         return df.format(new Date(date));
     }
 

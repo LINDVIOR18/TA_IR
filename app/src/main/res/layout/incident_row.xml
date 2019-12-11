@@ -7,7 +7,6 @@
     app:cardUseCompatPadding="true"
     >
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,14 +19,14 @@
             android:layout_marginTop="5dp"
             android:text="@string/incident_min"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/descriptionTv"/>
+            android:layout_below="@+id/addressTv"/>
 
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:id="@+id/imageIv"
-            android:src="@drawable/ic_action_name" />
-
+            android:src="@drawable/ic_action_name"
+            />
 
         <TextView
             android:id="@+id/titleTv"
@@ -37,21 +36,23 @@
             android:layout_toEndOf="@+id/imageIv"
             android:text="@string/incident_title"
             android:textColor="#000"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/incident_description"
-            android:id="@+id/descriptionTv"
-            android:textSize="18sp"
+            android:text="@string/adress"
+            android:id="@+id/addressTv"
+            android:textSize="15sp"
             android:textColor="#a9a9a9"
             android:layout_toEndOf="@+id/imageIv"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_below="@+id/titleTv"/>
-
+            android:layout_below="@+id/titleTv"
+            android:ellipsize="end"
+            android:maxLines="1"/>
 
         <ImageView
             android:layout_width="wrap_content"
