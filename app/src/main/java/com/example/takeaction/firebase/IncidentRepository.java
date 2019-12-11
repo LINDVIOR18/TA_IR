@@ -9,10 +9,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class IncidentRepository {
 
@@ -69,13 +66,22 @@ public class IncidentRepository {
                         });
     }
 
-    public List<IncidentModel> getIncidents() {
+    public void getIncidents(final IncidentCallback incidentCallback) {
 
-        databaseReference.child("incidents")
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mDbRef = mDatabase.getReference();
+
+        mDbRef.child("incidents")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        IncidentModel incident = dataSnapshot.getValue(IncidentModel.class);
+                        List<IncidentModel> models = new ArrayList<>();
+
+                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                            IncidentModel incident = ds.getValue(IncidentModel.class);
+                            models.add(incident);
+                        }
+                        incidentCallback.onDataSuccess(models);
                     }
 
                     @Override
@@ -83,6 +89,5 @@ public class IncidentRepository {
                         Log.w("This Activity", "loadPost:onCancelled", databaseError.toException());
                     }
                 });
-        return null;
     }
 }

@@ -5,6 +5,9 @@ public class CategoryModel {
     private String name;
     private int imageId;
 
+    public CategoryModel() {
+    }
+
     public CategoryModel(long id, String name, int imageId) {
         this.id = id;
         this.name = name;
