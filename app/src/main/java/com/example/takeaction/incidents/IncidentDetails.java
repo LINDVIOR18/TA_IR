@@ -10,6 +10,7 @@ public class IncidentDetails extends AppCompatActivity {
 
     public static final String INCIDENT_KEY = "INCIDENT_KEY";
 
+
     private IncidentList incident;
 
     @Override
@@ -19,5 +20,9 @@ public class IncidentDetails extends AppCompatActivity {
 
         incident = (IncidentList)getIntent().getSerializableExtra(INCIDENT_KEY);
         Toast.makeText(this, incident.getTitle(), Toast.LENGTH_LONG).show();
+
+
+
+
     }
 }
