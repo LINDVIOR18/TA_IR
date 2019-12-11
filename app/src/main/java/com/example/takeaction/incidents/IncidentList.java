@@ -6,6 +6,7 @@ class IncidentList implements Serializable {
     private String title, address, description;
     private int img;
 
+
     String getTitle() {
 
         return title;
@@ -43,4 +44,6 @@ class IncidentList implements Serializable {
 
         this.img = img;
     }
+
 }
+

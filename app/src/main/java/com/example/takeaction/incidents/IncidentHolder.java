@@ -16,7 +16,6 @@ class IncidentHolder extends RecyclerView.ViewHolder {
     TextView tvTitle;
     TextView tvAddress;
     TextView tvDate;
-
     IncidentHolder(@NonNull View itemView) {
         super(itemView);
 
@@ -24,6 +23,7 @@ class IncidentHolder extends RecyclerView.ViewHolder {
         this.tvTitle = itemView.findViewById(R.id.titleTv);
         this.tvAddress = itemView.findViewById(R.id.addressTv);
         this.tvDate = itemView.findViewById(R.id.tv_date);
+
     }
 
 
