@@ -25,7 +25,7 @@ public class IncidentDetails extends AppCompatActivity {
         assert incident != null;
         tvTitle.setText(incident.getTitle());
         tvAddress.setText(incident.getAddress());
-        ivImage.setImageResource(incident.getImg());
+        ivImage.setBackground(this.getResources().getDrawable(incident.getImg(), null));
         tvText.setText(incident.getDescription());
     }
 }

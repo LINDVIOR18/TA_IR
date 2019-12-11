@@ -51,18 +51,18 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         models.add(m);
 
         m = new IncidentList();
-        m.setTitle("Incident2");
+        m.setTitle("Abused dog");
         m.setAddress("Bulevardul Ștefan cel Mare și Sfînt 171/1, Chișinău 2004");
         m.setDescription("Some bla bla bla for incident2");
-        m.setImg(R.drawable.ambulance);
+        m.setImg(R.drawable.incident2);
         models.add(m);
 
 
         m = new IncidentList();
         m.setTitle("Incident3");
         m.setAddress("Strada Ion Creangă 1/3, Chișinău, Moldova");
-        m.setDescription("Some bla bla bla for incident3");
-        m.setImg(R.drawable.flash);
+        m.setDescription("One child was left with a broken beard after falling into a sewer.\n");
+        m.setImg(R.drawable.incident3);
         models.add(m);
 
         return models;

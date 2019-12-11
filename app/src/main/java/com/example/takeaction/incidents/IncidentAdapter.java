@@ -37,6 +37,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
         return new IncidentHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull IncidentHolder myHolder, final int position) {
 

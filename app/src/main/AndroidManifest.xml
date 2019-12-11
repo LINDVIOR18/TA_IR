@@ -55,11 +55,10 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="true" />
-        <activity android:name=".ShowPopUp" />
-        <activity android:name=".OpenCamera" />
         <activity
             android:name=".incidents.IncidentDetails"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppThemeNoBar"/>
 
         <meta-data
             android:name="preloaded_fonts"
