@@ -26,7 +26,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         incidentRepository = new IncidentRepository(FirebaseDatabase.getInstance().getReference().child("incidents"));
 
         getIncidents();
-        setList();
+//        setList();
     }
 
     private void setList(List<IncidentModel> models) {

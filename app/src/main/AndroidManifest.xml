@@ -60,7 +60,8 @@
         <activity
                 android:name=".incidents.IncidentDetails"
                 android:exported="true"/>
-
+        <activity android:name=".address.GetIncidentCoordinatesActivity"
+            android:exported="true"/>
         <meta-data
                 android:name="preloaded_fonts"
                 android:resource="@array/preloaded_fonts"/>
