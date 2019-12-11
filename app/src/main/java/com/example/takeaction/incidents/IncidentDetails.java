@@ -8,26 +8,20 @@ import android.widget.TextView;
 import com.example.takeaction.R;
 
 public class IncidentDetails extends AppCompatActivity {
-    private TextView tvTitle;
-    private TextView tvAddress;
-    private ImageView ivImage;
-    private TextView tvText;
 
 
     public static final String INCIDENT_KEY = "INCIDENT_KEY";
-
-    private IncidentList incident;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incident_details);
-        tvTitle = findViewById(R.id.tv_incident);
-        tvAddress = findViewById(R.id.tv_address);
-        ivImage = findViewById(R.id.iv_incident);
-        tvText = findViewById(R.id.tv_description);
+        TextView tvTitle = findViewById(R.id.tv_incident);
+        TextView tvAddress = findViewById(R.id.tv_address);
+        ImageView ivImage = findViewById(R.id.iv_incident);
+        TextView tvText = findViewById(R.id.tv_description);
 
-        incident = (IncidentList)getIntent().getSerializableExtra(INCIDENT_KEY);
+        IncidentList incident = (IncidentList) getIntent().getSerializableExtra(INCIDENT_KEY);
         assert incident != null;
         tvTitle.setText(incident.getTitle());
         tvAddress.setText(incident.getAddress());

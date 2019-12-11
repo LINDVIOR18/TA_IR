@@ -42,7 +42,6 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
 
         myHolder.tvTitle.setText(models.get(position).getTitle());
         myHolder.tvAddress.setText(models.get(position).getAddress());
-        myHolder.tvDescription.setText(models.get(position).getDescription());
         myHolder.ivCategory.setImageResource(models.get(position).getImg());
         myHolder.tvDate.setText(getFormatedDate(Calendar.getInstance().getTimeInMillis()));
         myHolder.setClickListener(new View.OnClickListener() {

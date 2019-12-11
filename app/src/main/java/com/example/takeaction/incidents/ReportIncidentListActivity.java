@@ -52,7 +52,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
 
         m = new IncidentList();
         m.setTitle("Incident2");
-        m.setAddress("Stefan cel Mare si Sfant Boulevard 202/2, Chisinau");
+        m.setAddress("Bulevardul Ștefan cel Mare și Sfînt 171/1, Chișinău 2004");
         m.setDescription("Some bla bla bla for incident2");
         m.setImg(R.drawable.ambulance);
         models.add(m);
@@ -60,7 +60,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
 
         m = new IncidentList();
         m.setTitle("Incident3");
-        m.setAddress("Stefan cel Mare si Sfant Boulevard 202/2, Chisinau");
+        m.setAddress("Strada Ion Creangă 1/3, Chișinău, Moldova");
         m.setDescription("Some bla bla bla for incident3");
         m.setImg(R.drawable.flash);
         models.add(m);
