@@ -1,11 +1,14 @@
 package com.example.takeaction.incidents;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.takeaction.R;
 
 import java.text.DateFormat;
@@ -16,10 +19,12 @@ import java.util.Date;
 
 public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
 
+    private Context context;
     private ArrayList<IncidentList> models;
     private Callback callback;
 
-    IncidentAdapter(ArrayList<IncidentList> models, Callback callback) {
+    IncidentAdapter(Context c, ArrayList<IncidentList> models, Callback callback) {
+        this.context = c;
         this.models = models;
         this.callback = callback;
     }
@@ -32,11 +37,12 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
         return new IncidentHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull IncidentHolder myHolder, final int position) {
 
         myHolder.tvTitle.setText(models.get(position).getTitle());
-        myHolder.tvDescription.setText(models.get(position).getDescription());
+        myHolder.tvAddress.setText(models.get(position).getAddress());
         myHolder.ivCategory.setImageResource(models.get(position).getImg());
         myHolder.tvDate.setText(getFormatedDate(Calendar.getInstance().getTimeInMillis()));
         myHolder.setClickListener(new View.OnClickListener() {
@@ -47,6 +53,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentHolder> {
                 }
             }
         });
+
     }
 
     private String getFormatedDate(long date) {

@@ -1,72 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.example.takeaction">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.takeaction">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.location.gps"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.location.gps" />
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-            android:allowBackup="false"
-            android:label="@string/app_name"
-            android:orientation="vertical"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            tools:ignore="GoogleAppIndexingWarning,
-        MissingApplicationIcon">
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:orientation="vertical"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning, MissingApplicationIcon">
 
         <activity
-                android:name=".authentication.RegisterActivity"
-                android:theme="@style/AppThemeNoBar"
-                android:exported="true"/>
+            android:name=".authentication.RegisterActivity"
+            android:theme="@style/AppThemeNoBar"
+            android:exported="true" />
 
         <activity
-                android:name=".splash.Splash"
-                android:noHistory="true"
-                android:theme="@style/AppThemeNoBar">
+            android:name=".splash.Splash"
+            android:noHistory="true"
+            android:theme="@style/AppThemeNoBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".profile.ProfileActivity"
-                  android:exported="true"/>
-        <activity android:name=".PermissionManager"/>
-        <activity android:name=".intro.Slider"
-                  android:noHistory="true"
-                  android:theme="@style/AppThemeNoBar"/>
         <activity
-                android:name=".authentication.LoginActivity"
-                android:exported="true"
-                android:theme="@style/AppThemeNoBar"/>
+            android:name=".intro.Slider"
+            android:noHistory="true"
+            android:theme="@style/AppThemeNoBar" />
+        <activity android:name=".MainActivity" />
         <activity
-                android:name=".incidents.ReportIncidentListActivity"
-                android:exported="true"
-            />
+            android:name=".authentication.LoginActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeNoBar" />
         <activity
-                android:name=".incident.ReportIncidentActivity"
-                android:exported="true"/>
+            android:name=".incidents.ReportIncidentListActivity"
+            android:exported="true" />
         <activity
-                android:name=".homemap.HomeMapActivity"
-                android:exported="true"/>
+            android:name=".incident.ReportIncidentActivity"
+            android:exported="true" />
         <activity
-                android:name=".incidents.IncidentDetails"
-                android:exported="true"/>
+            android:name=".homemap.HomeMapActivity"
+            android:exported="true" />
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".incidents.IncidentDetails"
+            android:exported="true"
+            android:parentActivityName=".incidents.ReportIncidentListActivity"/>
 
         <meta-data
-                android:name="preloaded_fonts"
-                android:resource="@array/preloaded_fonts"/>
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
         <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="@string/google_maps_key"/>
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>
