@@ -1,6 +1,6 @@
 package com.example.takeaction.homemap;
 
-import android.content.Context;
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -10,14 +10,16 @@ import android.graphics.drawable.VectorDrawable;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
-import com.example.takeaction.incident.ReportIncidentActivity;;
+import com.example.takeaction.incident.ReportIncidentActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
@@ -32,14 +34,10 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import android.Manifest;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class HomeMapActivity extends NavigationDrawer implements
         GoogleMap.OnMarkerClickListener,
@@ -135,13 +133,12 @@ public class HomeMapActivity extends NavigationDrawer implements
 
     }
 
-    private Marker addMarker(MarkerConfig config) {
+    private void addMarker(MarkerConfig config) {
         Bitmap icon = BitmapFactory.decodeResource(getResources(),
                 config.getIconResource());
-      // BitmapDescriptor descriptor =  getBitmapDescriptor(R.drawable.ic_map_marker);  // BitmapDescriptorFactory.fromBitmap(icon);
-       BitmapDescriptor descriptor =   BitmapDescriptorFactory.fromBitmap(icon);
+        BitmapDescriptor descriptor = BitmapDescriptorFactory.fromBitmap(icon);
 
-        return mMap.addMarker(new MarkerOptions()
+        mMap.addMarker(new MarkerOptions()
                 .position(config.getPosition())
                 .title(config.getLocationName())
                 .icon(descriptor));
@@ -165,23 +162,19 @@ public class HomeMapActivity extends NavigationDrawer implements
     }
 
     private BitmapDescriptor getBitmapDescriptor(int id) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            VectorDrawable vectorDrawable = (VectorDrawable) getDrawable(id);
+        VectorDrawable vectorDrawable = (VectorDrawable) getDrawable(id);
 
-            int h = vectorDrawable.getIntrinsicHeight();
-            int w = vectorDrawable.getIntrinsicWidth();
+        int h = Objects.requireNonNull(vectorDrawable).getIntrinsicHeight();
+        int w = vectorDrawable.getIntrinsicWidth();
 
-            vectorDrawable.setBounds(0, 0, w, h);
+        vectorDrawable.setBounds(0, 0, w, h);
 
-            Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bm);
-            vectorDrawable.draw(canvas);
+        Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bm);
+        vectorDrawable.draw(canvas);
 
-            return BitmapDescriptorFactory.fromBitmap(bm);
+        return BitmapDescriptorFactory.fromBitmap(bm);
 
-        } else {
-            return BitmapDescriptorFactory.fromResource(id);
-        }
     }
 
     @Override
@@ -197,45 +190,44 @@ public class HomeMapActivity extends NavigationDrawer implements
 }
 
 
+class MarkerConfig {
+    private int index;
+    private LatLng position;
+    private String locationName;
+    private int iconResource;
 
-    class MarkerConfig {
-        private int index;
-        private LatLng position;
-        private String locationName;
-        private int iconResource;
-
-        public MarkerConfig(LatLng position, String locationName, int iconResource, int index) {
-            this.index = index;
-            this.position = position;
-            this.locationName = locationName;
-            this.iconResource = iconResource;
-        }
-
-        public int getIndex() {
-            return index;
-        }
-
-        public LatLng getPosition() {
-            return position;
-        }
-
-        public void setPosition(LatLng position) {
-            this.position = position;
-        }
-
-        public String getLocationName() {
-            return locationName;
-        }
-
-        public void setLocationName(String locationName) {
-            this.locationName = locationName;
-        }
-
-        public int getIconResource() {
-            return iconResource;
-        }
-
-        public void setIconResource(int  iconResource) {
-            this.iconResource = iconResource;
-        }
+    MarkerConfig(LatLng position, String locationName, int iconResource, int index) {
+        this.index = index;
+        this.position = position;
+        this.locationName = locationName;
+        this.iconResource = iconResource;
     }
+
+    public int getIndex() {
+        return index;
+    }
+
+    LatLng getPosition() {
+        return position;
+    }
+
+    public void setPosition(LatLng position) {
+        this.position = position;
+    }
+
+    String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    int getIconResource() {
+        return iconResource;
+    }
+
+    public void setIconResource(int iconResource) {
+        this.iconResource = iconResource;
+    }
+}

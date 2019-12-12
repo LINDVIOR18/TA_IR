@@ -3,13 +3,11 @@ package com.example.takeaction.incidents;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.takeaction.R;
+import com.example.takeaction.model.IncidentModel;
 
 public class IncidentDetails extends AppCompatActivity {
-
 
     public static final String INCIDENT_KEY = "INCIDENT_KEY";
 
@@ -22,11 +20,15 @@ public class IncidentDetails extends AppCompatActivity {
         ImageView ivImage = findViewById(R.id.iv_incident);
         TextView tvText = findViewById(R.id.tv_description);
 
-        IncidentList incident = (IncidentList) getIntent().getSerializableExtra(INCIDENT_KEY);
+        IncidentModel incident = (IncidentModel) getIntent().getSerializableExtra(INCIDENT_KEY);
         assert incident != null;
         tvTitle.setText(incident.getTitle());
-        tvAddress.setText(incident.getAddress());
+        tvAddress.setText((CharSequence) incident.getAddress());
+        /*
+        Fix null image exception
         ivImage.setBackground(this.getResources().getDrawable(incident.getImg(), null));
+         */
+
         tvText.setText(incident.getDescription());
     }
 }

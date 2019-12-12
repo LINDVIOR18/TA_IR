@@ -1,7 +1,9 @@
 package com.example.takeaction.firebase;
 
 import android.app.Activity;
+
 import androidx.annotation.NonNull;
+
 import com.example.takeaction.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,7 +19,6 @@ public class AuthRepository {
 
     private FirebaseAuth firebaseAuth;
 
-
     public AuthRepository(FirebaseAuth firebaseAuth) {
         this.firebaseAuth = firebaseAuth;
     }
@@ -28,7 +29,6 @@ public class AuthRepository {
 
         writeNewUser(user.getUid(), username, user.getEmail());
     }
-
 
     private String usernameFromEmail(String email) {
         if (email.contains("@")) {

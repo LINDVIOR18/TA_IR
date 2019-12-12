@@ -1,15 +1,23 @@
 package com.example.takeaction.firebase;
 
 import android.util.Log;
+
 import androidx.annotation.NonNull;
+
 import com.example.takeaction.model.IncidentModel;
 import com.example.takeaction.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.*;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -23,10 +31,6 @@ public class IncidentRepository {
 
     public String getUid() {
         return Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-    }
-
-    public String getAuthor(){
-        return Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName());
     }
 
     private void writeNewPost(final IncidentModel incidentModel, final AuthDataCallback<IncidentModel> callback) {
@@ -70,5 +74,30 @@ public class IncidentRepository {
                                 Log.w("Activity", "getUser:onCancelled", databaseError.toException());
                             }
                         });
+    }
+
+    public void getIncidents(final IncidentCallback incidentCallback) {
+
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mDbRef = mDatabase.getReference();
+
+        mDbRef.child("incidents")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        List<IncidentModel> models = new ArrayList<>();
+
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            IncidentModel incident = ds.getValue(IncidentModel.class);
+                            models.add(incident);
+                        }
+                        incidentCallback.onDataSuccess(models);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.w("This Activity", "loadPost:onCancelled", databaseError.toException());
+                    }
+                });
     }
 }

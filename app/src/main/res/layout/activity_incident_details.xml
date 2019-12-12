@@ -15,7 +15,7 @@
             android:id="@+id/iv_incident"
             android:layout_width="match_parent"
             android:layout_height="274dp"
-            android:contentDescription="@string/incident_title"
+            android:contentDescription="@string/incident_label_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

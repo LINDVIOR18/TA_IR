@@ -5,21 +5,30 @@ import android.os.Parcelable;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import java.io.Serializable;
-
 public class IncidentAddress implements Parcelable {
+    public static final Creator<IncidentAddress> CREATOR = new Creator<IncidentAddress>() {
+        @Override
+        public IncidentAddress createFromParcel(Parcel in) {
+            return new IncidentAddress(in);
+        }
+
+        @Override
+        public IncidentAddress[] newArray(int size) {
+            return new IncidentAddress[size];
+        }
+    };
     private LatLng coordinates;
     private String name;
 
     public IncidentAddress() {
     }
 
-    public IncidentAddress(LatLng coordinates, String name) {
+    IncidentAddress(LatLng coordinates, String name) {
         this.coordinates = coordinates;
         this.name = name;
     }
 
-    protected IncidentAddress(Parcel in) {
+    private IncidentAddress(Parcel in) {
         coordinates = in.readParcelable(LatLng.class.getClassLoader());
         name = in.readString();
     }
@@ -34,18 +43,6 @@ public class IncidentAddress implements Parcelable {
     public int describeContents() {
         return 0;
     }
-
-    public static final Creator<IncidentAddress> CREATOR = new Creator<IncidentAddress>() {
-        @Override
-        public IncidentAddress createFromParcel(Parcel in) {
-            return new IncidentAddress(in);
-        }
-
-        @Override
-        public IncidentAddress[] newArray(int size) {
-            return new IncidentAddress[size];
-        }
-    };
 
     public LatLng getCoordinates() {
         return coordinates;
