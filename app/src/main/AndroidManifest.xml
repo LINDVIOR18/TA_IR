@@ -46,7 +46,7 @@
         <activity
             android:name=".incidents.ReportIncidentListActivity"
             android:exported="true"
-            android:theme="@style/AppThemeNoBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".incident.ReportIncidentActivity"
             android:exported="true" />
