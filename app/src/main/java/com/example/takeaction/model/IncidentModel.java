@@ -12,7 +12,6 @@ import java.util.Map;
 public class IncidentModel implements Serializable {
 
     private String uid;
-    private String author;
     private String title;
     private String description;
     private CategoryModel categoryModel;
@@ -22,9 +21,8 @@ public class IncidentModel implements Serializable {
     public IncidentModel() {
     }
 
-    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date) {
+    public IncidentModel(String uid, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date) {
         this.uid = uid;
-        this.author = author;
         this.title = title;
         this.description = description;
         this.categoryModel = categoryModel;
@@ -36,7 +34,6 @@ public class IncidentModel implements Serializable {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uid", uid);
-        result.put("author", author);
         result.put("title", title);
         result.put("description", description);
         result.put("categoryModel", categoryModel);
@@ -44,14 +41,6 @@ public class IncidentModel implements Serializable {
         result.put("date", date);
 
         return result;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public String getAuthor() {
-        return author;
     }
 
     public String getTitle() {

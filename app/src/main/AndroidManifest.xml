@@ -56,6 +56,7 @@
         <activity
             android:name=".profile.ProfileActivity"
             android:exported="true" />
+
         <activity
             android:name=".incidents.IncidentDetails"
             android:parentActivityName=".incidents.ReportIncidentListActivity"

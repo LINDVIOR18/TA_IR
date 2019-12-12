@@ -3,44 +3,32 @@ package com.example.takeaction.incident;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.*;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import com.example.takeaction.MainActivity;
 import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
 import com.example.takeaction.address.GetIncidentCoordinatesActivity;
 import com.example.takeaction.address.IncidentAddress;
-import com.example.takeaction.cameradialog.CameraDialog;
 import com.example.takeaction.firebase.AuthDataCallback;
-import com.example.takeaction.firebase.AuthRepository;
 import com.example.takeaction.firebase.IncidentRepository;
 import com.example.takeaction.model.CategoryModel;
 import com.example.takeaction.model.IncidentModel;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-import static com.example.takeaction.PermissionManager.CAMERA_PERMISSION_CODE;
-import static com.example.takeaction.PermissionManager.STORAGE_PERMISSION_CODE;
-
 public class ReportIncidentActivity extends NavigationDrawer implements DatePickerDialog.OnDateSetListener {
 
     public static final String ADDRESS_KEY = "ADDRESS_KEY";
-    static final int PERMISSION_REQUEST_CAMERA = 100;
-    static final int PERMISSION_REQUEST_GALLERY = 101;
     private TextView coordinates;
     private IncidentRepository incidentRepository;
     private IncidentAddress address;
@@ -48,7 +36,6 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
     private TextInputLayout etDescription;
     private long date;
     private CategoryModel categoryModel;
-    private AuthRepository authRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +98,6 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
         return R.layout.activity_report_incident;
     }
 
-
     private List<CategoryModel> getCategoryListMock() {
         List<CategoryModel> categoryModel = new ArrayList<>();
         categoryModel.add(new CategoryModel(1, "Fire", R.drawable.ic_fire));
@@ -140,22 +126,6 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         Button btnDate = findViewById(R.id.btnDate);
         btnDate.setText(currentDateString);
-    }
-
-    public void onClickShowPopUp(View view) {
-        CameraDialog cameraDialog = new CameraDialog(this);
-        cameraDialog.show();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CAMERA:
-            default:
-            case PERMISSION_REQUEST_GALLERY:
-                break;
-        }
     }
 
     private boolean validateSubmit() {
@@ -187,30 +157,12 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
                 coordinates.setText(Objects.requireNonNull(address).getName());
             }
         }
-        if ((requestCode == CAMERA_PERMISSION_CODE || requestCode == STORAGE_PERMISSION_CODE) && resultCode == RESULT_OK) {
-
-            Bitmap bitmap = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
-
-            ImageButton imageButton = findViewById(R.id.cameraButton);
-            imageButton.setImageBitmap(bitmap);
-        }
-        if (requestCode == STORAGE_PERMISSION_CODE && resultCode == RESULT_OK && data.getData() != null) {
-
-            Uri uri = data.getData();
-
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                ImageButton imageButton = findViewById(R.id.cameraButton);
-                imageButton.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
+
 
     private void createIncident() {
 
-        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), "", Objects.requireNonNull(etTitle.getEditText()).getText().toString(),
+        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), Objects.requireNonNull(etTitle.getEditText()).getText().toString(),
                 Objects.requireNonNull(etDescription.getEditText()).getText().toString(),
                 categoryModel, address, date);
 
