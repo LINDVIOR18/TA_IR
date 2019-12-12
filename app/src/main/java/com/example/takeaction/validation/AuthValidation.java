@@ -20,7 +20,7 @@ public class AuthValidation {
     }
 
     public static boolean isValidPassword(String password) {
-        Matcher matcher = Pattern.compile("((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{6,20})").matcher(password);
+        Matcher matcher = Pattern.compile("((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!_]).{6,20})").matcher(password);
         return matcher.matches();
     }
 
