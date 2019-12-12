@@ -38,7 +38,7 @@ import java.util.List;
 
 public class ReportIncidentActivity extends NavigationDrawer implements DatePickerDialog.OnDateSetListener {
 
-    static final  int PERMISSION_REQUEST_CAMERA = 100;
+    static final int PERMISSION_REQUEST_CAMERA = 100;
     static final int PERMISSION_REQUEST_GALLERY = 101;
     private IncidentRepository incidentRepository;
 
@@ -165,10 +165,10 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
         }
     }
 
-    private void createIncident(){
+    private void createIncident() {
 
-        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), "user", "Title","desc",
-                new CategoryModel(1, "name",1),"dasda", 15);
+        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), "user", "Title", "desc",
+                new CategoryModel(1, "name", 1), null, 15, null);
 
         incidentRepository.createIncident(incidentModel, new AuthDataCallback<IncidentModel>() {
             @Override

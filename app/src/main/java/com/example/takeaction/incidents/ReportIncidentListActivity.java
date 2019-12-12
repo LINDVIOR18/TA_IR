@@ -1,34 +1,45 @@
 package com.example.takeaction.incidents;
+
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.view.View;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
+import com.example.takeaction.firebase.IncidentCallback;
+import com.example.takeaction.firebase.IncidentRepository;
+import com.example.takeaction.model.IncidentModel;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class ReportIncidentListActivity extends NavigationDrawer {
+public class ReportIncidentListActivity extends AppCompatActivity {
 
-    RecyclerView mRecyclerView;
-    IncidentAdapter myAdapter;
+    private IncidentRepository incidentRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_report_incident);
 
-        mRecyclerView = findViewById(R.id.recycler_view);
+        incidentRepository = new IncidentRepository(FirebaseDatabase.getInstance().getReference().child("incidents"));
+
+        getIncidents();
+    }
+
+    private void setList(final List<IncidentModel> models) {
+        RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        myAdapter = new IncidentAdapter(this, getMyList(), new IncidentAdapter.Callback() {
+        IncidentAdapter myAdapter = new IncidentAdapter(models, new IncidentAdapter.Callback() {
             @Override
             public void onItemClick(int position) {
-                IncidentList incident = getMyList().get(position);
+                IncidentModel model =  models.get(position);
 
                 Intent appInfo = new Intent(ReportIncidentListActivity.this, IncidentDetails.class);
-                appInfo.putExtra(IncidentDetails.INCIDENT_KEY, incident);
+                appInfo.putExtra(IncidentDetails.INCIDENT_KEY, model);
                 startActivity(appInfo);
             }
         });
@@ -36,41 +47,14 @@ public class ReportIncidentListActivity extends NavigationDrawer {
         mRecyclerView.setAdapter(myAdapter);
     }
 
-    @Override
-    protected int getLayoutRes() {
-        return R.layout.activity_list_report_incident;
-    }
+    private void getIncidents() {
 
-    private ArrayList<IncidentList> getMyList() {
-        ArrayList<IncidentList> models = new ArrayList<>();
-        IncidentList m = new IncidentList();
-        m.setTitle("Forest To Study Fire And Smoke");
-        m.setAddress("Stefan cel Mare si Sfant Boulevard 202/2, Chisinau");
-        m.setDescription("In the next few weeks, the U.S. Forest Service plans to conduct a massive controlled burn on a remote mountain in Utah, part of the agency’s efforts to better understand the behavior of giant fires that are becoming more common in the West.\n" +
-                "The plan is to light hundreds of forested acres on fire when weather conditions are just right. Dozens of scientists will then monitor the blaze with planes, drones, and laser technology. It’s all part of the Forest Service-led Fire and Smoke Model Evaluation Experiment, or FASMEE, on the Fishlake National Forest in Utah.\n" +
-                "\n" +
-                "“The goal is so that they can collect data on the fuels and fuel consumption, the heat release,” said Mike Battaglia, a research forester based in Colorado. “They’re looking at the plume dynamics of the smoke going into the air, they’re sampling the smoke for microorganisms.”\n" +
-                "\n" +
-                "Battaglia says the more we understand how fire works, the better we’ll be at fighting wildfires, as well as implementing prescribed burns to benefit ecosystems. Battaglia himself will be studying the impact of the burn on aspens and other trees in the area.");
-        m.setImg(R.drawable.fire_tree);
-        models.add(m);
-
-        m = new IncidentList();
-        m.setTitle("Abused dog");
-        m.setAddress("Bulevardul Ștefan cel Mare și Sfînt 171/1, Chișinău 2004");
-        m.setDescription("Some bla bla bla for incident2");
-        m.setImg(R.drawable.incident2);
-        models.add(m);
-
-
-        m = new IncidentList();
-        m.setTitle("Incident3");
-        m.setAddress("Strada Ion Creangă 1/3, Chișinău, Moldova");
-        m.setDescription("One child was left with a broken beard after falling into a sewer.\n");
-        m.setImg(R.drawable.incident3);
-        models.add(m);
-
-        return models;
-
+        incidentRepository.getIncidents(new IncidentCallback() {
+            @Override
+            public void onDataSuccess(List<IncidentModel> incidentModels) {
+                Toast.makeText(ReportIncidentListActivity.this, "incidentRepository success", Toast.LENGTH_LONG).show();
+                setList(incidentModels);
+            }
+        });
     }
 }

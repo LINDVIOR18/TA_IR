@@ -3,11 +3,12 @@ package com.example.takeaction.model;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @IgnoreExtraProperties
-public class IncidentModel {
+public class IncidentModel implements Serializable {
 
     private String uid;
     private String author;
@@ -16,8 +17,11 @@ public class IncidentModel {
     private CategoryModel categoryModel;
     private String address;
     private long date;
+    private byte img;
 
-    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, String address, long date) {
+    public IncidentModel(){}
+
+    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, String address, long date, Byte img) {
         this.uid = uid;
         this.author = author;
         this.title = title;
@@ -25,6 +29,7 @@ public class IncidentModel {
         this.categoryModel = categoryModel;
         this.address = address;
         this.date = date;
+        this.img = img;
     }
 
     @Exclude
@@ -37,7 +42,40 @@ public class IncidentModel {
         result.put("categoryModel", categoryModel);
         result.put("address", address);
         result.put("date", date);
+        result.put("image", img);
 
         return result;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public CategoryModel getCategoryModel() {
+        return categoryModel;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public byte getImg() {
+        return img;
     }
 }

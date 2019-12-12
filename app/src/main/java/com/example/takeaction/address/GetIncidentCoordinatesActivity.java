@@ -1,7 +1,6 @@
 package com.example.takeaction.address;
 
-import androidx.fragment.app.FragmentActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.fragment.app.FragmentActivity;
 import com.example.takeaction.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,11 +22,11 @@ import com.google.android.gms.maps.model.LatLng;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 
 public class GetIncidentCoordinatesActivity extends FragmentActivity implements OnMapReadyCallback {
     public static final String ADDRESS_KEY = "ADDRESS_KEY";
-    public static final int REQUEST_CODE = 1000;
 
     private TextView IncidentAddressDeclaration;
     private GoogleMap mMap;
@@ -48,7 +47,7 @@ public class GetIncidentCoordinatesActivity extends FragmentActivity implements 
         IncidentAddressDeclaration.setSingleLine(true);
         IncidentAddressDeclaration.setMarqueeRepeatLimit(-1);
         IncidentAddressDeclaration.setSelected(true);
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
         setDoneButtonListener();
         configureCameraIdle();
     }
@@ -94,6 +93,7 @@ public class GetIncidentCoordinatesActivity extends FragmentActivity implements 
         };
     }
 
+    @SuppressLint("SetTextI18n")
     private void getAddressFromLocation(double latitude, double longitude) {
 
         Geocoder geocoder = new Geocoder(this, Locale.ENGLISH);
@@ -101,13 +101,13 @@ public class GetIncidentCoordinatesActivity extends FragmentActivity implements 
 
         try {
             List<Address>
-             addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                    addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
             if (addresses.size() > 0) {
                 Address fetchedAddress = addresses.get(0);
                 StringBuilder strAddress = new StringBuilder();
                 for (int i = 0; i <= fetchedAddress.getMaxAddressLineIndex(); i++) {
-                   strAddress.append(fetchedAddress.getAddressLine(0)).append(" ");
+                    strAddress.append(fetchedAddress.getAddressLine(0)).append(" ");
                 }
                 String incidentAddres = strAddress.toString();
                 IncidentAddressDeclaration.setText(incidentAddres);
@@ -120,7 +120,6 @@ public class GetIncidentCoordinatesActivity extends FragmentActivity implements 
 
         } catch (IOException e) {
             e.printStackTrace();
-           return;
         }
     }
 }

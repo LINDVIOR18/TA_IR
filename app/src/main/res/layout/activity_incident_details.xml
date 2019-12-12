@@ -15,7 +15,7 @@
             android:id="@+id/iv_incident"
             android:layout_width="match_parent"
             android:layout_height="274dp"
-            android:contentDescription="@string/incident_title"
+            android:contentDescription="@string/incident_label_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -35,7 +35,8 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_incident"
-            app:layout_constraintVertical_bias="0.049" />
+            app:layout_constraintVertical_bias="0.049"
+            android:text="title"/>
 
         <TextView
             android:id="@+id/tv_address"
