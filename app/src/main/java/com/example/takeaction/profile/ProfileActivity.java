@@ -36,7 +36,7 @@ public class ProfileActivity extends NavigationDrawer {
         imageView = findViewById(R.id.imgV_avatar);
 
     }
-@Override
+    @Override
     protected int getLayoutRes() {
         return R.layout.activity_profile;
     }
@@ -84,11 +84,6 @@ public class ProfileActivity extends NavigationDrawer {
         cameraDialog.show();
     }
 
-    public void onClick() {
-
-        onBackPressed();
-    }
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -104,6 +99,7 @@ public class ProfileActivity extends NavigationDrawer {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                // Log.d(TAG, String.valueOf(bitmap));
 
                 ImageView imageView = findViewById(R.id.imgV_avatar);
                 imageView.setImageBitmap(bitmap);
@@ -111,5 +107,7 @@ public class ProfileActivity extends NavigationDrawer {
                 e.printStackTrace();
             }
         }
+
     }
+
 }
