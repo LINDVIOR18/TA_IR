@@ -1,14 +1,16 @@
 package com.example.takeaction.incidents;
-import  androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
 
 import java.util.ArrayList;
 
-public class ReportIncidentListActivity extends AppCompatActivity {
+public class ReportIncidentListActivity extends NavigationDrawer {
 
     RecyclerView mRecyclerView;
     IncidentAdapter myAdapter;
@@ -16,8 +18,6 @@ public class ReportIncidentListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_report_incident);
-
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -34,6 +34,11 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         });
 
         mRecyclerView.setAdapter(myAdapter);
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_list_report_incident;
     }
 
     private ArrayList<IncidentList> getMyList() {

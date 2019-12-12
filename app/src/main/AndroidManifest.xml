@@ -54,12 +54,13 @@
         <activity
             android:name=".profile.ProfileActivity"
             android:exported="true" />
+        <activity android:name=".address.GetIncidentCoordinatesActivity"
+            android:exported="true"/>
         <activity
             android:name=".incidents.IncidentDetails"
             android:exported="true"
             android:parentActivityName=".incidents.ReportIncidentListActivity"/>
-        <activity android:name=".address.GetIncidentCoordinatesActivity"
-            android:exported="true"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
