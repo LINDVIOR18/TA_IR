@@ -1,7 +1,9 @@
 package com.example.takeaction.address;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -25,7 +27,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class GetIncidentCoordinatesActivity extends FragmentActivity implements OnMapReadyCallback {
+public class GetIncidentCoordinatesActivity<INTENT_GET_COORDINATES> extends FragmentActivity implements OnMapReadyCallback {
     public static final String ADDRESS_KEY = "ADDRESS_KEY";
     public static final int REQUEST_CODE = 1000;
 

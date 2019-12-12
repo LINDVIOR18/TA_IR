@@ -25,6 +25,10 @@ public class IncidentRepository {
         return Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
     }
 
+    public String getAuthor(){
+        return Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName());
+    }
+
     private void writeNewPost(final IncidentModel incidentModel, final AuthDataCallback<IncidentModel> callback) {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
