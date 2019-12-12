@@ -12,14 +12,11 @@ import com.example.takeaction.MainActivity;
 import com.example.takeaction.R;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.AuthRepository;
-//import com.example.takeaction.model.User;
 import com.example.takeaction.validation.AuthValidation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 
 import java.util.Objects;
 
@@ -81,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         if (AuthValidation.isEmail(userEmail)) {
-            userEmail.setError("Enter valid email!");
+            userEmail.setError("Enter valid email");
         }
         if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(6-20)");
@@ -103,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onError() {
                     Toast.makeText(RegisterActivity.this, "Sign Up Failed, Try Again!", Toast.LENGTH_SHORT).show();
-                    userEmail.setError("Enter Valid Mail");
+                    userEmail.setError("Email already exists");
                 }
             });
         }
