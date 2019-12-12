@@ -1,33 +1,23 @@
 package com.example.takeaction.incident;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.takeaction.NavigationDrawer;
@@ -39,7 +29,6 @@ import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.IncidentRepository;
 import com.example.takeaction.model.CategoryModel;
 import com.example.takeaction.model.IncidentModel;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -72,7 +61,6 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_incident);
         categoriesSpinner = findViewById(R.id.spCategories);
 
         incidentRepository = new IncidentRepository(FirebaseDatabase.getInstance().getReference());

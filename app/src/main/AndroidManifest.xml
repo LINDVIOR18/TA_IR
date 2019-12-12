@@ -23,6 +23,7 @@
         <activity
             android:name=".authentication.RegisterActivity"
             android:theme="@style/AppThemeNoBar"
+            android:noHistory="true"
             android:exported="true" />
 
         <activity
@@ -43,11 +44,11 @@
         <activity
             android:name=".authentication.LoginActivity"
             android:exported="true"
+            android:noHistory="true"
             android:theme="@style/AppThemeNoBar" />
         <activity
             android:name=".incidents.ReportIncidentListActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme" />
+            android:exported="true" />
         <activity
             android:name=".incident.ReportIncidentActivity"
             android:exported="true" />

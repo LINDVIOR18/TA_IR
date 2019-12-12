@@ -33,7 +33,6 @@ public class ProfileActivity extends NavigationDrawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
         imageView = findViewById(R.id.imgV_avatar);
 
     }
