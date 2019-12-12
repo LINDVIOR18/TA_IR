@@ -18,12 +18,11 @@ public class IncidentModel implements Serializable {
     private CategoryModel categoryModel;
     private IncidentAddress address;
     private long date;
-    private byte img;
 
     public IncidentModel() {
     }
 
-    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date, Byte img) {
+    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date) {
         this.uid = uid;
         this.author = author;
         this.title = title;
@@ -31,7 +30,6 @@ public class IncidentModel implements Serializable {
         this.categoryModel = categoryModel;
         this.address = address;
         this.date = date;
-        this.img = img;
     }
 
     @Exclude
@@ -44,7 +42,6 @@ public class IncidentModel implements Serializable {
         result.put("categoryModel", categoryModel);
         result.put("address", address);
         result.put("date", date);
-        result.put("image", img);
 
         return result;
     }
@@ -75,9 +72,5 @@ public class IncidentModel implements Serializable {
 
     public long getDate() {
         return date;
-    }
-
-    public byte getImg() {
-        return img;
     }
 }

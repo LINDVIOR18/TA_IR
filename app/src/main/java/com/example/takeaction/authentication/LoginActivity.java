@@ -12,6 +12,7 @@ import com.example.takeaction.MainActivity;
 import com.example.takeaction.R;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.AuthRepository;
+import com.example.takeaction.incident.ReportIncidentActivity;
 import com.example.takeaction.validation.AuthValidation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onSuccess(Task<AuthResult> response) {
                     Toast.makeText(LoginActivity.this, "Sign In Successfully!", Toast.LENGTH_SHORT).show();
                     authRepository.onAuthSuccess(Objects.requireNonNull(Objects.requireNonNull(response.getResult()).getUser()));
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ReportIncidentActivity.class));
                     finish();
                 }
 

@@ -23,10 +23,6 @@ public class IncidentRepository {
         return Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
     }
 
-    public String getAuthor(){
-        return Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName());
-    }
-
     private void writeNewPost(final IncidentModel incidentModel, final AuthDataCallback<IncidentModel> callback) {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -81,7 +77,7 @@ public class IncidentRepository {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         List<IncidentModel> models = new ArrayList<>();
 
-                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             IncidentModel incident = ds.getValue(IncidentModel.class);
                             models.add(incident);
                         }

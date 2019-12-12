@@ -12,12 +12,14 @@ import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
+import com.example.takeaction.MainActivity;
 import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
 import com.example.takeaction.address.GetIncidentCoordinatesActivity;
 import com.example.takeaction.address.IncidentAddress;
 import com.example.takeaction.cameradialog.CameraDialog;
 import com.example.takeaction.firebase.AuthDataCallback;
+import com.example.takeaction.firebase.AuthRepository;
 import com.example.takeaction.firebase.IncidentRepository;
 import com.example.takeaction.model.CategoryModel;
 import com.example.takeaction.model.IncidentModel;
@@ -39,7 +41,6 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
     public static final String ADDRESS_KEY = "ADDRESS_KEY";
     static final int PERMISSION_REQUEST_CAMERA = 100;
     static final int PERMISSION_REQUEST_GALLERY = 101;
-    static final int INTENT_GET_COORDINATES = 102;
     private TextView coordinates;
     private IncidentRepository incidentRepository;
     private IncidentAddress address;
@@ -47,6 +48,7 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
     private TextInputLayout etDescription;
     private long date;
     private CategoryModel categoryModel;
+    private AuthRepository authRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,14 +210,16 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
 
     private void createIncident() {
 
-        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), incidentRepository.getAuthor(), Objects.requireNonNull(etTitle.getEditText()).getText().toString(),
+        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), "", Objects.requireNonNull(etTitle.getEditText()).getText().toString(),
                 Objects.requireNonNull(etDescription.getEditText()).getText().toString(),
-                categoryModel, address, date, null);
+                categoryModel, address, date);
 
         incidentRepository.createIncident(incidentModel, new AuthDataCallback<IncidentModel>() {
             @Override
             public void onSuccess(IncidentModel response) {
                 Toast.makeText(ReportIncidentActivity.this, "incidentRepository success", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(ReportIncidentActivity.this, MainActivity.class));
+                finish();
             }
 
             @Override
