@@ -47,7 +47,6 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_incident);
         Spinner categoriesSpinner = findViewById(R.id.spCategories);
 
         incidentRepository = new IncidentRepository(FirebaseDatabase.getInstance().getReference());
@@ -177,7 +176,7 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
             @Override
             public void onSuccess(IncidentModel response) {
                 Toast.makeText(ReportIncidentActivity.this, "incidentRepository success", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(ReportIncidentActivity.this,HomeMapActivity.class));
+                startActivity(new Intent(ReportIncidentActivity.this, HomeMapActivity.class));
                 finish();
             }
 

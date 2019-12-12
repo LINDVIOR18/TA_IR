@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.takeaction">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.location.gps"/>
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,8 +18,7 @@
         android:orientation="vertical"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning,
-        MissingApplicationIcon">
+        tools:ignore="ExtraText,GoogleAppIndexingWarning,MissingApplicationIcon">
 
         <activity
             android:name=".authentication.RegisterActivity"
@@ -41,6 +41,7 @@
             android:noHistory="true"
             android:theme="@style/AppThemeNoBar" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".PermissionManager"/>
         <activity
             android:name=".authentication.LoginActivity"
             android:exported="true"
@@ -58,14 +59,12 @@
         <activity
             android:name=".profile.ProfileActivity"
             android:exported="true" />
-
+        <activity android:name=".address.GetIncidentCoordinatesActivity"
+            android:exported="true"/>
         <activity
             android:name=".incidents.IncidentDetails"
             android:parentActivityName=".incidents.ReportIncidentListActivity"
             android:exported="true" />
-        <activity android:name=".address.GetIncidentCoordinatesActivity"
-            android:exported="true"/>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

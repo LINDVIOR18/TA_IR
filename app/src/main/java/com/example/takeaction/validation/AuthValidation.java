@@ -21,7 +21,7 @@ public class AuthValidation {
 
     public static boolean isValidPassword(String password) {
         Matcher matcher = Pattern.compile("((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!_]).{6,20})").matcher(password);
-        return matcher.matches();
+        return !matcher.matches();
     }
 
     public static boolean isValidConfirmPassword(String password , String confirmPassword) {

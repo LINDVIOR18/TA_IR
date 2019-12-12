@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.VectorDrawable;
 import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -47,7 +46,6 @@ public class HomeMapActivity extends NavigationDrawer implements
     private GoogleMap mMap;
     private FloatingActionButton fab;
     private FloatingActionButton findMeFab;
-    private FusedLocationProviderClient fusedLocationClient;
     private LatLng currentLatLong;
 
     @Override
@@ -85,7 +83,7 @@ public class HomeMapActivity extends NavigationDrawer implements
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,12 +93,11 @@ public class HomeMapActivity extends NavigationDrawer implements
             }
         });
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
                         if (location != null) {
 //                            currentLatLong = new LatLng(location.getLatitude(), location.getLongitude());
                             currentLatLong = new LatLng(47.003670, 28.907089);
