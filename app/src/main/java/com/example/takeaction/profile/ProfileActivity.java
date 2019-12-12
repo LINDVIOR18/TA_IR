@@ -83,11 +83,6 @@ public class ProfileActivity extends NavigationDrawer {
         cameraDialog.show();
     }
 
-    public void onClick() {
-
-        onBackPressed();
-    }
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);

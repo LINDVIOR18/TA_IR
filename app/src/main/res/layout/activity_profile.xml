@@ -10,7 +10,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardV_profile"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
+        app:cardBackgroundColor="@color/colorGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,33 +23,19 @@
             android:layout_height="150dp"
             android:layout_marginStart="131dp"
             android:layout_marginTop="28dp"
-            android:layout_marginEnd="155dp"
-            android:layout_marginBottom="40dp"
             android:scaleType="fitXY"
-            tools:ignore="ContentDescription"/>
-
-        <ImageButton
-            android:id="@+id/imgBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="?attr/actionModeCloseDrawable"
-            android:background="@android:color/transparent"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
-            android:onClick="onClick"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription"
+            android:background="@drawable/logo"
+            />
 
         <ImageButton
             android:id="@+id/imgBtn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginStart="252dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/rounded_corners"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="264dp"
+            android:layout_marginTop="160dp"
+            android:background="@drawable/ic_add_circle_black_24dp"
             android:onClick="onClickShowPopUp"
-            app:srcCompat="@android:drawable/ic_input_add"
             tools:ignore="ContentDescription"/>
 
         <TextView
@@ -58,8 +45,12 @@
             android:text="Nume"
             android:background="@drawable/rounded_corners"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="200dp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginTop="220dp"
+            android:layout_marginBottom="50dp"
+            android:paddingStart="10dp"
+            android:textSize="20sp"
+            android:paddingTop="9dp"
+            />
         <TextView
             android:id="@+id/tV_prename"
             android:layout_width="300dp"
@@ -67,8 +58,11 @@
             android:text="Prenume"
             android:background="@drawable/rounded_corners"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="260dp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginTop="280dp"
+            android:layout_marginBottom="50dp"
+            android:paddingStart="10dp"
+            android:textSize="20sp"
+            android:paddingTop="9dp"/>
         <TextView
             android:id="@+id/tV_email"
             android:layout_width="300dp"
@@ -76,19 +70,21 @@
             android:text="Email"
             android:background="@drawable/rounded_corners"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="320dp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginTop="340dp"
+            android:layout_marginBottom="50dp"
+            android:paddingStart="10dp"
+            android:textSize="20sp"
+            android:paddingTop="9dp"/>
 
         <ImageButton
             android:id="@+id/imgBtn_save"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_action_name"
+            app:srcCompat="@drawable/ic_save_black_24dp"
             android:background="@android:color/transparent"
             android:layout_gravity="end"
-            android:layout_marginStart="355dp"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="9dp"
             tools:ignore="ContentDescription"/>
 
 
