@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
+
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.takeaction.MainActivity;
+
 import com.example.takeaction.R;
+import com.example.takeaction.homemap.HomeMapActivity;
 import com.example.takeaction.intro.Slider;
 
 public class Splash extends AppCompatActivity {
@@ -28,7 +30,7 @@ public class Splash extends AppCompatActivity {
                     launcherManager.setFirstLunch();
                     startActivity(new Intent(getApplicationContext(), Slider.class));
                 } else {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), HomeMapActivity.class));
                 }
             }
         }, 5000);
