@@ -54,7 +54,8 @@
                 android:textAlignment="center"
                 android:text="Camera"
                 android:textSize="19sp"
-                android:background="@drawable/button"/>
+                android:background="@drawable/button"
+                />
 
         </LinearLayout>
 
