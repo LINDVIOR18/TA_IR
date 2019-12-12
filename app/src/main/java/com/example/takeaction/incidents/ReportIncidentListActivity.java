@@ -4,11 +4,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+
+
+
 import com.example.takeaction.R;
 
 import java.util.ArrayList;
 
 public class ReportIncidentListActivity extends AppCompatActivity {
+
 
     RecyclerView mRecyclerView;
     IncidentAdapter myAdapter;

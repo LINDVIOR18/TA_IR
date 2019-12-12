@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         tools:context=".ReportIncidentActivity">
 
+
+
         <ImageView
             android:id="@+id/iv_incident"
             android:layout_width="match_parent"

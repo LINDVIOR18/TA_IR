@@ -1,13 +1,17 @@
 package com.example.takeaction.incidents;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.takeaction.R;
 
 public class IncidentDetails extends AppCompatActivity {
+    private Button button2;
 
 
     public static final String INCIDENT_KEY = "INCIDENT_KEY";
@@ -27,5 +31,6 @@ public class IncidentDetails extends AppCompatActivity {
         tvAddress.setText(incident.getAddress());
         ivImage.setBackground(this.getResources().getDrawable(incident.getImg(), null));
         tvText.setText(incident.getDescription());
+
     }
 }

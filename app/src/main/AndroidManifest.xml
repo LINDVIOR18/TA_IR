@@ -57,8 +57,7 @@
             android:exported="true" />
         <activity
             android:name=".incidents.IncidentDetails"
-            android:exported="true"
-            android:theme="@style/AppThemeNoBar"/>
+            android:exported="true"/>
 
         <meta-data
             android:name="preloaded_fonts"
