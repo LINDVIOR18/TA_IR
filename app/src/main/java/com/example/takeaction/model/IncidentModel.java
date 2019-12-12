@@ -17,8 +17,9 @@ public class IncidentModel {
     private CategoryModel categoryModel;
     private IncidentAddress address;
     private long date;
+    private String imageURL;
 
-    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date) {
+    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date, String imageURL) {
         this.uid = uid;
         this.author = author;
         this.title = title;
@@ -26,6 +27,7 @@ public class IncidentModel {
         this.categoryModel = categoryModel;
         this.address = address;
         this.date = date;
+        this.imageURL = imageURL;
     }
 
     @Exclude

@@ -8,12 +8,12 @@
     android:fillViewport="true"
     android:background="@drawable/bg_color"
     android:scaleType = "centerCrop">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".ReportIncidentActivity"
-        android:paddingBottom="20dp"
-        >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ReportIncidentActivity"
+    android:paddingBottom="20dp"
+    >
 
 
 
@@ -62,79 +62,78 @@
                 android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spCategories"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description"
-            />
+            <Spinner
+                android:id="@+id/spCategories"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description"
+                />
+<TextView
+    android:id="@+id/coordinates"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:text="@string/incident_coordinates"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:hint="Coordinates"
+    android:textStyle="bold"
+    android:textColor="@color/colorWhite"
+    android:gravity="center"
+    android:textSize="20sp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/spCategories"/>
 
-        <TextView
-            android:id="@+id/coordinates"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="@string/incident_coordinates"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:hint="Coordinates"
-            android:textStyle="bold"
-            android:textColor="@color/colorWhite"
-            android:gravity="center"
-            android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spCategories"/>
+    <Button
+                android:id="@+id/adress"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="@drawable/button_text_color"
+                android:text="@string/btn_adress"
+                android:background="@drawable/btn_report_incident_activity"
+                android:drawableStart="@drawable/ic_map_marker"
+                android:drawableTint="@drawable/button_text_color"
+                android:paddingStart="9dp"
+                android:paddingEnd="31dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coordinates" />
 
-        <Button
-            android:id="@+id/adress"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:textColor="@drawable/button_text_color"
-            android:text="@string/btn_adress"
-            android:background="@drawable/btn_report_incident_activity"
-            android:drawableStart="@drawable/ic_map_marker"
-            android:drawableTint="@drawable/button_text_color"
-            android:paddingStart="9dp"
-            android:paddingEnd="31dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coordinates" />
-
-        <Button
-            android:id="@+id/btnDate"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:padding="10dp"
-            android:text="@string/btn_date"
-            android:textColor="@drawable/button_text_color"
-            android:background="@drawable/btn_report_incident_activity"
-            android:drawableStart="@drawable/ic_calendar"
-            android:drawableTint="@drawable/button_text_color"
-            android:paddingStart="30dp"
-            android:paddingEnd="50dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/adress" />
-        <Button
-            android:id="@+id/send"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/btn_send"
-            android:textColor="@drawable/button_text_color"
-            android:background="@drawable/btn_report_incident_activity"
-            android:drawableStart="@drawable/ic_send"
-            android:drawableTint="@drawable/button_text_color"
-            android:paddingStart="14dp"
-            android:paddingEnd="33dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnDate" />
+            <Button
+                android:id="@+id/btnDate"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:text="@string/btn_date"
+                android:textColor="@drawable/button_text_color"
+                android:background="@drawable/btn_report_incident_activity"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawableTint="@drawable/button_text_color"
+                android:paddingStart="30dp"
+                android:paddingEnd="50dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adress" />
+    <Button
+        android:id="@+id/send"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/btn_send"
+        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/btn_report_incident_activity"
+        android:drawableStart="@drawable/ic_send"
+        android:drawableTint="@drawable/button_text_color"
+        android:paddingStart="14dp"
+        android:paddingEnd="33dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
