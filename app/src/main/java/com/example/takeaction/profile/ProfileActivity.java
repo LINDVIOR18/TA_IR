@@ -1,6 +1,6 @@
 package com.example.takeaction.profile;
 
-import androidx.annotation.NonNull;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -11,21 +11,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.PermissionManager;
 import com.example.takeaction.R;
 import com.example.takeaction.cameradialog.CameraDialog;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static com.example.takeaction.PermissionManager.CAMERA_PERMISSION_CODE;
 import static com.example.takeaction.PermissionManager.STORAGE_PERMISSION_CODE;
 
-
+@SuppressLint("Registered")
 public class ProfileActivity extends NavigationDrawer {
 
-    ImageView imageView;
     private static final int pic_id = 123;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,7 @@ public class ProfileActivity extends NavigationDrawer {
         imageView = findViewById(R.id.imgV_avatar);
 
     }
-
-    @Override
+@Override
     protected int getLayoutRes() {
         return R.layout.activity_profile;
     }
@@ -88,16 +90,17 @@ public class ProfileActivity extends NavigationDrawer {
         super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode == CAMERA_PERMISSION_CODE || requestCode == STORAGE_PERMISSION_CODE) && resultCode == RESULT_OK) {
 
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            Bitmap bitmap = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
 
             imageView.setImageBitmap(bitmap);
         }
-        if (requestCode == STORAGE_PERMISSION_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == STORAGE_PERMISSION_CODE && resultCode == RESULT_OK && data.getData() != null) {
 
             Uri uri = data.getData();
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                // Log.d(TAG, String.valueOf(bitmap));
 
                 ImageView imageView = findViewById(R.id.imgV_avatar);
                 imageView.setImageBitmap(bitmap);

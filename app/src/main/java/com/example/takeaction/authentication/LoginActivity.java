@@ -33,10 +33,10 @@ public class LoginActivity extends AppCompatActivity {
 
         authRepository = new AuthRepository(FirebaseAuth.getInstance());
 
-        userPassword = findViewById(R.id.password);
-        userEmail = findViewById(R.id.e_mail);
-        Button login = findViewById(R.id.login);
-        TextView signup = findViewById(R.id.signup);
+        userPassword = findViewById(R.id.et_password);
+        userEmail = findViewById(R.id.et_email);
+        Button login = findViewById(R.id.btn_login);
+        TextView signup = findViewById(R.id.tv_signup);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (AuthValidation.isValidPassword(userPassword.getText().toString())) {
-            userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special character(4-20)");
+            userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(6-20)");
         }
         if (!password.isEmpty() && !email.isEmpty()) {
 
