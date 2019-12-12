@@ -49,5 +49,11 @@
     <string name="my_account">My Account</string>
     <string name="view_list_incident">View List Incident</string>
     <string name="log_out">Log Out</string>
+    <string name="incident_coordinates">Coordinates</string>
     <string name="title_activity_maps_report_incident">Map</string>
+    <string name="etTitle">Set Title</string>
+    <string name="etDescription">Set Description</string>
+    <string name="setAddress">Set Address</string>
+    <string name="setDate">Set Date</string>
+
 </resources>

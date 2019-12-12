@@ -1,5 +1,6 @@
 package com.example.takeaction.model;
 
+import com.example.takeaction.address.IncidentAddress;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -14,10 +15,10 @@ public class IncidentModel {
     private String title;
     private String description;
     private CategoryModel categoryModel;
-    private String address;
+    private IncidentAddress address;
     private long date;
 
-    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, String address, long date) {
+    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date) {
         this.uid = uid;
         this.author = author;
         this.title = title;
