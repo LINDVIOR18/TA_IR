@@ -76,10 +76,14 @@ public class IncidentRepository {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         List<IncidentModel> models = new ArrayList<>();
+                        try {
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                            IncidentModel incident = ds.getValue(IncidentModel.class);
-                            models.add(incident);
+                                IncidentModel incident = ds.getValue(IncidentModel.class);
+                                models.add(incident);
+                            }
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
                         }
                         incidentCallback.onDataSuccess(models);
                     }
