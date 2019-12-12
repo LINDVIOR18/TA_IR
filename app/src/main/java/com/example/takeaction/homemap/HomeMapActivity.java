@@ -78,11 +78,11 @@ public class HomeMapActivity extends NavigationDrawer implements
             }
         });
         configs = Arrays.asList(
-                new MarkerConfig(new LatLng(47.003670, 28.907089), "Location 1", R.drawable.baseline_warning_black_18dp, 0),
-                new MarkerConfig(new LatLng(47.766667, 27.916667), "Location 2", R.drawable.baseline_fireplace_black_18dp, 1),
-                new MarkerConfig(new LatLng(47.083333, 28.183333), "Location 3", R.drawable.baseline_flash_on_black_18dp, 2),
-                new MarkerConfig(new LatLng(47.013539, 28.8536647), "Location 4", R.drawable.baseline_add_alert_black_18dp, 3),
-                new MarkerConfig(new LatLng(47.008897, 28.832605), "Location 3", R.drawable.baseline_warning_black_18dp, 4)
+                new MarkerConfig(new LatLng(47.003670, 28.907089), "Location 1", R.drawable.ic_earthquake, 0),
+                new MarkerConfig(new LatLng(47.766667, 27.916667), "Location 2", R.drawable.ic_electric, 1),
+                new MarkerConfig(new LatLng(47.083333, 28.183333), "Location 3", R.drawable.ic_fire, 2),
+                new MarkerConfig(new LatLng(47.013539, 28.8536647), "Location 4", R.drawable.ic_heart_pulse, 3),
+                new MarkerConfig(new LatLng(47.008897, 28.832605), "Location 3", R.drawable.ic_home_flood, 4)
         );
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -138,8 +138,8 @@ public class HomeMapActivity extends NavigationDrawer implements
     private Marker addMarker(MarkerConfig config) {
         Bitmap icon = BitmapFactory.decodeResource(getResources(),
                 config.getIconResource());
-      // BitmapDescriptor descriptor =  getBitmapDescriptor(R.drawable.ic_map_marker);  // BitmapDescriptorFactory.fromBitmap(icon);
-       BitmapDescriptor descriptor =   BitmapDescriptorFactory.fromBitmap(icon);
+       BitmapDescriptor descriptor =  getBitmapDescriptor(config.getIconResource());  // BitmapDescriptorFactory.fromBitmap(icon);
+       //BitmapDescriptor descriptor =   BitmapDescriptorFactory.fromBitmap(icon);
 
         return mMap.addMarker(new MarkerOptions()
                 .position(config.getPosition())
