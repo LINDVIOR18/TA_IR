@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         if (AuthValidation.isEmail(userEmail)) {
-            userEmail.setError("Enter valid email!");
+            userEmail.setError("Enter valid email");
         }
         if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(6-20)");
@@ -98,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onError() {
                     Toast.makeText(RegisterActivity.this, "Sign Up Failed, Try Again!", Toast.LENGTH_SHORT).show();
-                    userEmail.setError("Enter Valid Mail");
+                    userEmail.setError("Email already exists");
                 }
             });
         }

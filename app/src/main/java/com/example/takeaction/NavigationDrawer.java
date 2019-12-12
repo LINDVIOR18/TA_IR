@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.takeaction.authentication.LoginActivity;
 import com.example.takeaction.homemap.HomeMapActivity;
 import com.example.takeaction.incident.ReportIncidentActivity;
+import com.example.takeaction.incidents.ReportIncidentListActivity;
 import com.example.takeaction.profile.ProfileActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,6 +55,10 @@ public abstract class NavigationDrawer extends AppCompatActivity {
                     case R.id.incident:
                         Intent incident = new Intent(getApplicationContext(), ReportIncidentActivity.class);
                         startActivity(incident);
+                        break;
+                    case R.id.view_list:
+                        Intent list = new Intent(getApplicationContext(), ReportIncidentListActivity.class);
+                        startActivity(list);
                         break;
                     case R.id.logout:
                         FirebaseAuth.getInstance().signOut();

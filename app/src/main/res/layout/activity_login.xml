@@ -10,15 +10,16 @@
         tools:context=".authentication.LoginActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="315dp"
         android:layout_height="351dp"
         app:cardBackgroundColor="@color/colorGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_image"
         app:cardCornerRadius="30dp"
-        app:layout_constraintVertical_bias="0.452">
+        app:layout_constraintVertical_bias="0.5">
 
         <EditText
             android:id="@+id/et_email"
@@ -98,20 +99,16 @@
     </androidx.cardview.widget.CardView>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
-        android:layout_width="102dp"
-        android:layout_height="91dp"
-        android:layout_marginStart="166dp"
-        android:layout_marginTop="74dp"
-        android:layout_marginEnd="166dp"
-        android:layout_marginBottom="40dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.700" />
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.5"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
