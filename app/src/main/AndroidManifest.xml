@@ -54,13 +54,13 @@
             android:name=".homemap.HomeMapActivity"
             android:exported="true" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".profile.ProfileActivity"
             android:exported="true" />
-        <activity android:name=".ShowPopUp" />
-        <activity android:name=".OpenCamera" />
         <activity
             android:name=".incidents.IncidentDetails"
             android:exported="true" />
+        <activity android:name=".address.GetIncidentCoordinatesActivity"
+            android:exported="true"/>
 
         <meta-data
             android:name="preloaded_fonts"
