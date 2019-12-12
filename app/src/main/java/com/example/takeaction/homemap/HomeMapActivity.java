@@ -1,84 +1,150 @@
 package com.example.takeaction.homemap;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.VectorDrawable;
+import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
-import androidx.fragment.app.FragmentActivity;
+import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
+import com.example.takeaction.incident.ReportIncidentActivity;;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.Manifest;
 
-public class HomeMapActivity extends FragmentActivity implements
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class HomeMapActivity extends NavigationDrawer implements
         GoogleMap.OnMarkerClickListener,
         OnMapReadyCallback {
 
-    private static final LatLng CHISINAU = new LatLng(47.003670, 28.907089);
-    private static final LatLng BALTI = new LatLng(47.766667, 27.916667);
-    private static final LatLng NISPORENI = new LatLng(47.083333, 28.183333);
-    private static final LatLng StrGARII = new LatLng(47.013539, 28.853664);
-    private static final LatLng ETERNITATE = new LatLng(47.008897, 28.832605);
-    private static final LatLng ARUSSO = new LatLng(47.044100, 28.862881);
+    private List<MarkerConfig> configs;
+    private GoogleMap mMap;
+    private FloatingActionButton fab;
+    private FloatingActionButton findMeFab;
+    private FusedLocationProviderClient fusedLocationClient;
+    private LatLng currentLatLong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+
+        fab = findViewById(R.id.floatingActionButton3);
+        findMeFab = findViewById(R.id.find_me_fab);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            findMeFab.setEnabled(false);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
+        } else {
+            getMyLocation();
+        }
+    }
+
+    public void getMyLocation() {
+        fab = findViewById(R.id.floatingActionButton3);
+        findMeFab = findViewById(R.id.find_me_fab);
+
+        findMeFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentLatLong, 10);
+                mMap.animateCamera(cameraUpdate);
+            }
+        });
+        configs = Arrays.asList(
+                new MarkerConfig(new LatLng(47.003670, 28.907089), "Location 1", R.drawable.baseline_warning_black_18dp, 0),
+                new MarkerConfig(new LatLng(47.766667, 27.916667), "Location 2", R.drawable.baseline_fireplace_black_18dp, 1),
+                new MarkerConfig(new LatLng(47.083333, 28.183333), "Location 3", R.drawable.baseline_flash_on_black_18dp, 2),
+                new MarkerConfig(new LatLng(47.013539, 28.8536647), "Location 4", R.drawable.baseline_add_alert_black_18dp, 3),
+                new MarkerConfig(new LatLng(47.008897, 28.832605), "Location 3", R.drawable.baseline_warning_black_18dp, 4)
+        );
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        assert mapFragment != null;
         mapFragment.getMapAsync(this);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent j = new Intent(getApplicationContext(), ReportIncidentActivity.class);
+                startActivity(j);
+            }
+        });
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+//                            currentLatLong = new LatLng(location.getLatitude(), location.getLongitude());
+                            currentLatLong = new LatLng(47.003670, 28.907089);
+                            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15);
+                            mMap.animateCamera(cameraUpdate);
+                        }
+                    }
+                });
+
+    }
+
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_maps;
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
-        Marker mChisinau = googleMap.addMarker(new MarkerOptions()
-                .position(CHISINAU)
-                .title("CHISINAU")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
-        mChisinau.setTag(0);
+        mMap = googleMap;
+        mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
 
+        for (int i = 0; i < configs.size(); i++) {
+            addMarker(configs.get(i));
+        }
+
+        mMap.setOnMarkerClickListener(this);
+        mMap.setMyLocationEnabled(true);
+
+    }
+
+    private Marker addMarker(MarkerConfig config) {
         Bitmap icon = BitmapFactory.decodeResource(getResources(),
-                R.drawable.baseline_room_black_18dp);
+                config.getIconResource());
+      // BitmapDescriptor descriptor =  getBitmapDescriptor(R.drawable.ic_map_marker);  // BitmapDescriptorFactory.fromBitmap(icon);
+       BitmapDescriptor descriptor =   BitmapDescriptorFactory.fromBitmap(icon);
 
-        Marker mBalti = googleMap.addMarker(new MarkerOptions()
-                .position(BALTI)
-                .title("Balti")
-                .icon(BitmapDescriptorFactory.fromBitmap(icon)));
-        mBalti.setTag(0);
-
-        Marker mNisporeni = googleMap.addMarker(new MarkerOptions()
-                .position(NISPORENI)
-                .title("Nisporeni")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-        mNisporeni.setTag(0);
-
-        Marker mStrGarii = googleMap.addMarker(new MarkerOptions()
-                .position(StrGARII)
-                .title("Strada Garii")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
-        mStrGarii.setTag(0);
-
-        Marker mEternitate = googleMap.addMarker(new MarkerOptions()
-                .position(ETERNITATE)
-                .title("Complexul Memorial Eternitate")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-        mEternitate.setTag(0);
-
-        Marker mARusso = googleMap.addMarker(new MarkerOptions()
-                .position(ARUSSO)
-                .title("Strada Alecu Russo")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
-        mARusso.setTag(0);
-
-        googleMap.setOnMarkerClickListener(this);
+        return mMap.addMarker(new MarkerOptions()
+                .position(config.getPosition())
+                .title(config.getLocationName())
+                .icon(descriptor));
     }
 
     @Override
@@ -94,6 +160,82 @@ public class HomeMapActivity extends FragmentActivity implements
                             " has been clicked " + clickCount + " times.",
                     Toast.LENGTH_SHORT).show();
         }
+
         return false;
     }
+
+    private BitmapDescriptor getBitmapDescriptor(int id) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            VectorDrawable vectorDrawable = (VectorDrawable) getDrawable(id);
+
+            int h = vectorDrawable.getIntrinsicHeight();
+            int w = vectorDrawable.getIntrinsicWidth();
+
+            vectorDrawable.setBounds(0, 0, w, h);
+
+            Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bm);
+            vectorDrawable.draw(canvas);
+
+            return BitmapDescriptorFactory.fromBitmap(bm);
+
+        } else {
+            return BitmapDescriptorFactory.fromResource(id);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 100) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                findMeFab.setEnabled(true);
+                getMyLocation();
+            }
+        }
+    }
 }
+
+
+
+    class MarkerConfig {
+        private int index;
+        private LatLng position;
+        private String locationName;
+        private int iconResource;
+
+        public MarkerConfig(LatLng position, String locationName, int iconResource, int index) {
+            this.index = index;
+            this.position = position;
+            this.locationName = locationName;
+            this.iconResource = iconResource;
+        }
+
+        public int getIndex() {
+            return index;
+        }
+
+        public LatLng getPosition() {
+            return position;
+        }
+
+        public void setPosition(LatLng position) {
+            this.position = position;
+        }
+
+        public String getLocationName() {
+            return locationName;
+        }
+
+        public void setLocationName(String locationName) {
+            this.locationName = locationName;
+        }
+
+        public int getIconResource() {
+            return iconResource;
+        }
+
+        public void setIconResource(int  iconResource) {
+            this.iconResource = iconResource;
+        }
+    }
