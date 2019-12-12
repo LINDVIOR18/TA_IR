@@ -2,6 +2,7 @@ package com.example.takeaction.incidents;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,20 +27,19 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         incidentRepository = new IncidentRepository(FirebaseDatabase.getInstance().getReference().child("incidents"));
 
         getIncidents();
-//        setList();
     }
 
-    private void setList(List<IncidentModel> models) {
+    private void setList(final List<IncidentModel> models) {
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         IncidentAdapter myAdapter = new IncidentAdapter(models, new IncidentAdapter.Callback() {
             @Override
             public void onItemClick(int position) {
-                IncidentModel incident = getIncidents();
+               IncidentModel model =  models.get(position);
 
                 Intent appInfo = new Intent(ReportIncidentListActivity.this, IncidentDetails.class);
-                appInfo.putExtra(IncidentDetails.INCIDENT_KEY, incident);
+                appInfo.putExtra(IncidentDetails.INCIDENT_KEY, model);
                 startActivity(appInfo);
             }
         });
@@ -47,7 +47,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(myAdapter);
     }
 
-    private IncidentModel getIncidents() {
+    private void getIncidents() {
 
         incidentRepository.getIncidents(new IncidentCallback() {
             @Override
@@ -56,6 +56,5 @@ public class ReportIncidentListActivity extends AppCompatActivity {
                 setList(incidentModels);
             }
         });
-        return null;
     }
 }

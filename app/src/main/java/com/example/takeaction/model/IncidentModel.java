@@ -78,36 +78,4 @@ public class IncidentModel implements Serializable {
     public byte getImg() {
         return img;
     }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setCategoryModel(CategoryModel categoryModel) {
-        this.categoryModel = categoryModel;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setDate(long date) {
-        this.date = date;
-    }
-
-    public void setImg(byte img) {
-        this.img = img;
-    }
 }

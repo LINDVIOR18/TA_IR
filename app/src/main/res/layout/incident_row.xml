@@ -34,7 +34,7 @@
             android:layout_toEndOf="@+id/imageIv"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/incident_title"
+            android:text="@string/incident_label_title"
             android:textColor="#000"
             android:textSize="20sp"
             android:textStyle="bold" />

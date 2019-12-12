@@ -2,8 +2,10 @@ package com.example.takeaction.model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
+
 @IgnoreExtraProperties
-public class UserModel {
+public class UserModel implements Serializable {
 
     private String username;
     private String email;
