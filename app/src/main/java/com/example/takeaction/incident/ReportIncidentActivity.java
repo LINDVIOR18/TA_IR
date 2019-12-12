@@ -1,53 +1,61 @@
 package com.example.takeaction.incident;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.Spinner;
-import android.widget.Toast;
-
+import android.widget.*;
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
-
 import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
+import com.example.takeaction.address.GetIncidentCoordinatesActivity;
+import com.example.takeaction.address.IncidentAddress;
+import com.example.takeaction.cameradialog.CameraDialog;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.IncidentRepository;
 import com.example.takeaction.model.CategoryModel;
 import com.example.takeaction.model.IncidentModel;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
+
+import static com.example.takeaction.PermissionManager.CAMERA_PERMISSION_CODE;
+import static com.example.takeaction.PermissionManager.STORAGE_PERMISSION_CODE;
 
 public class ReportIncidentActivity extends NavigationDrawer implements DatePickerDialog.OnDateSetListener {
 
+    public static final String ADDRESS_KEY = "ADDRESS_KEY";
     static final int PERMISSION_REQUEST_CAMERA = 100;
     static final int PERMISSION_REQUEST_GALLERY = 101;
+    static final int INTENT_GET_COORDINATES = 102;
+    private TextView coordinates;
     private IncidentRepository incidentRepository;
+    private IncidentAddress address;
+    private TextInputLayout etTitle;
+    private TextInputLayout etDescription;
+    private long date;
+    private CategoryModel categoryModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_report_incident);
         Spinner categoriesSpinner = findViewById(R.id.spCategories);
 
         incidentRepository = new IncidentRepository(FirebaseDatabase.getInstance().getReference());
+        categoryModel = getCategoryListMock().get(0);
 
         CategoryAdapter adapter = new CategoryAdapter(this,
                 R.layout.spinner_category, getCategoryListMock());
@@ -56,11 +64,15 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
         Button btnAddress = findViewById(R.id.adress);
         Button btnDate = findViewById(R.id.btnDate);
         Button btnSent = findViewById(R.id.send);
+        coordinates = findViewById(R.id.coordinates);
+        etTitle = findViewById(R.id.title);
+        etDescription = findViewById(R.id.description);
 
         btnAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(ReportIncidentActivity.this, GetIncidentCoordinatesActivity.class);
+                startActivityForResult(intent, GetIncidentCoordinatesActivity.REQUEST_CODE);
             }
         });
         btnDate.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +85,21 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
         btnSent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createIncident();
+                if (validateSubmit()) {
+                    createIncident();
+                }
+            }
+        });
+
+        categoriesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                categoryModel = getCategoryListMock().get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
@@ -107,51 +133,16 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        date = c.getTimeInMillis();
+
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         Button btnDate = findViewById(R.id.btnDate);
         btnDate.setText(currentDateString);
     }
 
     public void onClickShowPopUp(View view) {
-
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
-        assert inflater != null;
-        @SuppressLint("InflateParams") View popupView = inflater.inflate(R.layout.pop_up, null);
-
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED) {
-            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST_CAMERA);
-        }
-        try {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_GALLERY);
-            } else {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent, PERMISSION_REQUEST_GALLERY);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, 100);
-                }
-                return true;
-            }
-        });
+        CameraDialog cameraDialog = new CameraDialog(this);
+        cameraDialog.show();
     }
 
     @Override
@@ -165,10 +156,61 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
         }
     }
 
+    private boolean validateSubmit() {
+        int messageRes = -1;
+        if (TextUtils.isEmpty(Objects.requireNonNull(etTitle.getEditText()).getText().toString())) {
+            messageRes = R.string.etTitle;
+        } else if (TextUtils.isEmpty(Objects.requireNonNull(etDescription.getEditText()).getText().toString())) {
+            messageRes = R.string.etDescription;
+        } else if (address == null) {
+            messageRes = R.string.setAddress;
+        } else if (date == 0) {
+            messageRes = R.string.setDate;
+        }
+        if (messageRes == -1) {
+            return true;
+        } else {
+            Toast.makeText(this, messageRes, Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GetIncidentCoordinatesActivity.REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                address = data.getParcelableExtra(GetIncidentCoordinatesActivity.ADDRESS_KEY);
+                coordinates.setText(Objects.requireNonNull(address).getName());
+            }
+        }
+        if ((requestCode == CAMERA_PERMISSION_CODE || requestCode == STORAGE_PERMISSION_CODE) && resultCode == RESULT_OK) {
+
+            Bitmap bitmap = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+
+            ImageButton imageButton = findViewById(R.id.cameraButton);
+            imageButton.setImageBitmap(bitmap);
+        }
+        if (requestCode == STORAGE_PERMISSION_CODE && resultCode == RESULT_OK && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                ImageButton imageButton = findViewById(R.id.cameraButton);
+                imageButton.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void createIncident() {
 
-        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), "user", "Title", "desc",
-                new CategoryModel(1, "name", 1), null, 15, null);
+        IncidentModel incidentModel = new IncidentModel(incidentRepository.getUid(), incidentRepository.getAuthor(), Objects.requireNonNull(etTitle.getEditText()).getText().toString(),
+                Objects.requireNonNull(etDescription.getEditText()).getText().toString(),
+                categoryModel, address, date, null);
 
         incidentRepository.createIncident(incidentModel, new AuthDataCallback<IncidentModel>() {
             @Override

@@ -1,5 +1,6 @@
 package com.example.takeaction.model;
 
+import com.example.takeaction.address.IncidentAddress;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -15,13 +16,14 @@ public class IncidentModel implements Serializable {
     private String title;
     private String description;
     private CategoryModel categoryModel;
-    private String address;
+    private IncidentAddress address;
     private long date;
     private byte img;
 
-    public IncidentModel(){}
+    public IncidentModel() {
+    }
 
-    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, String address, long date, Byte img) {
+    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date, Byte img) {
         this.uid = uid;
         this.author = author;
         this.title = title;
@@ -67,7 +69,7 @@ public class IncidentModel implements Serializable {
         return categoryModel;
     }
 
-    public String getAddress() {
+    public IncidentAddress getAddress() {
         return address;
     }
 

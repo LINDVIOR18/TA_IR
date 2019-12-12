@@ -2,7 +2,6 @@ package com.example.takeaction.incidents;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,7 +35,7 @@ public class ReportIncidentListActivity extends AppCompatActivity {
         IncidentAdapter myAdapter = new IncidentAdapter(models, new IncidentAdapter.Callback() {
             @Override
             public void onItemClick(int position) {
-               IncidentModel model =  models.get(position);
+                IncidentModel model = models.get(position);
 
                 Intent appInfo = new Intent(ReportIncidentListActivity.this, IncidentDetails.class);
                 appInfo.putExtra(IncidentDetails.INCIDENT_KEY, model);
