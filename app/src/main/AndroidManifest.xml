@@ -16,8 +16,7 @@
         android:orientation="vertical"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning,
-        MissingApplicationIcon">
+        tools:ignore="GoogleAppIndexingWarning, MissingApplicationIcon">
 
         <activity
             android:name=".authentication.RegisterActivity"
@@ -45,8 +44,7 @@
             android:theme="@style/AppThemeNoBar" />
         <activity
             android:name=".incidents.ReportIncidentListActivity"
-            android:exported="true"
-            android:theme="@style/AppThemeNoBar" />
+            android:exported="true" />
         <activity
             android:name=".incident.ReportIncidentActivity"
             android:exported="true" />
@@ -58,10 +56,10 @@
             android:exported="true" />
         <activity
             android:name=".incidents.IncidentDetails"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".incidents.ReportIncidentListActivity"/>
         <activity android:name=".address.GetIncidentCoordinatesActivity"
             android:exported="true"/>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
