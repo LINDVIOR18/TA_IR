@@ -56,6 +56,7 @@
             android:exported="true" />
         <activity android:name=".address.GetIncidentCoordinatesActivity"
             android:exported="true"/>
+
         <activity
             android:name=".incidents.IncidentDetails"
             android:exported="true"
