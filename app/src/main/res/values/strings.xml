@@ -44,4 +44,9 @@
     <string name="btn_send">Send</string>
     <string name="incident_title">Title</string>
     <string name="incident_description">Description</string>
+    <string name="home">Home</string>
+    <string name="add_incident">Add an incident</string>
+    <string name="my_account">My Account</string>
+    <string name="view_list_incident">View List Incident</string>
+    <string name="log_out">Log Out</string>
 </resources>

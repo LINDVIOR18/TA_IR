@@ -11,12 +11,19 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.IncidentRepository;
@@ -29,7 +36,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class ReportIncidentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class ReportIncidentActivity extends NavigationDrawer implements DatePickerDialog.OnDateSetListener {
 
     static final  int PERMISSION_REQUEST_CAMERA = 100;
     static final int PERMISSION_REQUEST_GALLERY = 101;
@@ -38,7 +45,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements DatePic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_incident);
         Spinner categoriesSpinner = findViewById(R.id.spCategories);
 
         incidentRepository = new IncidentRepository(FirebaseDatabase.getInstance().getReference());
@@ -71,6 +77,12 @@ public class ReportIncidentActivity extends AppCompatActivity implements DatePic
             }
         });
     }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_report_incident;
+    }
+
 
     private List<CategoryModel> getCategoryListMock() {
         List<CategoryModel> categoryModel = new ArrayList<>();

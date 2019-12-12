@@ -50,7 +50,7 @@
         <activity
                 android:name=".incidents.ReportIncidentListActivity"
                 android:exported="true"
-                android:theme="@style/AppThemeNoBar"/>
+            />
         <activity
                 android:name=".incident.ReportIncidentActivity"
                 android:exported="true"/>

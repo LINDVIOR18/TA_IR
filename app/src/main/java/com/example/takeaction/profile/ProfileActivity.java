@@ -10,8 +10,10 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.PermissionManager;
 import com.example.takeaction.R;
 import com.example.takeaction.cameradialog.CameraDialog;
@@ -23,7 +25,7 @@ import static com.example.takeaction.PermissionManager.CAMERA_PERMISSION_CODE;
 import static com.example.takeaction.PermissionManager.STORAGE_PERMISSION_CODE;
 
 @SuppressLint("Registered")
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends NavigationDrawer {
 
     private static final int pic_id = 123;
     ImageView imageView;
@@ -31,9 +33,12 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
         imageView = findViewById(R.id.imgV_avatar);
 
+    }
+@Override
+    protected int getLayoutRes() {
+        return R.layout.activity_profile;
     }
 
     @Override
