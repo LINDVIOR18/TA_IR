@@ -122,7 +122,6 @@ public class GetIncidentCoordinatesActivity<INTENT_GET_COORDINATES> extends Frag
 
         } catch (IOException e) {
             e.printStackTrace();
-           return;
         }
     }
 }

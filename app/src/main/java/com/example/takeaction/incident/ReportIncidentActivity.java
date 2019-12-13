@@ -15,6 +15,7 @@ import com.example.takeaction.address.GetIncidentCoordinatesActivity;
 import com.example.takeaction.address.IncidentAddress;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.IncidentRepository;
+import com.example.takeaction.homemap.HomeMapActivity;
 import com.example.takeaction.model.CategoryModel;
 import com.example.takeaction.model.IncidentModel;
 import com.google.android.material.textfield.TextInputLayout;
@@ -170,7 +171,7 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
             @Override
             public void onSuccess(IncidentModel response) {
                 Toast.makeText(ReportIncidentActivity.this, "incidentRepository success", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(ReportIncidentActivity.this, MainActivity.class));
+                startActivity(new Intent(ReportIncidentActivity.this, HomeMapActivity.class));
                 finish();
             }
 
