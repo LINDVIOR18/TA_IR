@@ -3,32 +3,24 @@ package com.example.takeaction.address;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.takeaction.model.Coordinates;
 import com.google.android.gms.maps.model.LatLng;
 
-public class IncidentAddress implements Parcelable {
-    public static final Creator<IncidentAddress> CREATOR = new Creator<IncidentAddress>() {
-        @Override
-        public IncidentAddress createFromParcel(Parcel in) {
-            return new IncidentAddress(in);
-        }
+import java.io.Serializable;
 
-        @Override
-        public IncidentAddress[] newArray(int size) {
-            return new IncidentAddress[size];
-        }
-    };
-    private LatLng coordinates;
-    private String name;
+public class IncidentAddress implements Parcelable {
+    public Coordinates coordinates;
+    public String name;
 
     public IncidentAddress() {
     }
 
-    IncidentAddress(LatLng coordinates, String name) {
+    public IncidentAddress(Coordinates coordinates, String name) {
         this.coordinates = coordinates;
         this.name = name;
     }
 
-    private IncidentAddress(Parcel in) {
+    protected IncidentAddress(Parcel in) {
         coordinates = in.readParcelable(LatLng.class.getClassLoader());
         name = in.readString();
     }
@@ -44,7 +36,19 @@ public class IncidentAddress implements Parcelable {
         return 0;
     }
 
-    public LatLng getCoordinates() {
+    public static final Creator<IncidentAddress> CREATOR = new Creator<IncidentAddress>() {
+        @Override
+        public IncidentAddress createFromParcel(Parcel in) {
+            return new IncidentAddress(in);
+        }
+
+        @Override
+        public IncidentAddress[] newArray(int size) {
+            return new IncidentAddress[size];
+        }
+    };
+
+    public Coordinates getCoordinates() {
         return coordinates;
     }
 

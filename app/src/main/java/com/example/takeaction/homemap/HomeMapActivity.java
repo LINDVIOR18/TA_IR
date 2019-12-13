@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.VectorDrawable;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -36,7 +37,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+
+;
 
 public class HomeMapActivity extends NavigationDrawer implements
         GoogleMap.OnMarkerClickListener,
@@ -46,6 +48,7 @@ public class HomeMapActivity extends NavigationDrawer implements
     private GoogleMap mMap;
     private FloatingActionButton fab;
     private FloatingActionButton findMeFab;
+    private FusedLocationProviderClient fusedLocationClient;
     private LatLng currentLatLong;
 
     @Override
@@ -74,16 +77,16 @@ public class HomeMapActivity extends NavigationDrawer implements
             }
         });
         configs = Arrays.asList(
-                new MarkerConfig(new LatLng(47.003670, 28.907089), "Location 1", R.drawable.baseline_warning_black_18dp, 0),
-                new MarkerConfig(new LatLng(47.766667, 27.916667), "Location 2", R.drawable.baseline_fireplace_black_18dp, 1),
-                new MarkerConfig(new LatLng(47.083333, 28.183333), "Location 3", R.drawable.baseline_flash_on_black_18dp, 2),
-                new MarkerConfig(new LatLng(47.013539, 28.8536647), "Location 4", R.drawable.baseline_add_alert_black_18dp, 3),
-                new MarkerConfig(new LatLng(47.008897, 28.832605), "Location 3", R.drawable.baseline_warning_black_18dp, 4)
+                new MarkerConfig(new LatLng(47.003670, 28.907089), "Location 1", R.drawable.ic_earthquake, 0),
+                new MarkerConfig(new LatLng(47.766667, 27.916667), "Location 2", R.drawable.ic_electric, 1),
+                new MarkerConfig(new LatLng(47.083333, 28.183333), "Location 3", R.drawable.ic_fire, 2),
+                new MarkerConfig(new LatLng(47.013539, 28.8536647), "Location 4", R.drawable.ic_heart_pulse, 3),
+                new MarkerConfig(new LatLng(47.008897, 28.832605), "Location 3", R.drawable.ic_home_flood, 4)
         );
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        Objects.requireNonNull(mapFragment).getMapAsync(this);
+        mapFragment.getMapAsync(this);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +96,12 @@ public class HomeMapActivity extends NavigationDrawer implements
             }
         });
 
-        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
                         if (location != null) {
 //                            currentLatLong = new LatLng(location.getLatitude(), location.getLongitude());
                             currentLatLong = new LatLng(47.003670, 28.907089);
@@ -130,12 +134,13 @@ public class HomeMapActivity extends NavigationDrawer implements
 
     }
 
-    private void addMarker(MarkerConfig config) {
+    private Marker addMarker(MarkerConfig config) {
         Bitmap icon = BitmapFactory.decodeResource(getResources(),
                 config.getIconResource());
-        BitmapDescriptor descriptor = BitmapDescriptorFactory.fromBitmap(icon);
+       BitmapDescriptor descriptor =  getBitmapDescriptor(config.getIconResource());  // BitmapDescriptorFactory.fromBitmap(icon);
+       //BitmapDescriptor descriptor =   BitmapDescriptorFactory.fromBitmap(icon);
 
-        mMap.addMarker(new MarkerOptions()
+        return mMap.addMarker(new MarkerOptions()
                 .position(config.getPosition())
                 .title(config.getLocationName())
                 .icon(descriptor));
@@ -159,19 +164,23 @@ public class HomeMapActivity extends NavigationDrawer implements
     }
 
     private BitmapDescriptor getBitmapDescriptor(int id) {
-        VectorDrawable vectorDrawable = (VectorDrawable) getDrawable(id);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            VectorDrawable vectorDrawable = (VectorDrawable) getDrawable(id);
 
-        int h = Objects.requireNonNull(vectorDrawable).getIntrinsicHeight();
-        int w = vectorDrawable.getIntrinsicWidth();
+            int h = vectorDrawable.getIntrinsicHeight();
+            int w = vectorDrawable.getIntrinsicWidth();
 
-        vectorDrawable.setBounds(0, 0, w, h);
+            vectorDrawable.setBounds(0, 0, w, h);
 
-        Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bm);
-        vectorDrawable.draw(canvas);
+            Bitmap bm = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bm);
+            vectorDrawable.draw(canvas);
 
-        return BitmapDescriptorFactory.fromBitmap(bm);
+            return BitmapDescriptorFactory.fromBitmap(bm);
 
+        } else {
+            return BitmapDescriptorFactory.fromResource(id);
+        }
     }
 
     @Override
@@ -187,44 +196,45 @@ public class HomeMapActivity extends NavigationDrawer implements
 }
 
 
-class MarkerConfig {
-    private int index;
-    private LatLng position;
-    private String locationName;
-    private int iconResource;
 
-    MarkerConfig(LatLng position, String locationName, int iconResource, int index) {
-        this.index = index;
-        this.position = position;
-        this.locationName = locationName;
-        this.iconResource = iconResource;
-    }
+    class MarkerConfig {
+        private int index;
+        private LatLng position;
+        private String locationName;
+        private int iconResource;
 
-    public int getIndex() {
-        return index;
-    }
+        public MarkerConfig(LatLng position, String locationName, int iconResource, int index) {
+            this.index = index;
+            this.position = position;
+            this.locationName = locationName;
+            this.iconResource = iconResource;
+        }
 
-    LatLng getPosition() {
-        return position;
-    }
+        public int getIndex() {
+            return index;
+        }
 
-    public void setPosition(LatLng position) {
-        this.position = position;
-    }
+        public LatLng getPosition() {
+            return position;
+        }
 
-    String getLocationName() {
-        return locationName;
-    }
+        public void setPosition(LatLng position) {
+            this.position = position;
+        }
 
-    public void setLocationName(String locationName) {
-        this.locationName = locationName;
-    }
+        public String getLocationName() {
+            return locationName;
+        }
 
-    int getIconResource() {
-        return iconResource;
-    }
+        public void setLocationName(String locationName) {
+            this.locationName = locationName;
+        }
 
-    public void setIconResource(int iconResource) {
-        this.iconResource = iconResource;
+        public int getIconResource() {
+            return iconResource;
+        }
+
+        public void setIconResource(int  iconResource) {
+            this.iconResource = iconResource;
+        }
     }
-}
