@@ -3,12 +3,9 @@ package com.example.takeaction.incidents;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.takeaction.R;
-
 
 class IncidentHolder extends RecyclerView.ViewHolder {
 
@@ -25,7 +22,6 @@ class IncidentHolder extends RecyclerView.ViewHolder {
         this.tvAddress = itemView.findViewById(R.id.addressTv);
         this.tvDate = itemView.findViewById(R.id.tv_date);
     }
-
 
     void setClickListener(View.OnClickListener onClickListener) {
         this.itemView.setOnClickListener(onClickListener);

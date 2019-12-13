@@ -36,7 +36,7 @@ public class ProfileActivity extends NavigationDrawer {
         imageView = findViewById(R.id.imgV_avatar);
 
     }
-@Override
+    @Override
     protected int getLayoutRes() {
         return R.layout.activity_profile;
     }
