@@ -17,17 +17,12 @@ public class IncidentDetails extends AppCompatActivity {
         setContentView(R.layout.activity_incident_details);
         TextView tvTitle = findViewById(R.id.tv_incident);
         TextView tvAddress = findViewById(R.id.tv_address);
-        ImageView ivImage = findViewById(R.id.iv_incident);
         TextView tvText = findViewById(R.id.tv_description);
 
-        IncidentModel incident = (IncidentModel) getIntent().getSerializableExtra(INCIDENT_KEY);
+        IncidentModel incident = getIntent().getParcelableExtra(INCIDENT_KEY);
         assert incident != null;
         tvTitle.setText(incident.getTitle());
-        tvAddress.setText((CharSequence) incident.getAddress());
-        /*
-        Fix null image exception
-        ivImage.setBackground(this.getResources().getDrawable(incident.getImg(), null));
-         */
+        tvAddress.setText(incident.getAddress().name);
 
         tvText.setText(incident.getDescription());
     }

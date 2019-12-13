@@ -3,18 +3,19 @@ package com.example.takeaction.address;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.takeaction.model.Coordinates;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
 
 public class IncidentAddress implements Parcelable {
-    private LatLng coordinates;
-    private String name;
+    public Coordinates coordinates;
+    public String name;
 
     public IncidentAddress() {
     }
 
-    public IncidentAddress(LatLng coordinates, String name) {
+    public IncidentAddress(Coordinates coordinates, String name) {
         this.coordinates = coordinates;
         this.name = name;
     }
@@ -47,7 +48,7 @@ public class IncidentAddress implements Parcelable {
         }
     };
 
-    public LatLng getCoordinates() {
+    public Coordinates getCoordinates() {
         return coordinates;
     }
 

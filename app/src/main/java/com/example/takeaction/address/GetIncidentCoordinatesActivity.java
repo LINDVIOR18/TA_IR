@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.FragmentActivity;
 import com.example.takeaction.R;
+import com.example.takeaction.model.Coordinates;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -112,7 +113,7 @@ public class GetIncidentCoordinatesActivity<INTENT_GET_COORDINATES> extends Frag
                 }
                 String incidentAddres = strAddress.toString();
                 IncidentAddressDeclaration.setText(incidentAddres);
-                address = new IncidentAddress(new LatLng(latitude, longitude), incidentAddres);
+                address = new IncidentAddress(new Coordinates(latitude, longitude), incidentAddres);
                 Log.v("test", incidentAddres);
 
             } else {
