@@ -1,5 +1,8 @@
 package com.example.takeaction.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import com.example.takeaction.address.IncidentAddress;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -8,51 +11,58 @@ import java.util.HashMap;
 import java.util.Map;
 
 @IgnoreExtraProperties
-public class IncidentModel implements Serializable {
+public class IncidentModel implements Parcelable {
 
     private String uid;
-    private String author;
     private String title;
     private String description;
     private CategoryModel categoryModel;
-    private String address;
+    private IncidentAddress address;
     private long date;
-    private byte img;
 
-    public IncidentModel(){}
+    public IncidentModel() {
+    }
 
-    public IncidentModel(String uid, String author, String title, String description, CategoryModel categoryModel, String address, long date, Byte img) {
+    public IncidentModel(String uid, String title, String description, CategoryModel categoryModel, IncidentAddress address, long date) {
         this.uid = uid;
-        this.author = author;
         this.title = title;
         this.description = description;
         this.categoryModel = categoryModel;
         this.address = address;
         this.date = date;
-        this.img = img;
     }
+
+    protected IncidentModel(Parcel in) {
+        uid = in.readString();
+        title = in.readString();
+        description = in.readString();
+        address = in.readParcelable(IncidentAddress.class.getClassLoader());
+        date = in.readLong();
+    }
+
+    public static final Creator<IncidentModel> CREATOR = new Creator<IncidentModel>() {
+        @Override
+        public IncidentModel createFromParcel(Parcel in) {
+            return new IncidentModel(in);
+        }
+
+        @Override
+        public IncidentModel[] newArray(int size) {
+            return new IncidentModel[size];
+        }
+    };
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uid", uid);
-        result.put("author", author);
         result.put("title", title);
         result.put("description", description);
         result.put("categoryModel", categoryModel);
         result.put("address", address);
         result.put("date", date);
-        result.put("image", img);
 
         return result;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public String getAuthor() {
-        return author;
     }
 
     public String getTitle() {
@@ -67,7 +77,7 @@ public class IncidentModel implements Serializable {
         return categoryModel;
     }
 
-    public String getAddress() {
+    public IncidentAddress getAddress() {
         return address;
     }
 
@@ -75,7 +85,17 @@ public class IncidentModel implements Serializable {
         return date;
     }
 
-    public byte getImg() {
-        return img;
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeParcelable(address, flags);
+        dest.writeLong(date);
     }
 }

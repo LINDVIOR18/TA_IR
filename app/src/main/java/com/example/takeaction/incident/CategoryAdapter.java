@@ -19,6 +19,13 @@ public class CategoryAdapter extends ArrayAdapter<CategoryModel> {
     private final List<CategoryModel> items;
     private final int mResource;
 
+    CategoryAdapter(@NonNull Context context, int resource, @NonNull List<CategoryModel> objects) {
+        super(context, resource, objects);
+        mInflater = LayoutInflater.from(context);
+        mResource = resource;
+        items = objects;
+    }
+
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         return createItemView(position, parent);
@@ -28,13 +35,6 @@ public class CategoryAdapter extends ArrayAdapter<CategoryModel> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         return createItemView(position, parent);
-    }
-
-    CategoryAdapter(@NonNull Context context, int resource, @NonNull List<CategoryModel> objects) {
-        super(context, resource, objects);
-        mInflater = LayoutInflater.from(context);
-        mResource = resource;
-        items = objects;
     }
 
     private View createItemView(int position, ViewGroup parent) {

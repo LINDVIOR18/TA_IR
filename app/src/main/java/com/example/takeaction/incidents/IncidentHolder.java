@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.takeaction.R;
 
-
 class IncidentHolder extends RecyclerView.ViewHolder {
 
     ImageView ivCategory;
