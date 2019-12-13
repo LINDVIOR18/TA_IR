@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:fillViewport="true"
-    android:background="@drawable/bg_color"
-    android:scaleType = "centerCrop">
+    android:scaleType="centerCrop">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ReportIncidentActivity"
         android:paddingBottom="20dp"
-        >
-
-
+        tools:context=".ReportIncidentActivity">
 
         <ImageButton
             android:id="@+id/cameraButton"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:focusable="true"
-            android:clickable="true"
             android:background="@drawable/bg_photo"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onClickShowPopUp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="onClickShowPopUp"
-            />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/title"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:hint="@string/incident_label_title"
             android:gravity="center"
+            android:hint="@string/incident_label_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cameraButton"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/cameraButton">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"  />
+                android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -52,11 +47,12 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="@string/incident_label_description"
             android:gravity="center"
+            android:hint="@string/incident_label_description"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" >
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -69,37 +65,36 @@
             android:layout_marginTop="15dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <TextView
             android:id="@+id/coordinates"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="@string/incident_coordinates"
+            android:gravity="center"
+            android:hint="Coordinates"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:hint="Coordinates"
-            android:textStyle="bold"
+            android:text="@string/incident_coordinates"
             android:textColor="@color/colorWhite"
-            android:gravity="center"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spCategories"/>
+            app:layout_constraintTop_toBottomOf="@+id/spCategories" />
 
         <Button
             android:id="@+id/adress"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:textColor="@drawable/button_text_color"
-            android:text="@string/btn_adress"
             android:background="@drawable/btn_report_incident_activity"
             android:drawableStart="@drawable/ic_map_marker"
             android:drawableTint="@drawable/button_text_color"
             android:paddingStart="9dp"
             android:paddingEnd="31dp"
+            android:text="@string/btn_adress"
+            android:textColor="@drawable/button_text_color"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/coordinates" />
@@ -109,29 +104,30 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:padding="10dp"
-            android:text="@string/btn_date"
-            android:textColor="@drawable/button_text_color"
             android:background="@drawable/btn_report_incident_activity"
             android:drawableStart="@drawable/ic_calendar"
             android:drawableTint="@drawable/button_text_color"
-            android:paddingStart="30dp"
-            android:paddingEnd="50dp"
+            android:padding="10dp"
+            android:paddingStart="9dp"
+            android:paddingEnd="31dp"
+            android:text="@string/btn_date"
+            android:textColor="@drawable/button_text_color"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/adress" />
+
         <Button
             android:id="@+id/send"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="@string/btn_send"
-            android:textColor="@drawable/button_text_color"
             android:background="@drawable/btn_report_incident_activity"
             android:drawableStart="@drawable/ic_send"
             android:drawableTint="@drawable/button_text_color"
             android:paddingStart="14dp"
             android:paddingEnd="33dp"
+            android:text="@string/btn_send"
+            android:textColor="@drawable/button_text_color"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnDate" />
