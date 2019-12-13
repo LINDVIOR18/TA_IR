@@ -1,6 +1,5 @@
 package com.example.takeaction.homemap;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -10,10 +9,7 @@ import android.graphics.drawable.VectorDrawable;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
