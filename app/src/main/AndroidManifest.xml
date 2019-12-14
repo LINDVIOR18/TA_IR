@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.takeaction">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.location.gps"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="false"
@@ -22,9 +23,9 @@
 
         <activity
             android:name=".authentication.RegisterActivity"
-            android:theme="@style/AppThemeNoBar"
+            android:exported="true"
             android:noHistory="true"
-            android:exported="true" />
+            android:theme="@style/AppThemeNoBar" />
 
         <activity
             android:name=".splash.Splash"
@@ -41,7 +42,7 @@
             android:noHistory="true"
             android:theme="@style/AppThemeNoBar" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".PermissionManager"/>
+        <activity android:name=".PermissionManager" />
         <activity
             android:name=".authentication.LoginActivity"
             android:exported="true"
@@ -59,12 +60,14 @@
         <activity
             android:name=".profile.ProfileActivity"
             android:exported="true" />
-        <activity android:name=".address.GetIncidentCoordinatesActivity"
-            android:exported="true"/>
+        <activity
+            android:name=".address.GetIncidentCoordinatesActivity"
+            android:exported="true" />
         <activity
             android:name=".incidents.IncidentDetails"
-            android:parentActivityName=".incidents.ReportIncidentListActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".incidents.ReportIncidentListActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

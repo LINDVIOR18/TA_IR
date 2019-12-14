@@ -25,7 +25,7 @@
                 android:id="@+id/imageIv"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/ic_action_name"/>
+                android:src="@drawable/accident"/>
 
         <TextView
                 android:id="@+id/titleTv"
