@@ -7,9 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.takeaction.R;
 import com.example.takeaction.firebase.AuthDataCallback;
 import com.example.takeaction.firebase.AuthRepository;
@@ -76,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             userEmail.setError("Enter valid email!");
         }
 
-        if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
+        if (AuthValidation.isValidPassword(userPassword.getText().toString())) {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(6-20)");
         }
         if (!password.isEmpty() && !email.isEmpty()) {

@@ -6,9 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.fragment.app.DialogFragment;
-import com.example.takeaction.MainActivity;
+
 import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
 import com.example.takeaction.address.GetIncidentCoordinatesActivity;
@@ -20,7 +26,6 @@ import com.example.takeaction.model.CategoryModel;
 import com.example.takeaction.model.IncidentModel;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,7 +46,6 @@ public class ReportIncidentActivity extends NavigationDrawer implements DatePick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report_incident);
         Spinner categoriesSpinner = findViewById(R.id.spCategories);
 
         incidentRepository = new IncidentRepository(FirebaseDatabase.getInstance().getReference());

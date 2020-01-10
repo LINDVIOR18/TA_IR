@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (AuthValidation.isEmail(userEmail)) {
             userEmail.setError("Enter valid email");
         }
-        if (!AuthValidation.isValidPassword(userPassword.getText().toString())) {
+        if (AuthValidation.isValidPassword(userPassword.getText().toString())) {
             userPassword.setError("Password must contain mix of upper and lower case letters as well as digits and one special charecter(6-20)");
         }
         if (!AuthValidation.isValidConfirmPassword(userPassword.getText().toString(), confirmPassword.getText().toString())) {

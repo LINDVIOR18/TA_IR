@@ -26,7 +26,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 
-public class GetIncidentCoordinatesActivity<INTENT_GET_COORDINATES> extends FragmentActivity implements OnMapReadyCallback {
+public class GetIncidentCoordinatesActivity extends FragmentActivity implements OnMapReadyCallback {
     public static final String ADDRESS_KEY = "ADDRESS_KEY";
     public static final int REQUEST_CODE = 1000;
 

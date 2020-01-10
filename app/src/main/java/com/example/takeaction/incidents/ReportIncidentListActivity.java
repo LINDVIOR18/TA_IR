@@ -3,10 +3,8 @@ package com.example.takeaction.incidents;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.takeaction.NavigationDrawer;
 import com.example.takeaction.R;
 import com.example.takeaction.firebase.IncidentCallback;
@@ -40,7 +38,7 @@ public class ReportIncidentListActivity extends NavigationDrawer {
         IncidentAdapter myAdapter = new IncidentAdapter(models, new IncidentAdapter.Callback() {
             @Override
             public void onItemClick(int position) {
-                IncidentModel model =  models.get(position);
+                IncidentModel model = models.get(position);
 
                 Intent appInfo = new Intent(ReportIncidentListActivity.this, IncidentDetails.class);
                 appInfo.putExtra(IncidentDetails.INCIDENT_KEY, model);
@@ -56,7 +54,7 @@ public class ReportIncidentListActivity extends NavigationDrawer {
         incidentRepository.getIncidents(new IncidentCallback() {
             @Override
             public void onDataSuccess(List<IncidentModel> incidentModels) {
-                Toast.makeText(ReportIncidentListActivity.this, "Success", Toast.LENGTH_LONG).show();
+                Toast.makeText(ReportIncidentListActivity.this, "incidentRepository success", Toast.LENGTH_LONG).show();
                 setList(incidentModels);
             }
         });

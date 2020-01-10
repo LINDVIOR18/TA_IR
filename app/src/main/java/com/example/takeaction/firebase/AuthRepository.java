@@ -1,21 +1,23 @@
 package com.example.takeaction.firebase;
 
 import android.app.Activity;
+
 import androidx.annotation.NonNull;
+
 import com.example.takeaction.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.*;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
 public class AuthRepository {
 
     private FirebaseAuth firebaseAuth;
-
 
     public AuthRepository(FirebaseAuth firebaseAuth) {
         this.firebaseAuth = firebaseAuth;
@@ -27,7 +29,6 @@ public class AuthRepository {
 
         writeNewUser(user.getUid(), username, user.getEmail());
     }
-
 
     private String usernameFromEmail(String email) {
         if (email.contains("@")) {
@@ -42,30 +43,6 @@ public class AuthRepository {
         DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
         firebaseDatabase.child("users").child(userId).setValue(userModel);
-    }
-
-    public void getAuthor() {
-
-        String uid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference uidRef = rootRef.child("users").child(uid);
-        ValueEventListener eventListener = new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                UserModel username = dataSnapshot.child("username").getValue(UserModel.class);
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-        uidRef.addListenerForSingleValueEvent(eventListener);
     }
 
     public void signUp(Activity activity, String email, String password, final AuthDataCallback<Task<AuthResult>> callback) {

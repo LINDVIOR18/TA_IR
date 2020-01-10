@@ -99,7 +99,6 @@ public class ProfileActivity extends NavigationDrawer {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                // Log.d(TAG, String.valueOf(bitmap));
 
                 ImageView imageView = findViewById(R.id.imgV_avatar);
                 imageView.setImageBitmap(bitmap);
